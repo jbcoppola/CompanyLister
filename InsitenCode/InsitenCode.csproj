@@ -114,6 +114,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="data\companyList.json" />
     <None Include="scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="scripts\jquery-3.1.1.js" />
     <Content Include="scripts\jquery-3.1.1.min.js" />
@@ -142,6 +143,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
