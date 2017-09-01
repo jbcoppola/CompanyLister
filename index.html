@@ -9,94 +9,99 @@
     <script src="scripts/angular-ui-router.min.js"></script>
     <script src="scripts/angular-mocks.js"></script>
     <script src="app/main.js"></script>
+    <link href="style.css" rel="stylesheet" />
     <meta charset="utf-8" />
 </head>
 
 <body>
-    <div ng-app="Company" class="container" ng-controller="Company">
-        <table class="table table-striped table-bordered">
-            <tr>
-                <td>Company Name</td>
-                <td>
-                    <input type="text" class="form-control" ng-model="item.name" />
-                </td>
-            </tr>
-            <tr>
-                <td>Status</td>
-                <td>
-                    <input type="text" class="form-control" ng-model="item.status" />
-                </td>
-            </tr>
-            <tr>
-                <td>Information</td>
-                <td>
-                    <input type="text" class="form-control" ng-model="item.information" />
-                </td>
-            </tr>
-            <tr>
-                <td>Key Contacts</td>
-                <td>
-                    <input type="text" class="form-control" ng-model="item.contacts" />
-                </td>
-            </tr>
-            <tr>
-                <td>Financial Performance</td>
-                <td>
-                    <input type="text" class="form-control" ng-model="item.performance" />
-                </td>
-            </tr>
-            <tr>
-                <td class="text-right" colspan="2">
-                    <button ng-click="addItem(item)" class="btn btn-primary">
-                        Add
+    <div ng-app="Company" class="container"ng-controller="Company">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel-heading" role="tab" id="formHeader">
+                <h4 class="panel-title">
+                    <button class="btn btn-primary" data-toggle="collapse" data-parent="#accordion" href="#collapseForms" aria-expanded="true" aria-controls="collapseForms">
+                        Add New Company
                     </button>
-                </td>
-            </tr>
-        </table>
-        <table class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>Company</th>
-                    <th>Status</th>
-                    <th>Information</th>
-                    <th>Key Contacts</th>
-                    <th>Financial Performance</th>
-                    <th>Edit</th>
-                    <th>Remove</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="item in items">
-                    <td>
-                        <span ng-hide="editMode">{{item.company}}</span>
-                        <input type="text" ng-show="editMode" ng-model="item.company" />
-                    </td>
-                    <td>
-                        <span ng-hide="editMode">{{item.status}}</span>
-                        <input type="text" ng-show="editMode" ng-model="item.status" />
-                    </td>
-                    <td>
-                        <span ng-hide="editMode">{{item.information}}</span>
-                        <input type="text" ng-show="editMode" ng-model="item.information" />
-                    </td>
-                    <td>
-                        <span ng-hide="editMode">{{item.contacts}}</span>
-                        <input type="text" ng-show="editMode" ng-model="item.contacts" />
-                    </td>
-                    <td>
-                        <span ng-hide="editMode">{{item.performance}}</span>
-                        <input type="text" ng-show="editMode" ng-model="item.performance" />
-                    </td>
-                    <td>
-                        <i ng-hide="editMode" ng-click="editMode = true; editItem(item)" class="glyphicon glyphicon-edit"></i>
-                        <i class="glyphicon glyphicon-saved" ng-show="editMode" ng-click="editMode = false"></i>
-                    </td>
-                    <td>
-                        <i ng-click="removeItem($index)" class="glyphicon glyphicon-trash"></i>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+                </h4>
+            </div>
+            <div id="collapseForms" class="panel-collapse collapse" role="tabpanel" aria-labelledby="formHeader">
+                <div class="well" id="addCompany">
+                    <div class="row">
+                        <div class="col-md-6" id="companyName">
+                            <label for="companyName">Company Name</label>
+                            <input type="text" class="form-control" ng-model="item.name" />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="status">Status</label>
+                            <input type="text" class="form-control" id="status" ng-model="item.status" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="information">Information</label>
+                            <input type="text" class="form-control" id="information" ng-model="item.information" />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="keyContacts">Key Contacts</label>
+                            <input type="text" class="form-control" id="keyContacts" ng-model="item.contacts" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="financialPerformance">Financial Performance</label>
+                            <input type="text" class="form-control" ng-model="item.performance" />
+                        </div>
+                        <div class="col-md-6" class="text-right">
+                            <button ng-click="addItem(item)" class="btn btn-primary pull-right addButton">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Status</th>
+                        <th>Information</th>
+                        <th>Key Contacts</th>
+                        <th>Financial Performance</th>
+                        <th>Edit</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in items">
+                        <td>
+                            <span ng-hide="editMode">{{item.company}}</span>
+                            <input type="text" ng-show="editMode" ng-model="item.company" />
+                        </td>
+                        <td>
+                            <span ng-hide="editMode">{{item.status}}</span>
+                            <input type="text" ng-show="editMode" ng-model="item.status" />
+                        </td>
+                        <td>
+                            <span ng-hide="editMode">{{item.information}}</span>
+                            <input type="text" ng-show="editMode" ng-model="item.information" />
+                        </td>
+                        <td>
+                            <span ng-hide="editMode">{{item.contacts}}</span>
+                            <input type="text" ng-show="editMode" ng-model="item.contacts" />
+                        </td>
+                        <td>
+                            <span ng-hide="editMode">{{item.performance}}</span>
+                            <input type="text" ng-show="editMode" ng-model="item.performance" />
+                        </td>
+                        <td>
+                            <i ng-hide="editMode" ng-click="editMode = true; editItem(item)" class="glyphicon glyphicon-edit"></i>
+                            <i class="glyphicon glyphicon-saved" ng-show="editMode" ng-click="editMode = false"></i>
+                        </td>
+                        <td>
+                            <i ng-click="removeItem($index)" class="glyphicon glyphicon-trash"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 </body>
 </html>
