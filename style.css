@@ -1,2 +1,18 @@
 ﻿body {
 }
+
+.col-md-6 {
+    margin-top: 10px;
+}
+
+.addButton  {
+    margin-top: 25px;
+}
+
+.panel-heading {
+    padding: 10px 0px;
+}
+
+.well {
+    padding: 20px 30px 30px 30px;
+}
