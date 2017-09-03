@@ -1,0 +1,1 @@
+InsitenCode is an Angular program to allow the user to create a list of companies in their web browser. The user can add, remove, update or delete a company from the list.
