@@ -1,10 +1,17 @@
 ﻿body {
+    font-size: 18px;
 }
 
 .col-md-6 {
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
+h1 {
+    font-size: 50px;
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    margin: 0px;
+}
 .addButton  {
     margin-top: 25px;
 }
@@ -23,20 +30,36 @@
 
 .banner {
     padding: 50px;
-    background-color: #3A3B3C
+    background-color: #3A3B3C;
+    margin-bottom: 30px;
 }
 
-h1 {
-    font-size: 50px;
+.green-banner {
+    background-color: #5DDBA9
+}
+
+.green-banner h1 {
+    padding: 30px;
+    font-size: 40px;
+}
+
+.green-banner .btn {
+    padding: 15px;
+    border: 7px solid white;
+    border-radius: 20px;
     color: white;
-    font-family: 'Raleway', sans-serif;
-    margin: 0px;
+    background-color: none;
+    margin: 20px;
+}
+.green-banner .btn:hover {
+    color: white;
+    text-decoration: none;
+    background-color: rgba(255,255,255,0.3);
+}
+.green-banner .btn:active {
+    background-color: rgba(255,255,255,0.6);
 }
 
-.blue-panel {
-    background-color: #0DA9FF;
-}
-
-.grey-panel {
-
+.green-banner a {
+    color: white;
 }

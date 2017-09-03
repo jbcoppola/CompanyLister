@@ -15,17 +15,6 @@ app.controller("Company", function ($scope) {
         }
         ]
 
-    //populate with json company data
-    /*
-    $http.get('data/companyList.json').then(successCallback, errorCallback);
-    function successCallback(response) {
-        $scope.items = response.data;
-    }
-    function errorCallback(error) {
-        $scope.items = [];
-    }
-    */
-
     //create new company
     $scope.addItem = function (item) {
         $scope.items.push(item);
