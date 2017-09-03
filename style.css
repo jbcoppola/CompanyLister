@@ -14,5 +14,29 @@
 }
 
 .well {
-    padding: 20px 30px 30px 30px;
+    padding: 5px 20px 20px 20px;
+}
+
+.header {
+    padding: 10px 30px;
+}
+
+.banner {
+    padding: 50px;
+    background-color: #3A3B3C
+}
+
+h1 {
+    font-size: 50px;
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    margin: 0px;
+}
+
+.blue-panel {
+    background-color: #0DA9FF;
+}
+
+.grey-panel {
+
 }
