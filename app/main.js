@@ -9,7 +9,7 @@ app.controller("Company", function ($scope) {
         {
             "id": "1",
             "company": "Google",
-            "status": "Aquired",
+            "status": "Researching",
             "information": "Pellentesque placerat, sapien et varius imperdiet, ante sapien fermentum quam, in vehicula turpis urna sit amet ante. Donec a diam vestibulum, consequat est vitae, congue diam. Donec consectetur erat vel tincidunt suscipit. Curabitur iaculis lobortis nunc. Nulla sagittis volutpat ornare. Nulla facilisi. ",
             "contacts": "Alan Smithee",
             "performance": "100"
@@ -19,7 +19,7 @@ app.controller("Company", function ($scope) {
     //create new company
     $scope.addCompany = function (company) {
         company.id = $scope.companyList.length+1;
-        $scope.companyList.push(company);
+        $scope.companyList.unshift(company);
         $scope.company = {};
     },
     //delete company
