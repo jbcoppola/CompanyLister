@@ -15,7 +15,10 @@
 </head>
 
 <body>
+    <!--main container-->
     <div ng-app="Company" class="container-fluid" ng-controller="Company">
+
+        <!--logo and banner-->
         <div class="row header">
             <div class="col-md-3">
                 <a href="https://insiten.com/"><img src="images/logo5.png" /></a>
@@ -26,8 +29,12 @@
                 <h1>Company Lister</h1>
             </div>
         </div>
+
+        <!--add company form-->
         <div class="main-area">
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+                <!--section with button stays visible-->
                 <div class="panel-heading" role="tab" id="formHeader">
                     <h4 class="panel-title">
                         <button class="btn btn-lg btn-blue" data-toggle="collapse" data-parent="#accordion" href="#collapseForms" aria-expanded="true" aria-controls="collapseForms">
@@ -35,6 +42,8 @@
                         </button>
                     </h4>
                 </div>
+
+                <!--this section can be collapsed and hidden-->
                 <div id="collapseForms" class="panel-collapse collapse" role="tabpanel" aria-labelledby="formHeader">
                     <form name="companyForm" class="well" id="addCompany">
                         <div class="row">
@@ -74,9 +83,13 @@
                             </div>
                         </div>
                     </form>
-                </div>
-            </div>
+                </div> <!--end of hideable div-->
+            </div> <!--end of accordion-->
+
+            <!--list of all companies-->
             <div ng-repeat="company in companyList" class="main-listing text-center">
+
+                <!--top has company name and edit buttons-->
                 <div class="row top-row">
                     <div class="col-md-8 col-md-offset-2 text-center company-name">
                         <span ng-hide="editMode">{{company.company}}</span>
@@ -86,15 +99,18 @@
                         <span ng-hide="editMode" ng-click="editMode = true; editCompany(company)" class="btn btn-default glyphicon glyphicon-edit center-block"></span>
                         <span class="btn btn-default glyphicon glyphicon-saved center-block" ng-show="editMode" ng-click="editMode = false"></span>
                         <i ng-click="removeCompany($index)" class="btn btn-default glyphicon glyphicon-trash center-block"></i>
-
                     </div>
                 </div>
+
+                <!--description of company in center-->
                 <div class="row middle-row">
                     <div class="col-md-12">
                         <span ng-hide="editMode">{{company.information}}</span>
                         <textarea class="form-control" ng-show="editMode" ng-model="company.information"></textarea>
                     </div>
                 </div>
+
+                <!--bottom row has details-->
                 <div class="row bottom-row">
                     <div class="col-md-3">
                         <div class="row">
@@ -144,9 +160,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                </div> <!--end of bottom row-->
+            </div> <!--end of individual company listing-->
+        </div> <!--end of company list-->
+        <!--footer and github link at bottom-->
         <footer class="row navbar-default green-banner">
             <div class="col-md-10">
                 <h1>a project by Joseph Coppola</h1>
@@ -155,6 +172,7 @@
                 <a href="https://github.com/jbcoppola/InsitenCode" class="btn btn-lg">Github</a>
             </div>
         </footer>
-    </div>
+
+    </div> <!--end of main container-->
 </body>
 </html>
