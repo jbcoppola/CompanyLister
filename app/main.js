@@ -7,6 +7,22 @@ app.controller("Company", function ($scope) {
     $scope.companyList = 
         [
         {
+            "id": "4",
+            "company": "Apple",
+            "status": "Declined",
+            "information": "Vivamus quis pellentesque mauris, vitae condimentum lacus. Nullam a urna condimentum, auctor quam non, eleifend diam. Nullam porta, dui id viverra molestie, augue lacus laoreet est, eu congue urna sem et justo. Suspendisse auctor tortor eu volutpat laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. ",
+            "contacts": "Jacob Booth, Steve Jobs",
+            "performance": "12000"
+        },
+        {
+            "id": "3",
+            "company": "Tesla",
+            "status": "Approved",
+            "information": "Integer vehicula, sapien sed luctus feugiat, augue mauris ullamcorper urna, nec condimentum justo eros condimentum sapien. Nam elementum est ipsum, sed laoreet felis pulvinar vel. Aenean ac neque urna. Cras est lectus, maximus at rhoncus a, suscipit vitae eros. Integer auctor vel justo sed tincidunt. ",
+            "contacts": "Elon Musk",
+            "performance": "600"
+        },
+        {
             "id": "2",
             "company": "Google",
             "status": "Researching",
