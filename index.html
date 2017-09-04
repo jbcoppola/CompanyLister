@@ -67,8 +67,9 @@
                                 <textarea class="form-control" id="information" ng-model="company.information"></textarea>
                             </div>
                             <div class="col-md-6">
-                                <label for="keyContacts">Key Contacts</label>
-                                <input type="text" class="form-control" id="keyContacts" ng-model="company.contacts" />
+                                <label>Key Contacts</label>
+                                <input type="text" class="form-control" ng-repeat="contact in contacts" ng-model="company.contacts[$index]" />
+                                <button ng-click="addNewContact(contacts)" class="btn">Add</button>
                             </div>
                         </div>
                         <div class="row">
@@ -127,9 +128,9 @@
                             <div class="col-xs-12 title-block">
                                 Contacts
                             </div>
-                            <div class="col-xs-12">
-                                <span ng-hide="editMode">{{company.contacts}}</span>
-                                <input type="text" class="form-control" ng-show="editMode" ng-model="company.contacts" />
+                            <div class="col-xs-12" ng-repeat="contact in companyList[$index].contacts">
+                                <span ng-hide="editMode">{{company.contacts[$index]}}</span>
+                                <input type="text" class="form-control" ng-show="editMode" ng-model="company.contacts[$index]" />
                             </div>
                         </div>
                     </div>
