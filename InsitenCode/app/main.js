@@ -4,9 +4,10 @@ var app = angular.module("Company", []);
 //make controller
 app.controller("Company", function ($scope) {
     //populate with company data
-    $scope.items = 
+    $scope.companyList = 
         [
         {
+            "id": "1",
             "company": "Google",
             "status": "Aquired",
             "information": "Search Engine",
@@ -16,18 +17,19 @@ app.controller("Company", function ($scope) {
         ]
 
     //create new company
-    $scope.addItem = function (item) {
-        $scope.items.push(item);
-        $scope.item = {};
+    $scope.addCompany = function (company) {
+        company.id = $scope.companyList.length+1;
+        $scope.companyList.push(company);
+        $scope.company = {};
     },
     //delete company
-    $scope.removeItem = function (index) {
+    $scope.removeCompany = function (index) {
         console.log(index);
-        $scope.items.splice(index, 1)
+        $scope.companyList.splice(index, 1)
     },
     //update company
-    $scope.editItem = function (index) {
-        $scope.editing = $scope.items.indexOf(index);
+    $scope.editCompany = function (index) {
+        $scope.editing = $scope.companyList.indexOf(index);
     }
 
 

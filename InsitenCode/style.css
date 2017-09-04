@@ -33,16 +33,29 @@ h1 {
     background-color: #3A3B3C;
     margin-bottom: 30px;
 }
+.btn-blue {
+    background-color: #0DA9FF;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+}
+.btn-blue:hover,
+.btn-blue:focus {
+    color: white;
+    background-color:#66c9ff;
+}
+
+tbody .btn-default {
+    border: 2px solid rgb(220,220,220);
+}
 
 .green-banner {
     background-color: #5DDBA9
 }
-
 .green-banner h1 {
     padding: 30px;
     font-size: 40px;
 }
-
 .green-banner .btn {
     padding: 15px;
     border: 7px solid white;
@@ -56,10 +69,10 @@ h1 {
     text-decoration: none;
     background-color: rgba(255,255,255,0.3);
 }
-.green-banner .btn:active {
+.green-banner .btn:active,
+.green-banner .btn:focus {
     background-color: rgba(255,255,255,0.6);
 }
-
 .green-banner a {
     color: white;
 }

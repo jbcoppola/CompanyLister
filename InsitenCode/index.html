@@ -27,7 +27,7 @@
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
             <div class="panel-heading" role="tab" id="formHeader">
                 <h4 class="panel-title">
-                    <button class="btn btn-lg btn-primary" data-toggle="collapse" data-parent="#accordion" href="#collapseForms" aria-expanded="true" aria-controls="collapseForms">
+                    <button class="btn btn-lg btn-blue" data-toggle="collapse" data-parent="#accordion" href="#collapseForms" aria-expanded="true" aria-controls="collapseForms">
                         Add New Company
                     </button>
                 </h4>
@@ -37,11 +37,11 @@
                     <div class="row">
                         <div class="col-md-6" id="companyName">
                             <label for="companyName">Company Name (required)</label>
-                            <input type="text" class="form-control" ng-model="item.company" required />
+                            <input type="text" class="form-control" ng-model="company.company" required />
                         </div>
                         <div class="col-md-6">
                             <label for="status">Status</label>
-                            <select name="status" id="status" ng-model="item.status" class="form-control">
+                            <select name="status" id="status" ng-model="company.status" class="form-control">
                                 <option value="Inquiring">Inquiring</option>
                                 <option value="Aquired">Aquired</option>
                             </select>
@@ -50,20 +50,20 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label for="information">Information</label>
-                            <input type="text" class="form-control" id="information" ng-model="item.information" />
+                            <input type="text" class="form-control" id="information" ng-model="company.information" />
                         </div>
                         <div class="col-md-6">
                             <label for="keyContacts">Key Contacts</label>
-                            <input type="text" class="form-control" id="keyContacts" ng-model="item.contacts" />
+                            <input type="text" class="form-control" id="keyContacts" ng-model="company.contacts" />
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <label for="financialPerformance">Financial Performance</label>
-                            <input type="text" class="form-control" ng-model="item.performance" />
+                            <input type="text" class="form-control" ng-model="company.performance" />
                         </div>
                         <div class="col-md-6">
-                            <button ng-click="addItem(item)" class="btn btn-lg btn-primary pull-right addButton" ng-disabled="!companyForm.$valid">
+                            <button ng-click="addCompany(company)" class="btn btn-lg btn-blue pull-right addButton" ng-disabled="!companyForm.$valid">
                                 Add
                             </button>
                         </div>
@@ -84,36 +84,36 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="item in items">
+                    <tr ng-repeat="company in companyList">
                         <td>
-                            <span>{{item.id}}</span>
+                            <span>{{company.id}}</span>
                         </td>
                         <td>
-                            <span ng-hide="editMode">{{item.company}}</span>
-                            <input type="text" ng-show="editMode" ng-model="item.company" />
+                            <span ng-hide="editMode">{{company.company}}</span>
+                            <input type="text" ng-show="editMode" ng-model="company.company" />
                         </td>
                         <td>
-                            <span ng-hide="editMode">{{item.status}}</span>
-                            <input type="text" ng-show="editMode" ng-model="item.status" />
+                            <span ng-hide="editMode">{{company.status}}</span>
+                            <input type="text" ng-show="editMode" ng-model="company.status" />
                         </td>
                         <td>
-                            <span ng-hide="editMode">{{item.information}}</span>
-                            <input type="text" ng-show="editMode" ng-model="item.information" />
+                            <span ng-hide="editMode">{{company.information}}</span>
+                            <input type="text" ng-show="editMode" ng-model="company.information" />
                         </td>
                         <td>
-                            <span ng-hide="editMode">{{item.contacts}}</span>
-                            <input type="text" ng-show="editMode" ng-model="item.contacts" />
+                            <span ng-hide="editMode">{{company.contacts}}</span>
+                            <input type="text" ng-show="editMode" ng-model="company.contacts" />
                         </td>
                         <td>
-                            <span ng-hide="editMode">{{item.performance}}</span>
-                            <input type="text" ng-show="editMode" ng-model="item.performance" />
+                            <span ng-hide="editMode">{{company.performance}}</span>
+                            <input type="text" ng-show="editMode" ng-model="company.performance" />
                         </td>
                         <td>
-                            <span ng-hide="editMode" ng-click="editMode = true; editItem(item)" class="btn btn-default btn-xs glyphicon glyphicon-edit"></span>
-                            <span class="btn btn-default btn-xs glyphicon glyphicon-saved" ng-show="editMode" ng-click="editMode = false"></span>
+                            <span ng-hide="editMode" ng-click="editMode = true; editCompany(company)" class="btn btn-default btn-xs glyphicon glyphicon-edit center-block"></span>
+                            <span class="btn btn-default btn-xs glyphicon glyphicon-saved center-block" ng-show="editMode" ng-click="editMode = false"></span>
                         </td>
                         <td>
-                            <i ng-click="removeItem($index)" class="btn btn-default btn-xs glyphicon glyphicon-trash"></i>
+                            <i ng-click="removeCompany($index)" class="btn btn-default btn-xs glyphicon glyphicon-trash center-block"></i>
                         </td>
                     </tr>
                 </tbody>
