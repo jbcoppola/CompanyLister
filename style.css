@@ -96,3 +96,11 @@ h1 {
 .green-banner .btn:focus {
     background-color: rgba(255,255,255,0.6);
 }
+
+/*removes side padding under certain window/screen size*/
+@media (max-width: 960px)
+{
+    .main-area {
+        padding: 0px;
+    }
+}
