@@ -68,8 +68,9 @@
                             </div>
                             <div class="col-md-6">
                                 <label>Key Contacts</label>
-                                <input type="text" class="form-control" ng-repeat="contact in contacts" ng-model="company.contacts[$index]" />
-                                <button ng-click="addNewContact(contacts)" class="btn">Add</button>
+                                <input type="text" class="form-control contact-form" ng-repeat="contact in contacts" ng-model="company.contacts[$index]" />
+                                <button ng-click="addNewContact(contacts)" class="btn btn-default">Add Contact</button>
+                                <button ng-click="deleteContact(contacts)" class="btn btn-default">Remove Contact</button>
                             </div>
                         </div>
                         <div class="row">
