@@ -9,7 +9,7 @@
     <script src="scripts/angular-ui-router.min.js"></script>
     <script src="scripts/angular-mocks.js"></script>
     <script src="app/main.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Raleway:800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,800" rel="stylesheet">
     <link href="style.css" rel="stylesheet" />
     <meta charset="utf-8" />
 </head>
@@ -18,7 +18,7 @@
     <div ng-app="Company" class="container-fluid" ng-controller="Company">
         <div class="row header">
             <div class="col-md-3">
-                <img src="images/logo5.png" />
+                <a href="https://insiten.com/"><img src="images/logo5.png" /></a>
             </div>
         </div>
         <div class="row banner text-center">
@@ -45,15 +45,17 @@
                             <div class="col-md-6">
                                 <label for="status">Status</label>
                                 <select name="status" id="status" ng-model="company.status" class="form-control">
-                                    <option value="Inquiring">Inquiring</option>
-                                    <option value="Aquired">Aquired</option>
+                                    <option value="Researching">Researching</option>
+                                    <option value="Pending Approval">Pending Approval</option>
+                                    <option value="Approved">Approved</option>
+                                    <option value="Declined">Declined</option>
                                 </select>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="information">Information</label>
-                                <input type="text" class="form-control" id="information" ng-model="company.information" />
+                                <textarea class="form-control" id="information" ng-model="company.information"></textarea>
                             </div>
                             <div class="col-md-6">
                                 <label for="keyContacts">Key Contacts</label>
@@ -66,7 +68,7 @@
                                 <input type="text" class="form-control" ng-model="company.performance" />
                             </div>
                             <div class="col-md-6">
-                                <button ng-click="addCompany(company)" class="btn btn-lg btn-blue pull-right add-button" ng-disabled="!companyForm.$valid">
+                                <button ng-click="addCompany(company)" class="btn btn-lg btn-blue pull-right add-button" data-toggle="collapse" data-target="#collapseForms" ng-disabled="!companyForm.$valid">
                                     Add
                                 </button>
                             </div>
@@ -80,7 +82,7 @@
                         <span ng-hide="editMode">{{company.company}}</span>
                         <input type="text" ng-show="editMode" ng-model="company.company" />
                     </div>
-                    <div class="col-md-2 aquired-box text-center">
+                    <div class="col-md-2 text-center">
                         <span ng-hide="editMode" ng-click="editMode = true; editCompany(company)" class="btn btn-default glyphicon glyphicon-edit center-block"></span>
                         <span class="btn btn-default glyphicon glyphicon-saved center-block" ng-show="editMode" ng-click="editMode = false"></span>
                         <i ng-click="removeCompany($index)" class="btn btn-default glyphicon glyphicon-trash center-block"></i>
@@ -90,7 +92,7 @@
                 <div class="row middle-row">
                     <div class="col-md-12">
                         <span ng-hide="editMode">{{company.information}}</span>
-                        <input type="text" ng-show="editMode" ng-model="company.information" />
+                        <textarea ng-show="editMode" ng-model="company.information"></textarea>
                     </div>
                 </div>
                 <div class="row bottom-row">
@@ -118,7 +120,7 @@
                     <div class="col-md-3">
                         <div class="row">
                             <div class="col-xs-12 title-block">
-                                Financial Performance
+                                Performance
                             </div>
                             <div class="col-xs-12">
                                 <span ng-hide="editMode">{{company.performance}}</span>
@@ -133,7 +135,12 @@
                             </div>
                             <div class="col-xs-12">
                                 <span ng-hide="editMode">{{company.status}}</span>
-                                <input type="text" ng-show="editMode" ng-model="company.status" />
+                                <select name="status" id="status" ng-show="editMode" ng-model="company.status">
+                                    <option value="Researching">Researching</option>
+                                    <option value="Pending Approval">Pending Approval</option>
+                                    <option value="Approved">Approved</option>
+                                    <option value="Declined">Declined</option>
+                                </select>
                             </div>
                         </div>
                     </div>
