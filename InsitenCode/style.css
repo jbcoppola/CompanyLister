@@ -4,6 +4,7 @@
 }
 
 /*HEADER*/
+
 .header {
     padding: 10px 30px;
 }
@@ -12,8 +13,15 @@
     background-color: #3A3B3C;
     margin-bottom: 30px;
 }
+h1 {
+    font-size: 50px;
+    color: white;
+    margin: 0px;
+    font-weight: bolder;
+}
 
-/*MAIN AREA*/
+/*COLLAPSIBLE FORM*/
+
 .panel-collapse .col-md-6 {
     margin-top: 20px;
 }
@@ -28,11 +36,9 @@
     color: white;
     background-color:#66c9ff;
 }
-h1 {
-    font-size: 50px;
-    color: white;
-    margin: 0px;
-    font-weight: bolder;
+.well {
+    padding: 5px 20px 20px 20px;
+    border-radius: 20px;
 }
 .add-button  {
     margin-top: 25px;
@@ -40,6 +46,9 @@ h1 {
 .panel-heading {
     padding: 10px 0px;
 }
+
+/*MAIN LISTING*/
+
 .main-area {
     padding: 0px 200px;
 }
@@ -67,11 +76,9 @@ h1 {
     padding-bottom: 20px;
     font-weight: bold;
 }
-.well {
-    padding: 5px 20px 20px 20px;
-}
 
 /*FOOTER*/
+
 .green-banner {
     background-color: #5DDBA9;
 }
