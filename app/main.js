@@ -51,8 +51,12 @@ app.controller("Company", function ($scope) {
     //add new contact
     $scope.addNewContact = function (contacts) {
         $scope.contacts.push(" ");
-    };
+    },
 
+    //remove contact
+    $scope.deleteContact = function (contacts) {
+        $scope.contacts.splice(1);
+    },
     //delete company
     $scope.removeCompany = function (index) {
         console.log(index);
