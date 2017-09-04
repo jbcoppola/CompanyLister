@@ -80,7 +80,7 @@
                 <div class="row top-row">
                     <div class="col-md-8 col-md-offset-2 text-center company-name">
                         <span ng-hide="editMode">{{company.company}}</span>
-                        <input type="text" ng-show="editMode" ng-model="company.company" />
+                        <input type="text" class="form-control" ng-show="editMode" ng-model="company.company" />
                     </div>
                     <div class="col-md-2 text-center">
                         <span ng-hide="editMode" ng-click="editMode = true; editCompany(company)" class="btn btn-default glyphicon glyphicon-edit center-block"></span>
@@ -92,7 +92,7 @@
                 <div class="row middle-row">
                     <div class="col-md-12">
                         <span ng-hide="editMode">{{company.information}}</span>
-                        <textarea ng-show="editMode" ng-model="company.information"></textarea>
+                        <textarea class="form-control" ng-show="editMode" ng-model="company.information"></textarea>
                     </div>
                 </div>
                 <div class="row bottom-row">
@@ -113,7 +113,7 @@
                             </div>
                             <div class="col-xs-12">
                                 <span ng-hide="editMode">{{company.contacts}}</span>
-                                <input type="text" ng-show="editMode" ng-model="company.contacts" />
+                                <input type="text" class="form-control" ng-show="editMode" ng-model="company.contacts" />
                             </div>
                         </div>
                     </div>
@@ -124,7 +124,7 @@
                             </div>
                             <div class="col-xs-12">
                                 <span ng-hide="editMode">{{company.performance}}</span>
-                                <input type="text" ng-show="editMode" ng-model="company.performance" />
+                                <input type="text" class="form-control" ng-show="editMode" ng-model="company.performance" />
                             </div>
                         </div>
                     </div>
@@ -135,7 +135,7 @@
                             </div>
                             <div class="col-xs-12">
                                 <span ng-hide="editMode">{{company.status}}</span>
-                                <select name="status" id="status" ng-show="editMode" ng-model="company.status">
+                                <select name="status" id="status" class="form-control" ng-show="editMode" ng-model="company.status">
                                     <option value="Researching">Researching</option>
                                     <option value="Pending Approval">Pending Approval</option>
                                     <option value="Approved">Approved</option>
