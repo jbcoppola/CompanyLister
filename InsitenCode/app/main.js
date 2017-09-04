@@ -7,12 +7,20 @@ app.controller("Company", function ($scope) {
     $scope.companyList = 
         [
         {
-            "id": "1",
+            "id": "2",
             "company": "Google",
             "status": "Researching",
             "information": "Pellentesque placerat, sapien et varius imperdiet, ante sapien fermentum quam, in vehicula turpis urna sit amet ante. Donec a diam vestibulum, consequat est vitae, congue diam. Donec consectetur erat vel tincidunt suscipit. Curabitur iaculis lobortis nunc. Nulla sagittis volutpat ornare. Nulla facilisi. ",
             "contacts": "Alan Smithee",
-            "performance": "100"
+            "performance": "3000"
+        },
+        {
+            "id": "1",
+            "company": "Microsoft",
+            "status": "Pending Approval",
+            "information": "Morbi tristique quis quam sit amet maximus. Sed sollicitudin nisi eget diam volutpat sollicitudin. Sed non arcu ultricies, euismod risus at, rutrum enim. Vivamus sed enim nec ante interdum malesuada. Nullam interdum risus vel rhoncus vehicula. Cras maximus, erat at scelerisque mollis, mi ipsum porta velit, at tempor ligula lorem eu nibh.",
+            "contacts": "Bill Gates",
+            "performance": "40000"
         }
         ]
 
