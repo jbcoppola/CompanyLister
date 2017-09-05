@@ -21,7 +21,7 @@
         <!--logo and banner-->
         <div class="row header">
             <div class="col-md-3">
-                <a href="https://insiten.com/"><img src="images/logo5.png" /></a>
+                <a href="https://insiten.com/" target="_blank"><img src="images/logo5.png" /></a>
             </div>
         </div>
         <div class="row banner text-center">
@@ -67,15 +67,17 @@
                                 <textarea class="form-control" id="information" ng-model="company.information"></textarea>
                             </div>
                             <div class="col-md-6">
-                                <label>Key Contacts</label>
-                                <input type="text" class="form-control contact-form" ng-repeat="contact in contacts" ng-model="company.contacts[$index]" />
-                                <button ng-click="addNewContact(contacts)" class="btn btn-default">Add Contact</button>
-                                <button ng-click="deleteContact(contacts)" class="btn btn-default">Remove Contact</button>
+                                <label>Contacts</label>
+                                <div ng-repeat="contact in contactsForm">
+                                    <input type="text" class="form-control contact-form" ng-model="company.contacts[$index]" />
+                                </div>
+                                <button ng-click="addNewContact()" class="btn btn-default">Add Contact</button>
+                                <button ng-click="deleteContact()" class="btn btn-default">Remove Contact</button>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label for="financialPerformance">Financial Performance</label>
+                                <label for="Performance">Performance</label>
                                 <input type="text" class="form-control" ng-model="company.performance" />
                             </div>
                             <div class="col-md-6">
