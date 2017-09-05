@@ -3,8 +3,11 @@ var app = angular.module("Company", []);
 
 //make controller
 app.controller("Company", function ($scope) {
+    
+    //empty array used for making contact divs
+    $scope.contactsForm = [{}];
+
     //populate with company data
-    $scope.contacts = [""];
     $scope.companyList = 
         [
         {
@@ -49,13 +52,13 @@ app.controller("Company", function ($scope) {
     },
 
     //add new contact
-    $scope.addNewContact = function (contacts) {
-        $scope.contacts.push(" ");
+    $scope.addNewContact = function () {
+        $scope.contactsForm.push({});
     },
 
     //remove contact
-    $scope.deleteContact = function (contacts) {
-        $scope.contacts.splice(1);
+    $scope.deleteContact = function () {
+        $scope.contactsForm.pop();
     },
     //delete company
     $scope.removeCompany = function (index) {
