@@ -37,7 +37,8 @@ h1 {
     font-weight: bold;
 }
 .btn-blue:hover,
-.btn-blue:focus {
+.btn-blue:focus,
+.btn-blue.active {
     color: white;
     background-color:#66c9ff;
 }
