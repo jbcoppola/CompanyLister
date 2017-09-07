@@ -10,6 +10,8 @@ app.controller("Company", function ($scope) {
     //empty array used for making contact divs
     $scope.contactsForm = [{}];
 
+    $scope.cardView = true;
+
     //populate with company data
     $scope.companyList = 
         [
@@ -47,14 +49,27 @@ app.controller("Company", function ($scope) {
         }
         ]
 
+    $scope.setCardView = function () {
+        $scope.cardView = true;
+        $scope.listView = false;
+    }
+
+    $scope.setListView = function () {
+        $scope.cardView = false;
+        $scope.listView = true;
+    }
+
+    //viewing data for pagination
     $scope.totalItems = $scope.companyList.length;
     $scope.currentPage = 1;
     $scope.itemsPerPage = 5;
 
+    //updates page with selected elements
     $scope.$watch("currentPage", function () {
         setPagingData($scope.currentPage);
     });
 
+    //selects current page elements from complete company list
     function setPagingData(page) {
         var pagedData = $scope.companyList.slice(
           (page - 1) * $scope.itemsPerPage,

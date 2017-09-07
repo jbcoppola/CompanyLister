@@ -25,8 +25,9 @@ h1 {
 .companyForm .col-md-6 {
     margin-top: 20px;
 }
-.btn-edit { 
-    width: 100%; 
+
+.btn-view {
+    padding: 20px;
 }
 
 .btn-blue {
@@ -53,35 +54,65 @@ h1 {
 .contact-form {
     margin-bottom: 4px;
 }
-
-/*MAIN LISTING*/
-
 .main-area {
     padding: 0px 200px;
 }
-.main-listing {
+
+/*MAIN LISTING CARD*/
+
+.main-card-listing {
     border: 20px solid lightgray;
     border-radius: 40px;
     margin-bottom: 50px;
 }
-.top-row {
+.main-card-listing .btn-edit { 
+    width: 100%; 
+}
+.main-card-listing .top-row {
     padding: 20px;
     background-color: lightgray;
 }
-.company-name {
+.main-card-listing .company-name {
     font-size: 45px;
     font-weight: bold;
 }
-.middle-row {
+.main-card-listing .middle-row {
     padding: 20px;
 }
-.bottom-row {
+.main-card-listing .bottom-row {
     padding: 20px;
     border-top: 20px solid lightgray;
 }
-.title-block {
+.main-card-listing .title-block {
     padding-bottom: 20px;
     font-weight: bold;
+}
+
+/*MAIN LISTING LIST*/
+
+.title-row {
+    padding: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.main-list-listing {
+    font-size: 16px;
+}
+.main-list-listing .row {
+    padding: 5px;
+    margin: 1px;
+}
+.main-list-listing .odd {
+    background-color: lightgray;
+}
+.main-list-listing .company-name {
+    font-weight: bold;
+}
+.main-list-listing .first-item {
+    
+}
+.main-list-listing:last-child .row {
+    margin-bottom: 50px;
 }
 
 /*FOOTER*/
