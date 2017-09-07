@@ -10,7 +10,8 @@ app.controller("Company", function ($scope) {
     //empty array used for making contact divs
     $scope.contactsForm = [{}];
 
-    $scope.view = "Card";
+    //start on a particular type of view, "List" or "Card"
+    $scope.view = "List";
 
     //populate with company data
     $scope.companyList = 
@@ -83,6 +84,7 @@ app.controller("Company", function ($scope) {
         else { company.id = Number($scope.companyList[0].id) + 1 };
         $scope.companyList.unshift(company);
         $scope.company = {};
+        setPagingData($scope.currentPage);
     },
 
     //add new contact
