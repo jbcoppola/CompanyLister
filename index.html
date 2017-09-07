@@ -8,9 +8,12 @@
     <script src="scripts/angular.min.js"></script>
     <script src="scripts/angular-ui-router.min.js"></script>
     <script src="scripts/angular-mocks.js"></script>
-    <script src="app/main.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,800" rel="stylesheet">
+    <script src="scripts/angular-ui/ui-bootstrap.min.js"></script>
+    <link href="Content/ui-bootstrap-csp.css" rel="stylesheet" />
     <link href="style.css" rel="stylesheet" />
+    <script src="scripts/angular-animate.min.js"></script>
+    <script src="app/main.js"></script>
     <meta charset="utf-8" />
 </head>
 
@@ -32,22 +35,20 @@
 
         <!--add company form-->
         <div class="main-area">
-            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-
                 <!--section with button stays visible-->
-                <div class="panel-heading" role="tab" id="formHeader">
+                <div class="panel-heading">
                     <h4 class="panel-title">
-                        <button class="btn btn-lg btn-blue" data-toggle="collapse" data-parent="#accordion" href="#collapseForms" aria-expanded="true" aria-controls="collapseForms">
+                        <button class="btn btn-lg btn-blue" ng-click="isCollapsed = !isCollapsed">
                             Add New Company
                         </button>
                     </h4>
                 </div>
 
                 <!--this section can be collapsed and hidden-->
-                <div id="collapseForms" class="panel-collapse collapse" role="tabpanel" aria-labelledby="formHeader">
-                    <form name="companyForm" class="well" id="addCompany">
+                <div uib-collapse="isCollapsed">
+                    <form name="companyForm" class="well companyForm">
                         <div class="row">
-                            <div class="col-md-6" id="companyName">
+                            <div class="col-md-6">
                                 <label for="companyName">Company Name (required)</label>
                                 <input type="text" class="form-control" ng-model="company.company" required />
                             </div>
@@ -81,14 +82,13 @@
                                 <input type="text" class="form-control" ng-model="company.performance" />
                             </div>
                             <div class="col-md-6">
-                                <button ng-click="addCompany(company)" class="btn btn-lg btn-blue pull-right add-button" data-toggle="collapse" data-target="#collapseForms" ng-disabled="!companyForm.$valid">
+                                <button ng-click="addCompany(company); isCollapsed = !isCollapsed" class="btn btn-lg btn-blue pull-right add-button" ng-disabled="!companyForm.$valid">
                                     Add
                                 </button>
                             </div>
                         </div>
                     </form>
                 </div> <!--end of hideable div-->
-            </div> <!--end of accordion-->
 
             <!--list of all companies-->
             <div ng-repeat="company in companyList" class="main-listing text-center">

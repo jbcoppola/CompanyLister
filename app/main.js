@@ -1,9 +1,12 @@
 ﻿//make local model
-var app = angular.module("Company", []);
+var app = angular.module("Company", ['ui.bootstrap','ngAnimate']);
 
 //make controller
 app.controller("Company", function ($scope) {
     
+    //start form collapsed
+    $scope.isCollapsed = true;
+
     //empty array used for making contact divs
     $scope.contactsForm = [{}];
 
