@@ -103,6 +103,11 @@ h1 {
     padding: 5px;
     margin: 1px;
 }
+.main-list-listing .row .row,
+.main-list-listing .row .col-xs-12 {
+    padding: 0px;
+    margin: 0px;
+}
 .main-list-listing .odd {
     background-color: lightgray;
 }
@@ -112,7 +117,7 @@ h1 {
 .main-list-listing .first-item {
     
 }
-.main-list-listing:last-child .row {
+.main-list-listing .last-item {
     margin-bottom: 50px;
 }
 
