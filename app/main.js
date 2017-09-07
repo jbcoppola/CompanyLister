@@ -46,7 +46,7 @@ app.controller("Company", function ($scope) {
 
     //create new company
     $scope.addCompany = function (company) {
-        company.id = $scope.companyList.length+1;
+        company.id = Number($scope.companyList[0].id)+1;
         $scope.companyList.unshift(company);
         $scope.company = {};
     },

@@ -101,7 +101,7 @@
                     </div>
                     <div class="col-md-2 text-center">
                         <span ng-hide="editMode" ng-click="editMode = true; editCompany(company)" class="btn btn-default glyphicon glyphicon-edit center-block"></span>
-                        <span class="btn btn-default glyphicon glyphicon-saved center-block" ng-show="editMode" ng-click="editMode = false"></span>
+                        <button class="btn btn-edit btn-default glyphicon glyphicon-saved center-block" ng-show="editMode" ng-click="editMode = false" ng-disabled="company.company==''"></button>
                         <i ng-click="removeCompany($index)" class="btn btn-default glyphicon glyphicon-trash center-block"></i>
                     </div>
                 </div>
