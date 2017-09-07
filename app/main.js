@@ -98,11 +98,10 @@ app.controller("Company", function ($scope) {
     $scope.removeCompany = function (index) {
         console.log(index);
         $scope.companyList.splice(index, 1)
+        setPagingData($scope.currentPage);
     },
     //update company
     $scope.editCompany = function (index) {
         $scope.editing = $scope.companyList.indexOf(index);
     }
-
-
 });

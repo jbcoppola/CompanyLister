@@ -206,24 +206,40 @@
                 </div>
 
                 <div class="main-list-listing" ng-repeat="company in displayedCompanyList" ">
-                    <div class="row" ng-class="{'first-item':$first}" ng-class-odd="'odd'" ng-class-even="'even'">
+                    <div class="row" ng-class="{'first-item':$first, 'last-item':$last}" ng-class-odd="'odd'" ng-class-even="'even'">
                         <div class="col-md-1">
                             {{company.id}}
                         </div>
                         <div class="col-md-2 company-name">
-                            {{company.company}}
+                            <span ng-hide="editMode">{{company.company}}</span>
+                            <input type="text" class="form-control" ng-show="editMode" ng-model="company.company" />
                         </div>
                         <div class="col-md-2">
-                            {{company.contacts[0]}}
+                            <div class="row" ng-show="detailMode || editMode">
+                                <div class="col-xs-12" ng-repeat="contact in companyList[$index].contacts">
+                                    <span ng-hide="editMode">{{company.contacts[$index]}}</span>
+                                    <input type="text" class="form-control" ng-show="editMode" ng-model="company.contacts[$index]" />
+                                </div>
+                            </div>
+                            <span ng-hide="editMode || detailMode">{{company.contacts[0]}}</span>
+                            <span class="glyphicon glyphicon-plus" ng-hide="company.contacts[1]==undefined || detailMode || editMode"></span>
                         </div>
                         <div class="col-md-2">
-                            {{company.performance}}
+                            <span ng-hide="editMode">{{company.performance}}</span>
+                            <input type="text" class="form-control" ng-show="editMode" ng-model="company.performance" />
                         </div>
                         <div class="col-md-2">
-                            {{company.status}}
+                            <span ng-hide="editMode">{{company.status}}</span>
+                            <select name="status" id="status" class="form-control" ng-show="editMode" ng-model="company.status">
+                                <option value="Researching">Researching</option>
+                                <option value="Pending Approval">Pending Approval</option>
+                                <option value="Approved">Approved</option>
+                                <option value="Declined">Declined</option>
+                            </select>
                         </div>
                         <div class="col-md-1">
-                            <!--details-->
+                            <button ng-hide="detailMode" ng-click="detailMode = true; detailMode(company)" class="btn btn-default btn-xs glyphicon glyphicon-eye-open center-block"></button>
+                            <button class="btn btn-edit btn-default btn-xs glyphicon glyphicon-eye-close center-block" ng-show="detailMode" ng-click="detailMode = false" ng-disabled="company.company==''"></button>
                         </div>
                         <div class="col-md-1 center-block">
                             <button ng-hide="editMode" ng-click="editMode = true; editCompany(company)" class="btn btn-default btn-xs glyphicon glyphicon-edit center-block"></button>
