@@ -9,8 +9,8 @@
     <script src="scripts/angular-ui-router.min.js"></script>
     <script src="scripts/angular-mocks.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,800" rel="stylesheet">
-    <script src="scripts/angular-ui/ui-bootstrap.min.js"></script>
     <link href="Content/ui-bootstrap-csp.css" rel="stylesheet" />
+    <script src="scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
     <link href="style.css" rel="stylesheet" />
     <script src="scripts/angular-animate.min.js"></script>
     <script src="app/main.js"></script>
@@ -19,7 +19,7 @@
 
 <body>
     <!--main container-->
-    <div ng-app="Company" class="container-fluid" ng-controller="Company" target="_blank">
+    <div ng-app="Company" class="container-fluid" ng-controller="Company">
 
         <!--logo and banner-->
         <div class="row header">
@@ -90,8 +90,10 @@
                     </form>
                 </div> <!--end of hideable div-->
 
+            <ul uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage" boundary-link-numbers="true" rotate="false"></ul>
+
             <!--list of all companies-->
-            <div ng-repeat="company in companyList" class="main-listing text-center">
+            <div ng-repeat="company in displayedCompanyList" class="main-listing text-center">
 
                 <!--top has company name and edit buttons-->
                 <div class="row top-row">
@@ -174,7 +176,6 @@
                 <h1>a project by Joseph Coppola</h1>
             </div>
         </footer>
-
     </div> <!--end of main container-->
 </body>
 </html>
