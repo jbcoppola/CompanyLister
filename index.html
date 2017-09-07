@@ -46,7 +46,7 @@
 
             <!--this section can be collapsed and hidden-->
             <div uib-collapse="isCollapsed">
-                <form name="companyForm" class="well companyForm">
+                <form name="companyForm" class="well companyForm" id="companyForm">
                     <div class="row">
                         <div class="col-md-6">
                             <label for="companyName">Company Name (required)</label>
@@ -205,7 +205,7 @@
                     </div>
                 </div>
 
-                <div class="main-list-listing" ng-repeat="company in displayedCompanyList" ">
+                <div class="main-list-listing" ng-repeat="company in displayedCompanyList">
                     <div class="row" ng-class="{'first-item':$first, 'last-item':$last}" ng-class-odd="'odd'" ng-class-even="'even'">
                         <div class="col-md-1">
                             {{company.id}}
@@ -238,7 +238,7 @@
                             </select>
                         </div>
                         <div class="col-md-1">
-                            <button ng-hide="detailMode" ng-click="detailMode = true; detailMode(company)" class="btn btn-default btn-xs glyphicon glyphicon-eye-open center-block"></button>
+                            <button ng-hide="detailMode" ng-click="detailMode = true" class="btn btn-default btn-xs glyphicon glyphicon-eye-open center-block"></button>
                             <button class="btn btn-edit btn-default btn-xs glyphicon glyphicon-eye-close center-block" ng-show="detailMode" ng-click="detailMode = false" ng-disabled="company.company==''"></button>
                         </div>
                         <div class="col-md-1 center-block">
