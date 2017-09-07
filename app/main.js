@@ -10,7 +10,7 @@ app.controller("Company", function ($scope) {
     //empty array used for making contact divs
     $scope.contactsForm = [{}];
 
-    $scope.cardView = true;
+    $scope.view = "Card";
 
     //populate with company data
     $scope.companyList = 
@@ -49,9 +49,8 @@ app.controller("Company", function ($scope) {
         }
         ]
 
-    $scope.setCardView = function () {
-        $scope.cardView = true;
-        $scope.listView = false;
+    $scope.setView = function (view) {
+        $scope.view = view;
     }
 
     $scope.setListView = function () {
