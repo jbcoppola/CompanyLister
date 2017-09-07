@@ -47,6 +47,22 @@ app.controller("Company", function ($scope) {
         }
         ]
 
+    $scope.totalItems = $scope.companyList.length;
+    $scope.currentPage = 1;
+    $scope.itemsPerPage = 5;
+
+    $scope.$watch("currentPage", function () {
+        setPagingData($scope.currentPage);
+    });
+
+    function setPagingData(page) {
+        var pagedData = $scope.companyList.slice(
+          (page - 1) * $scope.itemsPerPage,
+          page * $scope.itemsPerPage
+        );
+        $scope.displayedCompanyList = pagedData;
+    }
+
     //create new company
     $scope.addCompany = function (company) {
         if ($scope.companyList[0] == null) { company.id = 1 }
