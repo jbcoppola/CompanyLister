@@ -92,15 +92,15 @@
 
             <div class="row">
                 <div class="col-md-6 btn-group btn-view">
-                    <button class="btn btn-blue" ng-click="setCardView()">Card</button>
-                    <button class="btn btn-blue" ng-click="setListView()">List</button>
+                    <button class="btn btn-blue" ng-click="setView('Card')">Card</button>
+                    <button class="btn btn-blue" ng-click="setView('List')">List</button>
                 </div>
                 <div class="col-md-6">
                     <ul uib-pagination class="pull-right" total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage" boundary-link-numbers="true" rotate="false"></ul>
                 </div>
             </div>
             <!--list of all companies-->
-            <div ng-repeat="company in displayedCompanyList" class="main-card-listing text-center" ng-show="cardView">
+            <div ng-repeat="company in displayedCompanyList" class="main-card-listing text-center" ng-show="view=='Card'">
 
                 <!--top has company name and edit buttons-->
                 <div class="row top-row">
@@ -177,63 +177,64 @@
             </div> <!--end of individual company listing-->
 
             <!--title row-->
-            <div class="row title-row" ng-show="listView">
-                <div class="col-md-1">
-                    ID
-                </div>
-                <div class="col-md-2 company-name">
-                    Company Name
-                </div>
-                <div class="col-md-2">
-                    Contacts
-                </div>
-                <div class="col-md-2">
-                    Performance
-                </div>
-                <div class="col-md-2">
-                    Status
-                </div>
-                <div class="col-md-1">
-                    Details
-                </div>
-                <div class="col-md-1 center-block">
-                    Edit
-                </div>
-                <div class="col-md-1 center-block">
-                    Delete
-                </div>
-            </div>
-
-            <div class="main-list-listing" ng-repeat="company in displayedCompanyList" ng-show="listView">
-                <div class="row" ng-class="{'first-item':$first}" ng-class-odd="'odd'" ng-class-even="'even'">
+            <div ng-show="view == 'List'">
+                <div class="row title-row">
                     <div class="col-md-1">
-                        {{company.id}}
+                        ID
                     </div>
                     <div class="col-md-2 company-name">
-                        {{company.company}}
+                        Company Name
                     </div>
                     <div class="col-md-2">
-                        {{company.contacts[0]}}
+                        Contacts
                     </div>
                     <div class="col-md-2">
-                        {{company.performance}}
+                        Performance
                     </div>
                     <div class="col-md-2">
-                        {{company.status}}
+                        Status
                     </div>
                     <div class="col-md-1">
-                        <!--details-->
+                        Details
                     </div>
                     <div class="col-md-1 center-block">
-                        <button ng-hide="editMode" ng-click="editMode = true; editCompany(company)" class="btn btn-default btn-xs glyphicon glyphicon-edit center-block"></button>
-                        <button class="btn btn-edit btn-default btn-xs glyphicon glyphicon-saved center-block" ng-show="editMode" ng-click="editMode = false" ng-disabled="company.company==''"></button>
+                        Edit
                     </div>
                     <div class="col-md-1 center-block">
-                        <button ng-click="removeCompany($index)" class="btn btn-default btn-xs glyphicon glyphicon-trash center-block"></button>
+                        Delete
+                    </div>
+                </div>
+
+                <div class="main-list-listing" ng-repeat="company in displayedCompanyList" ">
+                    <div class="row" ng-class="{'first-item':$first}" ng-class-odd="'odd'" ng-class-even="'even'">
+                        <div class="col-md-1">
+                            {{company.id}}
+                        </div>
+                        <div class="col-md-2 company-name">
+                            {{company.company}}
+                        </div>
+                        <div class="col-md-2">
+                            {{company.contacts[0]}}
+                        </div>
+                        <div class="col-md-2">
+                            {{company.performance}}
+                        </div>
+                        <div class="col-md-2">
+                            {{company.status}}
+                        </div>
+                        <div class="col-md-1">
+                            <!--details-->
+                        </div>
+                        <div class="col-md-1 center-block">
+                            <button ng-hide="editMode" ng-click="editMode = true; editCompany(company)" class="btn btn-default btn-xs glyphicon glyphicon-edit center-block"></button>
+                            <button class="btn btn-edit btn-default btn-xs glyphicon glyphicon-saved center-block" ng-show="editMode" ng-click="editMode = false" ng-disabled="company.company==''"></button>
+                        </div>
+                        <div class="col-md-1 center-block">
+                            <button ng-click="removeCompany($index)" class="btn btn-default btn-xs glyphicon glyphicon-trash center-block"></button>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div> <!--end of company list-->
         <!--footer and github link at bottom-->
         <footer class="row navbar-default green-banner">
