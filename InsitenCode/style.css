@@ -25,6 +25,10 @@ h1 {
 .panel-collapse .col-md-6 {
     margin-top: 20px;
 }
+.btn-edit { 
+    width: 100%; 
+}
+
 .btn-blue {
     background-color: #0DA9FF;
     padding: 10px;
