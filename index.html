@@ -35,65 +35,72 @@
 
         <!--add company form-->
         <div class="main-area">
-                <!--section with button stays visible-->
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <button class="btn btn-lg btn-blue" ng-click="isCollapsed = !isCollapsed">
-                            Add New Company
-                        </button>
-                    </h4>
+            <!--section with button stays visible-->
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <button class="btn btn-lg btn-blue" ng-click="isCollapsed = !isCollapsed">
+                        Add New Company
+                    </button>
+                </h4>
+            </div>
+
+            <!--this section can be collapsed and hidden-->
+            <div uib-collapse="isCollapsed">
+                <form name="companyForm" class="well companyForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="companyName">Company Name (required)</label>
+                            <input type="text" class="form-control" ng-model="company.company" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="status">Status</label>
+                            <select name="status" id="status" ng-model="company.status" class="form-control">
+                                <option value="Researching">Researching</option>
+                                <option value="Pending Approval">Pending Approval</option>
+                                <option value="Approved">Approved</option>
+                                <option value="Declined">Declined</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="information">Information</label>
+                            <textarea class="form-control" id="information" ng-model="company.information"></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Contacts</label>
+                            <div ng-repeat="contact in contactsForm">
+                                <input type="text" class="form-control contact-form" ng-model="company.contacts[$index]" />
+                            </div>
+                            <button ng-click="addNewContact()" class="btn btn-default">Add Contact</button>
+                            <button ng-click="deleteContact()" class="btn btn-default">Remove Contact</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="Performance">Performance</label>
+                            <input type="text" class="form-control" ng-model="company.performance" />
+                        </div>
+                        <div class="col-md-6">
+                            <button ng-click="addCompany(company); isCollapsed = !isCollapsed" class="btn btn-lg btn-blue pull-right add-button" ng-disabled="!companyForm.$valid">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div> <!--end of hideable div-->
+
+            <div class="row">
+                <div class="col-md-6 btn-group btn-view">
+                    <button class="btn btn-blue" ng-click="setCardView()">Card</button>
+                    <button class="btn btn-blue" ng-click="setListView()">List</button>
                 </div>
-
-                <!--this section can be collapsed and hidden-->
-                <div uib-collapse="isCollapsed">
-                    <form name="companyForm" class="well companyForm">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="companyName">Company Name (required)</label>
-                                <input type="text" class="form-control" ng-model="company.company" required />
-                            </div>
-                            <div class="col-md-6">
-                                <label for="status">Status</label>
-                                <select name="status" id="status" ng-model="company.status" class="form-control">
-                                    <option value="Researching">Researching</option>
-                                    <option value="Pending Approval">Pending Approval</option>
-                                    <option value="Approved">Approved</option>
-                                    <option value="Declined">Declined</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="information">Information</label>
-                                <textarea class="form-control" id="information" ng-model="company.information"></textarea>
-                            </div>
-                            <div class="col-md-6">
-                                <label>Contacts</label>
-                                <div ng-repeat="contact in contactsForm">
-                                    <input type="text" class="form-control contact-form" ng-model="company.contacts[$index]" />
-                                </div>
-                                <button ng-click="addNewContact()" class="btn btn-default">Add Contact</button>
-                                <button ng-click="deleteContact()" class="btn btn-default">Remove Contact</button>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="Performance">Performance</label>
-                                <input type="text" class="form-control" ng-model="company.performance" />
-                            </div>
-                            <div class="col-md-6">
-                                <button ng-click="addCompany(company); isCollapsed = !isCollapsed" class="btn btn-lg btn-blue pull-right add-button" ng-disabled="!companyForm.$valid">
-                                    Add
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div> <!--end of hideable div-->
-
-            <ul uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage" boundary-link-numbers="true" rotate="false"></ul>
-
+                <div class="col-md-6">
+                    <ul uib-pagination class="pull-right" total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage" boundary-link-numbers="true" rotate="false"></ul>
+                </div>
+            </div>
             <!--list of all companies-->
-            <div ng-repeat="company in displayedCompanyList" class="main-listing text-center">
+            <div ng-repeat="company in displayedCompanyList" class="main-card-listing text-center" ng-show="cardView">
 
                 <!--top has company name and edit buttons-->
                 <div class="row top-row">
@@ -136,7 +143,6 @@
                             <div class="col-xs-12" ng-repeat="contact in companyList[$index].contacts">
                                 <span ng-hide="editMode">{{company.contacts[$index]}}</span>
                                 <input type="text" class="form-control" ng-show="editMode" ng-model="company.contacts[$index]" />
-                                
                             </div>
                         </div>
                     </div>
@@ -169,6 +175,65 @@
                     </div>
                 </div> <!--end of bottom row-->
             </div> <!--end of individual company listing-->
+
+            <!--title row-->
+            <div class="row title-row" ng-show="listView">
+                <div class="col-md-1">
+                    ID
+                </div>
+                <div class="col-md-2 company-name">
+                    Company Name
+                </div>
+                <div class="col-md-2">
+                    Contacts
+                </div>
+                <div class="col-md-2">
+                    Performance
+                </div>
+                <div class="col-md-2">
+                    Status
+                </div>
+                <div class="col-md-1">
+                    Details
+                </div>
+                <div class="col-md-1 center-block">
+                    Edit
+                </div>
+                <div class="col-md-1 center-block">
+                    Delete
+                </div>
+            </div>
+
+            <div class="main-list-listing" ng-repeat="company in displayedCompanyList" ng-show="listView">
+                <div class="row" ng-class="{'first-item':$first}" ng-class-odd="'odd'" ng-class-even="'even'">
+                    <div class="col-md-1">
+                        {{company.id}}
+                    </div>
+                    <div class="col-md-2 company-name">
+                        {{company.company}}
+                    </div>
+                    <div class="col-md-2">
+                        {{company.contacts[0]}}
+                    </div>
+                    <div class="col-md-2">
+                        {{company.performance}}
+                    </div>
+                    <div class="col-md-2">
+                        {{company.status}}
+                    </div>
+                    <div class="col-md-1">
+                        <!--details-->
+                    </div>
+                    <div class="col-md-1 center-block">
+                        <button ng-hide="editMode" ng-click="editMode = true; editCompany(company)" class="btn btn-default btn-xs glyphicon glyphicon-edit center-block"></button>
+                        <button class="btn btn-edit btn-default btn-xs glyphicon glyphicon-saved center-block" ng-show="editMode" ng-click="editMode = false" ng-disabled="company.company==''"></button>
+                    </div>
+                    <div class="col-md-1 center-block">
+                        <button ng-click="removeCompany($index)" class="btn btn-default btn-xs glyphicon glyphicon-trash center-block"></button>
+                    </div>
+                </div>
+            </div>
+
         </div> <!--end of company list-->
         <!--footer and github link at bottom-->
         <footer class="row navbar-default green-banner">
