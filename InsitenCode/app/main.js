@@ -117,6 +117,11 @@ app.controller("Company", function ($scope) {
     $scope.currentPage = 1;
     $scope.itemsPerPage = 10;
 
+    function updatePagingData() {
+        setPagingData($scope.currentPage);
+        $scope.totalItems = $scope.companyList.length;
+    }
+
     //updates page with selected elements
     $scope.$watch("currentPage", function () {
         setPagingData($scope.currentPage);
@@ -137,7 +142,7 @@ app.controller("Company", function ($scope) {
         else { company.id = Number($scope.companyList[0].id) + 1 };
         $scope.companyList.unshift(company);
         $scope.company = {};
-        setPagingData($scope.currentPage);
+        updatePagingData();
     },
 
     //add new contact
@@ -159,10 +164,6 @@ app.controller("Company", function ($scope) {
         array.push(contact);
         $scope.contactForm = {};
     },
-    //clears input field for contacts
-    $scope.clearField = function () {
-        $scope.contactForm.contact = null;
-    }
 
     //delete company
     $scope.removeCompany = function (index) {
@@ -173,7 +174,8 @@ app.controller("Company", function ($scope) {
             selectedCompany = page + index;
         }
         $scope.companyList.splice(selectedCompany, 1)
-        setPagingData($scope.currentPage);
+        //update pagination data
+        updatePagingData();
     },
     //update company
     $scope.editCompany = function (index) {
