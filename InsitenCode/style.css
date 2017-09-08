@@ -103,6 +103,9 @@ h1 {
 .glyphicon {
     top: 0px;
 }
+.main-card-listing.no-company {
+    padding: 50px;
+}
 .main-card-listing {
     border: 20px solid lightgray;
     border-radius: 40px;
@@ -144,6 +147,10 @@ h1 {
 .main-list-listing {
     font-size: 16px;
 }
+.main-list-listing.no-company {
+    padding: 20px;
+    background-color: lightgray;
+}
 .main-list-listing .row {
     padding: 5px;
     margin: 1px;
@@ -152,6 +159,25 @@ h1 {
 .main-list-listing .row .col-xs-12 {
     padding: 0px;
     margin: 0px;
+}
+.main-list-listing .list-name-button {
+    margin: 0px;
+    border: 1px solid lightgray;
+    background-color: white;
+    border-radius: 5px;
+}
+.main-list-listing .list-name-button:hover {
+    background-color: #e2e2e2;
+}
+.main-list-listing .list-contact-button {
+    margin: 0px 0px 2px 2px;
+    padding: 0px 3px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    background-color: white;
+}
+.main-list-listing .list-contact-button:hover {
+    background-color: #e2e2e2;
 }
 .main-list-listing .odd {
     background-color: lightgray;

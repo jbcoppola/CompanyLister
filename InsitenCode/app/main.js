@@ -11,7 +11,7 @@ app.controller("Company", function ($scope) {
     $scope.contactsForm = [{}];
 
     //start on a particular type of view, "List" or "Card"
-    $scope.view = "Card";
+    $scope.view = "List";
 
     //populate with company data
     $scope.companyList = 
@@ -141,6 +141,17 @@ app.controller("Company", function ($scope) {
         $scope.displayedCompanyList = pagedData;
     }
 
+    //selects proper company from main list from paginator displayed company list
+    function selectCompany(index) {
+        var selectedCompany = index;
+        //gets correct element when not on first page
+        if ($scope.currentPage != 1) {
+            var page = ($scope.currentPage - 1) * $scope.itemsPerPage;
+            selectedCompany = page + index;
+        }
+        return selectedCompany;
+    }
+
     //create new company
     $scope.addCompany = function (company) {
         if ($scope.companyList[0] == null) { company.id = 1 }
@@ -172,18 +183,12 @@ app.controller("Company", function ($scope) {
 
     //delete company
     $scope.removeCompany = function (index) {
-        var selectedCompany = index;
-        //gets correct element when not on first page
-        if ($scope.currentPage != 1) {
-            var page = ($scope.currentPage - 1) * $scope.itemsPerPage;
-            selectedCompany = page + index;
-        }
-        $scope.companyList.splice(selectedCompany, 1)
+        $scope.companyList.splice(selectCompany(index), 1)
         //update pagination data
         updatePagingData();
     },
     //update company
     $scope.editCompany = function (index) {
-        $scope.editing = $scope.companyList.indexOf(index);
+        $scope.editing = $scope.companyList.indexOf(selectCompany(index));
     }
 });
