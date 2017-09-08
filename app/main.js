@@ -157,9 +157,12 @@ app.controller("Company", function ($scope) {
     //allows adding element in array within double ngrepeat
     $scope.addEditContact = function (array, contact) {
         array.push(contact);
-        console.log(contact);
         $scope.contactForm = {};
     },
+    //clears input field for contacts
+    $scope.clearField = function () {
+        $scope.contactForm.contact = null;
+    }
 
     //delete company
     $scope.removeCompany = function (index) {
