@@ -107,7 +107,7 @@ app.controller("Company", function ($scope) {
             "performance": "40000"
         }
         ];
-
+    //function to set UI
     $scope.setView = function (view) {
         $scope.view = view;
     },
@@ -126,6 +126,11 @@ app.controller("Company", function ($scope) {
     $scope.$watch("currentPage", function () {
         setPagingData($scope.currentPage);
     });
+
+    $scope.changeDisplayedItems = function (number) {
+        $scope.itemsPerPage = number;
+        updatePagingData();
+    }
 
     //selects current page elements from complete company list
     function setPagingData(page) {
