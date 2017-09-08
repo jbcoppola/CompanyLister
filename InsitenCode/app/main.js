@@ -156,8 +156,9 @@ app.controller("Company", function ($scope) {
     },
     //delete company
     $scope.removeCompany = function (index) {
-        console.log(index);
-        $scope.companyList.splice(index, 1)
+        var page = ($scope.currentPage - 1) * $scope.itemsPerPage;
+        var deletedCompany = page + index;
+        $scope.companyList.splice(deletedCompany, 1)
         setPagingData($scope.currentPage);
     },
     //update company
