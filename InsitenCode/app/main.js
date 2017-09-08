@@ -4,7 +4,7 @@ var app = angular.module("Company", ['ui.bootstrap','ngAnimate']);
 //make controller
 app.controller("Company", function ($scope) {
     
-    //start form collapsed
+    //start new company form collapsed
     $scope.isCollapsed = true;
 
     //empty array used for making contact divs
@@ -156,8 +156,12 @@ app.controller("Company", function ($scope) {
     },
     //delete company
     $scope.removeCompany = function (index) {
-        var page = ($scope.currentPage - 1) * $scope.itemsPerPage;
-        var deletedCompany = page + index;
+        var deletedCompany = index;
+        //gets correct element when not on first page
+        if ($scope.currentPage != 1) {
+            var page = ($scope.currentPage - 1) * $scope.itemsPerPage;
+            deletedCompany = page + index;
+        }
         $scope.companyList.splice(deletedCompany, 1)
         setPagingData($scope.currentPage);
     },
