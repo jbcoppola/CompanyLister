@@ -11,7 +11,7 @@ app.controller("Company", function ($scope) {
     $scope.contactsForm = [{}];
 
     //start on a particular type of view, "List" or "Card"
-    $scope.view = "List";
+    $scope.view = "Card";
 
     //populate with company data
     $scope.companyList = 
@@ -106,16 +106,11 @@ app.controller("Company", function ($scope) {
             "contacts": ["Bill Gates"],
             "performance": "40000"
         }
-        ]
+        ];
 
     $scope.setView = function (view) {
         $scope.view = view;
-    }
-
-    $scope.setListView = function () {
-        $scope.cardView = false;
-        $scope.listView = true;
-    }
+    },
 
     //viewing data for pagination
     $scope.totalItems = $scope.companyList.length;
@@ -158,9 +153,13 @@ app.controller("Company", function ($scope) {
     //allows removing element in array within double ngrepeat
     $scope.remove = function (array, index) {
         array.splice(index, 1);
-    }
+    },
     //allows adding element in array within double ngrepeat
-    
+    $scope.addEditContact = function (array, contact) {
+        array.push(contact);
+        console.log(contact);
+        $scope.contactForm = {};
+    },
 
     //delete company
     $scope.removeCompany = function (index) {
