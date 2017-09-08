@@ -154,15 +154,23 @@ app.controller("Company", function ($scope) {
     $scope.deleteContact = function () {
         $scope.contactsForm.pop();
     },
+
+    //allows removing element in array within double ngrepeat
+    $scope.remove = function (array, index) {
+        array.splice(index, 1);
+    }
+    //allows adding element in array within double ngrepeat
+    
+
     //delete company
     $scope.removeCompany = function (index) {
-        var deletedCompany = index;
+        var selectedCompany = index;
         //gets correct element when not on first page
         if ($scope.currentPage != 1) {
             var page = ($scope.currentPage - 1) * $scope.itemsPerPage;
-            deletedCompany = page + index;
+            selectedCompany = page + index;
         }
-        $scope.companyList.splice(deletedCompany, 1)
+        $scope.companyList.splice(selectedCompany, 1)
         setPagingData($scope.currentPage);
     },
     //update company
