@@ -57,6 +57,9 @@ h1 {
 .main-area {
     padding: 0px 200px;
 }
+
+/*PAGINATION*/
+
 .pagination>li.active>a {
   background: #0DA9FF;
   border: 1px solid #0DA9FF;
@@ -86,6 +89,9 @@ h1 {
     background-color:#66c9ff;
     border: 1px solid #66c9ff;;
 }
+
+/*MAIN LISTING CARD VIEW*/
+
 .contact-edit {
     padding-bottom: 5px;
 }
@@ -96,6 +102,9 @@ h1 {
     border: 20px solid lightgray;
     border-radius: 40px;
     margin-bottom: 50px;
+}
+.main-card-listing .information {
+    min-height: 140px;
 }
 .main-card-listing .btn-edit { 
     width: 100%; 
@@ -118,9 +127,6 @@ h1 {
 .main-card-listing .title-block {
     padding-bottom: 20px;
     font-weight: bold;
-}
-.center {
-    float: none;
 }
 
 /*MAIN LISTING LIST*/
