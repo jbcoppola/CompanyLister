@@ -2,7 +2,6 @@
     font-size: 20px;
     font-family: 'Raleway', sans-serif;
 }
-
 /*HEADER*/
 
 .header {
@@ -87,7 +86,12 @@ h1 {
     background-color:#66c9ff;
     border: 1px solid #66c9ff;;
 }
-
+.contact-edit {
+    padding-bottom: 5px;
+}
+.glyphicon {
+    top: 0px;
+}
 .main-card-listing {
     border: 20px solid lightgray;
     border-radius: 40px;
@@ -114,6 +118,9 @@ h1 {
 .main-card-listing .title-block {
     padding-bottom: 20px;
     font-weight: bold;
+}
+.center {
+    float: none;
 }
 
 /*MAIN LISTING LIST*/
