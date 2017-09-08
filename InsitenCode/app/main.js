@@ -17,6 +17,64 @@ app.controller("Company", function ($scope) {
     $scope.companyList = 
         [
         {
+            "id": "12",
+            "company": "Lyft",
+            "status": "Approved",
+            "information": "Praesent molestie scelerisque nunc, sed tempus diam rhoncus quis. Praesent nec quam pulvinar, feugiat nulla at, imperdiet eros. Praesent faucibus arcu lorem, at fringilla metus ullamcorper ut. Praesent ultricies, ipsum ultrices pretium elementum, massa quam congue ante, a pellentesque lectus lectus quis sapien. ",
+            "contacts": ["Emma Saunders"],
+            "performance": "30100"
+        }, {
+            "id": "11",
+            "company": "AskJeeves",
+            "status": "Declined",
+            "information": "Nunc elementum sapien ac commodo euismod. Proin vel eleifend est. Phasellus blandit fringilla purus sit amet dignissim. Curabitur dictum massa sed urna laoreet accumsan. Suspendisse potenti. Quisque tempus, nunc nec scelerisque consequat, magna eros tincidunt turpis, et porta eros orci auctor erat. ",
+            "contacts": ["Roger Sanchez"],
+            "performance": "50"
+        }, {
+            "id": "10",
+            "company": "GoPro",
+            "status": "Pending Approval",
+            "information": "Nam ac pharetra nisi. Pellentesque ullamcorper tincidunt urna et blandit. Nulla quis lectus sed risus consequat blandit cursus sit amet lorem. Proin iaculis aliquam lectus. Ut eget consequat purus. Nulla mollis lorem ut placerat pulvinar. Nullam ornare, dui vitae cursus elementum, turpis tellus tempor lacus, a sollicitudin metus nulla id lorem. ",
+            "contacts": ["Lance Wright", "Celine Gofer"],
+            "performance": "1950"
+        }, {
+            "id": "9",
+            "company": "LinkedIn",
+            "status": "Approved",
+            "information": "Etiam neque tortor, iaculis sed lorem eget, imperdiet dapibus nisi. Quisque ut elit justo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla tempor imperdiet lectus eget lobortis. Nunc molestie nec mi in congue. Vivamus pulvinar felis sit amet sapien ornare laoreet. ",
+            "contacts": ["Aaron Ekels"],
+            "performance": "1000"
+        }, {
+            "id": "8",
+            "company": "Uber",
+            "status": "Researching",
+            "information": "Vestibulum ultricies scelerisque venenatis. Suspendisse potenti. Nullam sollicitudin lectus quis justo pulvinar maximus. Maecenas a ex sem. In vestibulum elementum odio sit amet iaculis. Ut varius finibus tristique. Pellentesque gravida, nisl ac fringilla ullamcorper, magna sem cursus sapien, ac aliquet quam lorem in odio. ",
+            "contacts": ["Anthony Vivint", "Paul Bush"],
+            "performance": "41000"
+        }, {
+            "id": "7",
+            "company": "Twitter",
+            "status": "Researching",
+            "information": "Aliquam purus nisi, varius id massa vitae, dapibus vehicula ex. Cras efficitur laoreet ultrices. Sed ornare arcu mollis odio pharetra, et luctus est tincidunt. Ut iaculis sed eros non tempor. Cras vitae consequat lorem. Fusce ante massa, tempus eu bibendum at, placerat non massa. Proin faucibus pharetra urna, vel bibendum justo placerat a. Suspendisse vitae libero gravida, mattis nunc at, pellentesque nulla. ",
+            "contacts": [],
+            "performance": "11000"
+        }, {
+            "id": "6",
+            "company": "Tumblr",
+            "status": "Declined",
+            "information": "Praesent vel dignissim enim. Integer ornare nisl vel malesuada semper. Morbi quis risus dictum, eleifend velit a, posuere metus. Aenean suscipit aliquam dui. Vestibulum augue mauris, suscipit et fermentum eget, pulvinar ut ligula. Ut hendrerit cursus tortor id pretium. ",
+            "contacts": ["Debby Sanders", "Will Bart", "Jared Numbers"],
+            "performance": "700"
+        },
+        {
+            "id": "5",
+            "company": "Reddit",
+            "status": "Pending Approval",
+            "information": "Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce quis dapibus tortor. Nam finibus aliquam mollis. Mauris aliquet tincidunt elit varius placerat. ",
+            "contacts": ["Bill Markets"],
+            "performance": "807100"
+        },
+        {
             "id": "4",
             "company": "Apple",
             "status": "Declined",
@@ -62,7 +120,7 @@ app.controller("Company", function ($scope) {
     //viewing data for pagination
     $scope.totalItems = $scope.companyList.length;
     $scope.currentPage = 1;
-    $scope.itemsPerPage = 5;
+    $scope.itemsPerPage = 10;
 
     //updates page with selected elements
     $scope.$watch("currentPage", function () {
