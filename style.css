@@ -71,7 +71,9 @@ h1 {
 .search-bar {
     margin-bottom: 30px;
 }
-
+.dropdown-menu li {
+    cursor: pointer;
+}
 /*PAGINATION*/
 
 .pagination>li.active>a {
