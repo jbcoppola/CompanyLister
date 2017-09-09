@@ -98,62 +98,41 @@ app.controller("Company", function ($scope, $filter) {
             "performance": "40000"
         }
         ];
-
-    //companyList is used for the main view, which can be populated and depopulated in searches without affecting the data
-    $scope.companyList = data;
-
-    //start new company form collapsed
-    $scope.isCollapsed = true;
-
-    //empty array used for making contact divs in add company form
-    $scope.contactsForm = [{}];
-
-    //start on a particular type of UI, "List" or "Card"
-    $scope.ui = "List";
-
-    //default viewing data for pagination
-    $scope.totalItems = $scope.companyList.length;
-    $scope.currentPage = 1;
-    $scope.itemsPerPage = 10;
-
-    //for searching for specific company ids
-    $scope.search = function (query) {
-        $scope.searchId = query
-        $scope.currentPage = 1;
-        updateView();
+    //combined for convenience, call after altering data
+    function updateView() {
+        updateCompanyList();
+        updatePagingData();
     }
-
-    //function to choose UI
-    $scope.setUI = function (view) {
-        $scope.ui = view;
-    },
-
     //refreshes CompanyList with current relevant entries from data
     function updateCompanyList() {
-        $scope.companyList = $filter('filter')(data, { id: $scope.searchId });
+        var field = $scope.field;
+        var query = $scope.query;
+        switch (field) {
+            case "id":
+                $scope.companyList = $filter('filter')(data, { "id": query });
+                break;
+            case "company":
+                $scope.companyList = $filter('filter')(data, { "company": query });
+                break;
+            case "status":
+                $scope.companyList = $filter('filter')(data, { "status": query });
+                break;
+            case "contacts":
+                $scope.companyList = $filter('filter')(data, { "contacts": query });
+                break;
+            case "information":
+                $scope.companyList = $filter('filter')(data, { "information": query });
+                break;
+            case "performance":
+                $scope.companyList = $filter('filter')(data, { "performance": query });
+                break;
+        }
     }
     //keeps paginator current when companies are deleted or added
     function updatePagingData() {
         setPagingData($scope.companyList, $scope.currentPage);
         $scope.totalItems = $scope.companyList.length;
     }
-    //combined for convenience, call after altering data
-    function updateView() {
-        updateCompanyList();
-        updatePagingData();
-    }
-
-    //keeps page populated with correct elements
-    $scope.$watch("currentPage", function () {
-        setPagingData($scope.companyList, $scope.currentPage);
-    });
-
-    //controls how many entries are visible at once
-    $scope.changeDisplayedItems = function (number) {
-        $scope.itemsPerPage = number;
-        updatePagingData();
-    }
-
     //selects current page elements from companyList
     function setPagingData(array, page) {
         var pagedData = array.slice(
@@ -174,6 +153,54 @@ app.controller("Company", function ($scope, $filter) {
         var selectedCompany = data.indexOf(search);
         return selectedCompany;
     }
+    //companyList is used for the main view, which can be populated and depopulated in searches without affecting the data
+    $scope.companyList = data;
+
+    //start new company form collapsed
+    $scope.isCollapsed = true;
+
+    //empty array used for making contact divs in add company form
+    $scope.contactsForm = [{}];
+
+    //start on a particular type of UI, "List" or "Card"
+    $scope.ui = "List";
+
+
+    //choose which field to search for
+    $scope.setField = function (field, buttonName) {
+        $scope.field = field;
+        $scope.fieldButtonName = buttonName;
+    }
+
+    //initial field for search
+    $scope.setField('company', 'Name');
+
+    //default viewing data for pagination
+    $scope.totalItems = $scope.companyList.length;
+    $scope.currentPage = 1;
+    $scope.itemsPerPage = 10;
+
+    //for searching for specific company ids
+    $scope.search = function (field, query) {
+        $scope.currentPage = 1;
+        updateView();
+    },
+
+    //function to choose UI
+    $scope.setUI = function (view) {
+        $scope.ui = view;
+    },
+
+    //keeps page populated with correct elements
+    $scope.$watch("currentPage", function () {
+        setPagingData($scope.companyList, $scope.currentPage);
+    });
+
+    //controls how many entries are visible at once
+    $scope.changeDisplayedItems = function (number) {
+        $scope.itemsPerPage = number;
+        updatePagingData();
+    },
 
     //create new company
     $scope.addCompany = function (company) {
