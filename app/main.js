@@ -157,7 +157,7 @@ app.controller("Company", function ($scope, $filter, $window) {
     //min size list works at
     var listEnabledSize = 600;
 
-    //forces to card view below certain window size
+    //forces to card view below certain window size, resumes when screen gets bigger
     $window.onresize = function () {
         $scope.$apply(function () {
             var screenWidth = $window.innerWidth;
