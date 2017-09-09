@@ -168,8 +168,8 @@ app.controller("Company", function ($scope, $filter) {
 
     //choose which field to search for
     $scope.setField = function (field, buttonName) {
-        $scope.field = field;
-        $scope.fieldButtonName = buttonName;
+        $scope.searchField = field;
+        $scope.searchFieldButtonName = buttonName;
     }
 
     //initial field for search
@@ -181,7 +181,9 @@ app.controller("Company", function ($scope, $filter) {
     $scope.itemsPerPage = 10;
 
     //for searching for specific company ids
-    $scope.search = function (field, query) {
+    $scope.search = function () {
+        $scope.field = $scope.searchField;
+        $scope.query = $scope.searchQuery;
         $scope.currentPage = 1;
         updateView();
     },
