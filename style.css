@@ -58,7 +58,7 @@ h1 {
     padding: 0px 200px;
     margin-bottom: 130px;
 }
-.main-area div {
+.main-list-listing div {
     overflow: hidden;
     text-overflow: ellipsis;
 }
