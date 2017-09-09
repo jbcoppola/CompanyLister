@@ -111,8 +111,8 @@ app.controller("Company", function ($scope, $filter) {
 
     $scope.search = function (query) {
         $scope.searchId = query
-        $scope.companyList = $filter('filter')(data, {id:$scope.searchId})
         $scope.currentPage = 1;
+        updateCompanyList();
         updatePagingData();
     }
 
@@ -126,6 +126,10 @@ app.controller("Company", function ($scope, $filter) {
     $scope.totalItems = $scope.companyList.length;
     $scope.currentPage = 1;
     $scope.itemsPerPage = 10;
+
+    function updateCompanyList() {
+        $scope.companyList = $filter('filter')(data, { id: $scope.searchId });
+    }
 
     function updatePagingData() {
         setPagingData($scope.companyList, $scope.currentPage);
@@ -168,6 +172,8 @@ app.controller("Company", function ($scope, $filter) {
         else { company.id = Number(data[0].id) + 1 };
         data.unshift(company);
         $scope.company = {};
+        //update views
+        updateCompanyList();
         updatePagingData();
     },
 
@@ -194,8 +200,8 @@ app.controller("Company", function ($scope, $filter) {
     //delete company
     $scope.removeCompany = function (index) {
         data.splice(selectCompany(index), 1);
-        $scope.companyList = $filter('filter')(data, { id: $scope.searchId });
-        //update pagination data
+        //update views
+        updateCompanyList();
         updatePagingData();
     },
     //update company
