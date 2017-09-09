@@ -13,7 +13,7 @@ app.controller("Company", function ($scope, $filter) {
     //start on a particular type of view, "List" or "Card"
     $scope.view = "List";
 
-    //populate with company data
+    //populate with company data. the 'database'
     data = 
         [
         {
@@ -107,8 +107,10 @@ app.controller("Company", function ($scope, $filter) {
             "performance": "40000"
         }
         ];
+    //companyList is used for the main view, which can be populated and depopulated in searches without affecting the data
     $scope.companyList = data;
 
+    //for searching for specific company ids
     $scope.search = function (query) {
         $scope.searchId = query
         $scope.currentPage = 1;
