@@ -7,7 +7,7 @@ app.controller("Company", function ($scope, $filter) {
     //start new company form collapsed
     $scope.isCollapsed = true;
 
-    //empty array used for making contact divs
+    //empty array used for making contact divs in add company form
     $scope.contactsForm = [{}];
 
     //start on a particular type of view, "List" or "Card"
@@ -114,10 +114,8 @@ app.controller("Company", function ($scope, $filter) {
     $scope.search = function (query) {
         $scope.searchId = query
         $scope.currentPage = 1;
-        updateCompanyList();
-        updatePagingData();
+        updateView();
     }
-
 
     //function to set UI
     $scope.setView = function (view) {
@@ -129,26 +127,33 @@ app.controller("Company", function ($scope, $filter) {
     $scope.currentPage = 1;
     $scope.itemsPerPage = 10;
 
+    //refreshes CompanyList with current relevant entries from data
     function updateCompanyList() {
         $scope.companyList = $filter('filter')(data, { id: $scope.searchId });
     }
-
+    //keeps paginator current when companies are deleted or added
     function updatePagingData() {
         setPagingData($scope.companyList, $scope.currentPage);
         $scope.totalItems = $scope.companyList.length;
     }
+    //combined for convenience, call when altering data
+    function updateView() {
+        updateCompanyList();
+        updatePagingData();
+    }
 
-    //updates page with selected elements
+    //keeps page populated with correct elements
     $scope.$watch("currentPage", function () {
         setPagingData($scope.companyList, $scope.currentPage);
     });
 
+    //controls how many entries are visible at once
     $scope.changeDisplayedItems = function (number) {
         $scope.itemsPerPage = number;
         updatePagingData();
     }
 
-    //selects current page elements from complete company list
+    //selects current page elements from companyList
     function setPagingData(array, page) {
         var pagedData = array.slice(
           (page - 1) * $scope.itemsPerPage,
@@ -170,23 +175,24 @@ app.controller("Company", function ($scope, $filter) {
 
     //create new company
     $scope.addCompany = function (company) {
+        //id is one greater than newest company, or 1 if it's the first entry
         if (data[0] == null) { company.id = 1 }
         else { company.id = Number(data[0].id) + 1 };
+        //goes at top so user can see it
         data.unshift(company);
         $scope.company = {};
         //update views
-        updateCompanyList();
-        updatePagingData();
+        updateView();
     },
 
-    //add new contact
+    //add new contact to company form
     $scope.addNewContact = function () {
         $scope.contactsForm.push({});
     },
 
-    //remove contact
+    //remove contact from new company form
     $scope.deleteContact = function () {
-        $scope.contactsForm.pop();
+        $scope.contactsForm.splice(contactsForm.length-1, 1);
     },
 
     //allows removing element in array within double ngrepeat
@@ -202,11 +208,9 @@ app.controller("Company", function ($scope, $filter) {
     //delete company
     $scope.removeCompany = function (index) {
         data.splice(selectCompany(index), 1);
-        //update views
-        updateCompanyList();
-        updatePagingData();
+        updateView();
     },
-    //update company
+    //update company information
     $scope.editCompany = function (index) {
         $scope.editing = $scope.companyList.indexOf(selectCompany(index));
     }
