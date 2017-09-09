@@ -2,6 +2,10 @@
     font-size: 20px;
     font-family: 'Raleway', sans-serif;
 }
+.glyphicon {
+    top: 0px;
+}
+
 /*HEADER*/
 
 .header {
@@ -54,6 +58,9 @@ h1 {
 .contact-form {
     margin-bottom: 4px;
 }
+
+/*VIEW AND SEARCH*/
+
 .main-area {
     padding: 0px 200px;
     margin-bottom: 130px;
@@ -101,9 +108,6 @@ h1 {
 
 .contact-edit {
     padding-bottom: 5px;
-}
-.glyphicon {
-    top: 0px;
 }
 .main-card-listing.no-company {
     padding: 50px;
