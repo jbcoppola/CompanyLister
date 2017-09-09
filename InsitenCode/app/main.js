@@ -107,24 +107,31 @@ app.controller("Company", function ($scope) {
             "performance": "40000"
         }
         ];
+
+    $scope.search = function() {
+        $scope.searchId = $scope.query;
+        console.log($scope.searchId);
+    }
+
+
     //function to set UI
     $scope.setView = function (view) {
         $scope.view = view;
     },
 
-    //viewing data for pagination
+    //default viewing data for pagination
     $scope.totalItems = $scope.companyList.length;
     $scope.currentPage = 1;
     $scope.itemsPerPage = 10;
 
     function updatePagingData() {
-        setPagingData($scope.currentPage);
+        setPagingData($scope.companyList, $scope.currentPage);
         $scope.totalItems = $scope.companyList.length;
     }
 
     //updates page with selected elements
     $scope.$watch("currentPage", function () {
-        setPagingData($scope.currentPage);
+        setPagingData($scope.companyList, $scope.currentPage);
     });
 
     $scope.changeDisplayedItems = function (number) {
@@ -133,8 +140,8 @@ app.controller("Company", function ($scope) {
     }
 
     //selects current page elements from complete company list
-    function setPagingData(page) {
-        var pagedData = $scope.companyList.slice(
+    function setPagingData(array, page) {
+        var pagedData = array.slice(
           (page - 1) * $scope.itemsPerPage,
           page * $scope.itemsPerPage
         );
