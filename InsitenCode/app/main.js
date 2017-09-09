@@ -4,17 +4,8 @@ var app = angular.module("Company", ['ui.bootstrap','ngAnimate']);
 //make controller
 app.controller("Company", function ($scope, $filter) {
     
-    //start new company form collapsed
-    $scope.isCollapsed = true;
-
-    //empty array used for making contact divs in add company form
-    $scope.contactsForm = [{}];
-
-    //start on a particular type of view, "List" or "Card"
-    $scope.ui = "List";
-
     //populate with company data. the 'database'
-    data = 
+    var data = 
         [
         {
             "id": "12",
@@ -107,8 +98,23 @@ app.controller("Company", function ($scope, $filter) {
             "performance": "40000"
         }
         ];
+
     //companyList is used for the main view, which can be populated and depopulated in searches without affecting the data
     $scope.companyList = data;
+
+    //start new company form collapsed
+    $scope.isCollapsed = true;
+
+    //empty array used for making contact divs in add company form
+    $scope.contactsForm = [{}];
+
+    //start on a particular type of UI, "List" or "Card"
+    $scope.ui = "List";
+
+    //default viewing data for pagination
+    $scope.totalItems = $scope.companyList.length;
+    $scope.currentPage = 1;
+    $scope.itemsPerPage = 10;
 
     //for searching for specific company ids
     $scope.search = function (query) {
@@ -121,11 +127,6 @@ app.controller("Company", function ($scope, $filter) {
     $scope.setUI = function (view) {
         $scope.ui = view;
     },
-
-    //default viewing data for pagination
-    $scope.totalItems = $scope.companyList.length;
-    $scope.currentPage = 1;
-    $scope.itemsPerPage = 10;
 
     //refreshes CompanyList with current relevant entries from data
     function updateCompanyList() {
@@ -165,7 +166,7 @@ app.controller("Company", function ($scope, $filter) {
     //selects proper company from data
     function selectCompany(index) {
         var search = $scope.companyList[index];
-        //gets correct company id if not on first page
+        //gets correct company if not on first page
         if ($scope.currentPage != 1) {
             var page = ($scope.currentPage - 1) * $scope.itemsPerPage;
             search = $scope.companyList[page + index];
