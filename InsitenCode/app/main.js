@@ -192,7 +192,7 @@ app.controller("Company", function ($scope, $filter) {
 
     //remove contact from new company form
     $scope.deleteContact = function () {
-        $scope.contactsForm.splice(contactsForm.length-1, 1);
+        $scope.contactsForm.splice($scope.contactsForm.length-1, 1);
     },
 
     //allows removing element in array within double ngrepeat
