@@ -66,7 +66,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label for="information">Information</label>
-                            <textarea class="form-control" id="information" ng-model="company.information"></textarea>
+                            <textarea class="form-control information" id="information" ng-model="company.information"></textarea>
                         </div>
                         <div class="col-md-6">
                             <label>Contacts</label>
@@ -94,8 +94,8 @@
             <div class="row">
                 <div class="col-xs-6">
                     <div class="btn-group btn-view" uib-dropdown is-open="status.isopen">
-                        <button class="glyphicon glyphicon-th-large btn btn-lg btn-default" ng-click="setView('Card')"></button>
-                        <button class="glyphicon glyphicon-list btn btn-lg btn-default" ng-click="setView('List')"></button>
+                        <button class="glyphicon glyphicon-th-large btn btn-lg btn-default" ng-click="setUI('Card')"></button>
+                        <button class="glyphicon glyphicon-list btn btn-lg btn-default" ng-click="setUI('List')"></button>
                         <button id="single-button" type="button" class="btn btn-default btn-lg" uib-dropdown-toggle>
                             Display ( {{itemsPerPage}} ) <span class="caret"></span>
                         </button>
@@ -121,15 +121,15 @@
                     </div>
                 </div>
             </div>
-            <div class="main-card-listing text-center no-company" ng-show="displayedCompanyList==0 && view=='Card'">
+            <div class="main-card-listing text-center no-company" ng-show="displayedCompanyList==0 && ui=='Card'">
                 No results found.
             </div>
-            <div class="main-list-listing text-center no-company" ng-show="displayedCompanyList==0 && view=='List'">
+            <div class="main-list-listing text-center no-company" ng-show="displayedCompanyList==0 && ui=='List'">
                 No results found.
             </div>
 
             <!--list of all companies-->
-            <div ng-repeat="company in displayedCompanyList | filter: {id:searchId}" class="main-card-listing text-center" ng-show="view=='Card'">
+            <div ng-repeat="company in displayedCompanyList | filter: {id:searchId}" class="main-card-listing text-center" ng-show="ui=='Card'">
 
                 <!--top has company name and edit buttons-->
                 <div class="row top-row">
@@ -218,7 +218,7 @@
                 </div> <!--end of bottom row-->
             </div> <!--end of individual company listing-->
             <!--title row-->
-            <div ng-show="displayedCompanyList!=0 && view=='List'">
+            <div ng-show="displayedCompanyList!=0 && ui=='List'">
                 <div class="main-list-listing row title-row">
                     <div class="col-xs-1">
                         ID
@@ -260,6 +260,14 @@
                                 </div>
                             </div>
                             <span ng-hide="editMode || detailMode">{{company.contacts[0]}}</span>
+                            <div class="col-xs-12">
+                                <form name="contactForm" class="input-group">
+                                    <input type="text" class="form-control" ng-show="editMode" ng-model="contactForm.contact" required>
+                                    <span class="input-group-btn">
+                                        <button ng-click="addEditContact(company.contacts, contactForm.contact); contactForm.contact=''" ; ng-show="editMode" class="btn btn-default glyphicon glyphicon-plus" ng-disabled="!contactForm.$valid"></button>
+                                    </span>
+                                </form>
+                            </div>
                             <button class="btn list-button glyphicon glyphicon-plus" ng-click="detailMode = !detailMode" ng-hide="company.contacts[1]==undefined || detailMode || editMode"></button>
                             <button class="btn list-button glyphicon glyphicon-minus" ng-click="detailMode = !detailMode" ng-hide="!detailMode || editMode"></button>
                         </div>
