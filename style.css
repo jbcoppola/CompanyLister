@@ -58,11 +58,6 @@ h1 {
     padding: 0px 200px;
     margin-bottom: 130px;
 }
-.main-list-listing div {
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
 .btn-per-page {
     margin: 20px 0px;
 }
@@ -153,6 +148,10 @@ h1 {
 }
 .main-list-listing {
     font-size: 16px;
+}
+.main-list-listing div {
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .main-list-listing.no-company {
     padding: 20px;
