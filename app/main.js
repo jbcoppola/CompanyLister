@@ -14,7 +14,7 @@ app.controller("Company", function ($scope, $filter) {
     $scope.view = "List";
 
     //populate with company data
-    $scope.companyList = 
+    data = 
         [
         {
             "id": "12",
@@ -107,12 +107,12 @@ app.controller("Company", function ($scope, $filter) {
             "performance": "40000"
         }
         ];
+    $scope.companyList = data;
 
     $scope.search = function (searchId) {
-        var searchList = $filter('filter')($scope.companyList, {id:searchId})
+        $scope.companyList = $filter('filter')(data, {id:searchId})
         $scope.currentPage = 1;
-        $scope.searchId = $scope.query;
-        $scope.displayedCompanyList = searchList;
+        updatePagingData();
     }
 
 
