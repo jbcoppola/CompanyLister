@@ -260,8 +260,8 @@
                                 </div>
                             </div>
                             <span ng-hide="editMode || detailMode">{{company.contacts[0]}}</span>
-                            <button class="btn list-contact-button glyphicon glyphicon-plus" ng-click="detailMode = !detailMode" ng-hide="company.contacts[1]==undefined || detailMode || editMode"></button>
-                            <button class="btn list-contact-button glyphicon glyphicon-minus" ng-click="detailMode = !detailMode" ng-hide="!detailMode || editMode"></button>
+                            <button class="btn list-button glyphicon glyphicon-plus" ng-click="detailMode = !detailMode" ng-hide="company.contacts[1]==undefined || detailMode || editMode"></button>
+                            <button class="btn list-button glyphicon glyphicon-minus" ng-click="detailMode = !detailMode" ng-hide="!detailMode || editMode"></button>
                         </div>
                         <div class="col-xs-2">
                             <span ng-hide="editMode">{{company.performance}}</span>
@@ -276,12 +276,12 @@
                                 <option value="Declined">Declined</option>
                             </select>
                         </div>
-                        <div class="col-xs-1 center-block">
-                            <button ng-hide="editMode" ng-click="editMode = true; editCompany(company)" class="btn btn-default btn-xs glyphicon glyphicon-edit center-block"></button>
-                            <button class="btn btn-edit btn-default btn-xs glyphicon glyphicon-saved center-block" ng-show="editMode" ng-click="editMode = false" ng-disabled="company.company==''"></button>
+                        <div class="col-xs-1 text-center">
+                            <button ng-hide="editMode" ng-click="editMode = true; editCompany(company)" class="btn list-button glyphicon glyphicon-edit"></button>
+                            <button class="btn list-button glyphicon glyphicon-saved" ng-show="editMode" ng-click="editMode = false" ng-disabled="company.company==''"></button>
                         </div>
-                        <div class="col-xs-1 center-block">
-                            <button ng-click="removeCompany($index)" class="btn btn-default btn-xs glyphicon glyphicon-trash center-block"></button>
+                        <div class="col-xs-1 text-center">
+                            <button ng-click="removeCompany($index)" class="btn list-button glyphicon glyphicon-trash"></button>
                         </div>
                     </div>
                 </div>

@@ -58,6 +58,10 @@ h1 {
     padding: 0px 200px;
     margin-bottom: 130px;
 }
+.main-area div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 .btn-per-page {
     margin: 20px 0px;
@@ -172,14 +176,14 @@ h1 {
 .main-list-listing .list-name-button:hover {
     background-color: #e2e2e2;
 }
-.main-list-listing .list-contact-button {
+.main-list-listing .list-button {
     margin: 0px 0px 2px 2px;
     padding: 0px 3px;
     border: 1px solid lightgray;
     border-radius: 5px;
     background-color: white;
 }
-.main-list-listing .list-contact-button:hover {
+.main-list-listing .list-button:hover {
     background-color: #e2e2e2;
 }
 .main-list-listing .odd {
