@@ -2,7 +2,7 @@
 var app = angular.module("Company", ['ui.bootstrap','ngAnimate']);
 
 //make controller
-app.controller("Company", function ($scope, $filter) {
+app.controller("Company", function ($scope, $filter, $window) {
     
     //populate with company data. the 'database'
     var data = 
@@ -153,6 +153,26 @@ app.controller("Company", function ($scope, $filter) {
         var selectedCompany = data.indexOf(search);
         return selectedCompany;
     }
+
+    //min size list works at
+    var listEnabledSize = 600;
+
+    //forces to card view below certain window size
+    $window.onresize = function () {
+        $scope.$apply(function () {
+            var screenWidth = $window.innerWidth;
+            if (screenWidth < listEnabledSize) {
+                $scope.ui = 'Card';
+                $scope.listEnabled = false;
+            } else if (screenWidth >= listEnabledSize) {
+                $scope.listEnabled = true;
+            }
+        });
+    }
+
+    //inital list view check depending on window size
+    $scope.listEnabled = ($window.innerWidth >= listEnabledSize);
+
     //companyList is used for the main view, which can be populated and depopulated in searches without affecting the data
     $scope.companyList = data;
 
