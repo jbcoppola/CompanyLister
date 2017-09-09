@@ -11,7 +11,7 @@ app.controller("Company", function ($scope, $filter) {
     $scope.contactsForm = [{}];
 
     //start on a particular type of view, "List" or "Card"
-    $scope.view = "List";
+    $scope.ui = "List";
 
     //populate with company data. the 'database'
     data = 
@@ -117,9 +117,9 @@ app.controller("Company", function ($scope, $filter) {
         updateView();
     }
 
-    //function to set UI
-    $scope.setView = function (view) {
-        $scope.view = view;
+    //function to choose UI
+    $scope.setUI = function (view) {
+        $scope.ui = view;
     },
 
     //default viewing data for pagination
@@ -136,7 +136,7 @@ app.controller("Company", function ($scope, $filter) {
         setPagingData($scope.companyList, $scope.currentPage);
         $scope.totalItems = $scope.companyList.length;
     }
-    //combined for convenience, call when altering data
+    //combined for convenience, call after altering data
     function updateView() {
         updateCompanyList();
         updatePagingData();
@@ -162,10 +162,10 @@ app.controller("Company", function ($scope, $filter) {
         $scope.displayedCompanyList = pagedData;
     }
 
-    //selects proper company from main list from paginator displayed company list
+    //selects proper company using index when paginator is at page other than 1
     function selectCompany(index) {
         var selectedCompany = index;
-        //gets correct element when not on first page
+        //gets correct element if not on first page
         if ($scope.currentPage != 1) {
             var page = ($scope.currentPage - 1) * $scope.itemsPerPage;
             selectedCompany = page + index;
