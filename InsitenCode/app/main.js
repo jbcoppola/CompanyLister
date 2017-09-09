@@ -162,14 +162,15 @@ app.controller("Company", function ($scope, $filter) {
         $scope.displayedCompanyList = pagedData;
     }
 
-    //selects proper company using index when paginator is at page other than 1
+    //selects proper company from data
     function selectCompany(index) {
-        var selectedCompany = index;
-        //gets correct element if not on first page
+        var search = $scope.companyList[index];
+        //gets correct company id if not on first page
         if ($scope.currentPage != 1) {
             var page = ($scope.currentPage - 1) * $scope.itemsPerPage;
-            selectedCompany = page + index;
+            search = $scope.companyList[page + index];
         }
+        var selectedCompany = data.indexOf(search);
         return selectedCompany;
     }
 
