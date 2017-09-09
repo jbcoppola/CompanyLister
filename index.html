@@ -114,9 +114,22 @@
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <div class="search-bar input-group">
-                        <input type="text" placeholder="search by ID" class="form-control" ng-model="query" />
-                        <span class="btn btn-default glyphicon glyphicon-search input-group-addon" ng-click="search(query)">
+                    <div class="search-bar input-group" >
+                        <div class="input-group-btn" uib-dropdown>
+                            <button id="field-button" type="button" class="btn btn-default" uib-dropdown-toggle>
+                                {{fieldButtonName}} <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="field-button">
+                                <li role="menuitem"><a ng-click="setField('id', 'ID')">ID</a></li>
+                                <li role="menuitem"><a ng-click="setField('company', 'Name')">Name</a></li>
+                                <li role="menuitem"><a ng-click="setField('status', 'Status')">Status</a></li>
+                                <li role="menuitem"><a ng-click="setField('information', 'Information')">Information</a></li>
+                                <li role="menuitem"><a ng-click="setField('contacts', 'Contacts')">Contacts</a></li>
+                                <li role="menuitem"><a ng-click="setField('performance', 'Performance')">Performance</a></li>
+                            </ul>
+                        </div>
+                        <input type="text" placeholder="search by field" class="form-control" ng-model="query" />
+                        <span class="btn btn-default glyphicon glyphicon-search input-group-addon" ng-click="search(field, query)">
                         </span>
                     </div>
                 </div>
@@ -129,7 +142,7 @@
             </div>
 
             <!--list of all companies-->
-            <div ng-repeat="company in displayedCompanyList | filter: {id:searchId}" class="main-card-listing text-center" ng-show="ui=='Card'">
+            <div ng-repeat="company in displayedCompanyList" class="main-card-listing text-center" ng-show="ui=='Card'">
 
                 <!--top has company name and edit buttons-->
                 <div class="row top-row">
@@ -243,7 +256,7 @@
                     </div>
                 </div>
 
-                <div class="main-list-listing" ng-repeat="company in displayedCompanyList | filter: {id:searchId}">
+                <div class="main-list-listing" ng-repeat="company in displayedCompanyList">
                     <div class="row" ng-class="{'first-item':$first, 'last-item':$last}" ng-class-odd="'odd'" ng-class-even="'even'">
                         <div class="col-xs-1">
                             {{company.id}}
