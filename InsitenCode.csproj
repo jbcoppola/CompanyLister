@@ -122,6 +122,12 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="scripts\angular-animate.min.js.map" />
+    <Content Include="scripts\d3\d3.js" />
+    <Content Include="scripts\d3\d3.min.js" />
+    <Content Include="scripts\d3\README.md" />
+    <Content Include="scripts\d3\LICENSE" />
+    <Content Include="scripts\d3\CHANGES.md" />
+    <Content Include="scripts\d3\API.md" />
     <None Include="scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
