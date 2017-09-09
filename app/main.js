@@ -2,7 +2,7 @@
 var app = angular.module("Company", ['ui.bootstrap','ngAnimate']);
 
 //make controller
-app.controller("Company", function ($scope) {
+app.controller("Company", function ($scope, $filter) {
     
     //start new company form collapsed
     $scope.isCollapsed = true;
@@ -108,9 +108,11 @@ app.controller("Company", function ($scope) {
         }
         ];
 
-    $scope.search = function() {
+    $scope.search = function (searchId) {
+        var searchList = $filter('filter')($scope.companyList, {id:searchId})
+        $scope.currentPage = 1;
         $scope.searchId = $scope.query;
-        console.log($scope.searchId);
+        $scope.displayedCompanyList = searchList;
     }
 
 
