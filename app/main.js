@@ -128,9 +128,6 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
             case "contacts":
                 $scope.companyList = $filter('filter')(data, { "contacts": query });
                 break;
-            case "information":
-                $scope.companyList = $filter('filter')(data, { "information": query });
-                break;
             case "performance":
                 $scope.companyList = $filter('filter')(data, { "performance": query });
                 break;
@@ -246,7 +243,9 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
 
     //remove contact from new company form
     $scope.deleteContact = function () {
-        $scope.contactsForm.splice($scope.contactsForm.length-1, 1);
+        if ($scope.contactsForm.length > 1) {
+            $scope.contactsForm.splice($scope.contactsForm.length - 1, 1);
+        }
     },
 
     //allows removing element in array within double ngrepeat
