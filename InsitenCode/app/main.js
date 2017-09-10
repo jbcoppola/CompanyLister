@@ -198,14 +198,6 @@ app.controller("Company", function ($scope, $filter, $window) {
     $scope.currentPage = 1;
     $scope.itemsPerPage = 10;
 
-    //for searching for specific company ids
-    $scope.search = function () {
-        $scope.field = $scope.searchField;
-        $scope.query = $scope.searchQuery;
-        $scope.currentPage = 1;
-        updateView();
-    },
-
     //function to choose UI
     $scope.setUI = function (view) {
         $scope.ui = view;

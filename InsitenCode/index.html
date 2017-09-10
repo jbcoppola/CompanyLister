@@ -129,15 +129,13 @@
                             </ul>
                         </div>
                         <input type="text" placeholder="search by field" class="form-control" ng-hide="field=='status'" ng-model="query" />
-                        <select class="form-control" ng-model="query" ng-show="field=='status'">
+                        <select class="form-control status-dropdown" ng-model="query" ng-show="field=='status'">
                             <option></option>
                             <option>Approved</option>
                             <option>Researching</option>
                             <option>Pending Approval</option>
                             <option>Declined</option>
                         </select>
-                        <span class="btn btn-default glyphicon glyphicon-search input-group-addon" ng-click="search()">
-                        </span>
                     </div>
                 </div>
             </div>
@@ -297,8 +295,7 @@
                                     </span>
                                 </form>
                             </div>
-                            <button class="btn list-button glyphicon glyphicon-plus" ng-click="detailMode = !detailMode" ng-hide="company.contacts[1]==undefined || detailMode || editMode"></button>
-                            <button class="btn list-button glyphicon glyphicon-minus" ng-click="detailMode = !detailMode" ng-hide="!detailMode || editMode"></button>
+                            <span ng-hide="company.contacts[1]==undefined || detailMode || editMode"></span>
                         </div>
                         <div class="col-xs-2">
                             <span ng-hide="editMode">{{company.performance}}</span>
