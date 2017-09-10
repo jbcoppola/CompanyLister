@@ -73,9 +73,23 @@ h1 {
 .search-bar {
     margin-bottom: 30px;
 }
+.status-btn {
+    border-radius: 0px 6px 6px 0px;
+}
 .dropdown-menu li {
     cursor: pointer;
 }
+.btn-view-selected {
+    background-color: #0DA9FF;
+    color: white;
+}
+.btn-view-selected:hover,
+.btn-view-selected:focus,
+.btn-view-selected:active:focus {
+    background-color:#66c9ff;
+    color: white;
+}
+
 /*PAGINATION*/
 
 .pagination>li.active>a {
@@ -105,7 +119,7 @@ h1 {
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
     background-color:#66c9ff;
-    border: 1px solid #66c9ff;;
+    border: 1px solid #66c9ff;
 }
 
 /*MAIN LISTING CARD VIEW*/
