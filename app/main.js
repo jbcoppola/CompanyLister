@@ -190,6 +190,8 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
     //start on a particular type of UI, "List" or "Card"
     $scope.ui = "Card";
 
+    $scope.alerts = [];
+
     //choose which field to search for
     $scope.setField = function (field, buttonName) {
         $scope.field = field;
@@ -231,10 +233,20 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
         else { company.id = Number(data[0].id) + 1 };
         //goes at top so user can see it
         data.unshift(company);
+        $scope.addAlert("Company added!");
+        $scope.isCollapsed = !$scope.isCollapsed;
         $scope.company = {};
         //update views
         updateView();
     },
+
+    $scope.addAlert = function (message) {
+        $scope.alerts.push({ msg: message });
+    };
+
+    $scope.closeAlert = function (index) {
+        $scope.alerts.splice(index, 1);
+    };
 
     //add new contact to company form
     $scope.addNewContact = function () {
