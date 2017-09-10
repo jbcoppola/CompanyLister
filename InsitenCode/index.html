@@ -74,7 +74,7 @@
                                 <input type="text" class="form-control contact-form" ng-model="company.contacts[$index]" />
                             </div>
                             <span ng-click="addNewContact()" class="btn btn-default">Add Contact</span>
-                            <span ng-click="deleteContact()" class="btn btn-default">Remove Contact</span>
+                            <span ng-click="deleteContact()" class="btn btn-default" ng-show="contactsForm[1]!=null">Remove Contact</span>
                         </div>
                     </div>
                     <div class="row">
@@ -123,7 +123,6 @@
                                 <li role="menuitem"><a ng-click="setField('id', 'ID')">ID</a></li>
                                 <li role="menuitem"><a ng-click="setField('name', 'Name')">Name</a></li>
                                 <li role="menuitem"><a ng-click="setField('status', 'Status')">Status</a></li>
-                                <li role="menuitem"><a ng-click="setField('information', 'Information')">Information</a></li>
                                 <li role="menuitem"><a ng-click="setField('contacts', 'Contacts')">Contacts</a></li>
                                 <li role="menuitem"><a ng-click="setField('performance', 'Performance')">Performance</a></li>
                             </ul>
