@@ -153,7 +153,7 @@ app.controller("Company", function ($scope, $filter, $window) {
     }
 
     //min size list works at
-    var listEnabledSize = 600;
+    var listEnabledSize = 640;
 
     //forces to card view below certain window size, resumes when screen gets bigger
     $window.onresize = function () {
@@ -181,7 +181,7 @@ app.controller("Company", function ($scope, $filter, $window) {
     $scope.contactsForm = [{}];
 
     //start on a particular type of UI, "List" or "Card"
-    $scope.ui = "Card";
+    $scope.ui = "List";
 
     //choose which field to search for
     $scope.setField = function (field, buttonName) {

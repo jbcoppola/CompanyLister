@@ -33,11 +33,9 @@ h1 {
 .companyForm .col-md-6 {
     margin-top: 20px;
 }
-
 .btn-view {
     margin: 20px 0px;
 }
-
 .btn-blue {
     background-color: #0DA9FF;
     padding: 10px;
@@ -62,6 +60,9 @@ h1 {
 }
 .contact-form {
     margin-bottom: 4px;
+}
+.information {
+    resize: none;
 }
 
 /*VIEW AND SEARCH*/
@@ -172,16 +173,23 @@ h1 {
 }
 
 /*MAIN LISTING LIST*/
-
+.main-list-listing .edit-delete .btn,
+.main-list-listing .list-name-button {
+    padding: 1px 8px;
+}
 .title-row {
     padding: 5px;
     font-weight: bold;
 }
+
 .main-list-listing {
 }
 .main-list-listing div {
-    overflow: hidden;
+    word-wrap: break-word;
     text-overflow: ellipsis;
+}
+.btn-text {
+
 }
 .main-list-listing.no-company {
     padding: 20px;
@@ -201,6 +209,8 @@ h1 {
     border: 1px solid lightgray;
     background-color: white;
     border-radius: 5px;
+    font-weight: bold;
+    word-wrap: break-word;
 }
 .main-list-listing .list-name-button:hover {
     background-color: #e2e2e2;
