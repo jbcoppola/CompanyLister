@@ -37,13 +37,17 @@
         <!--add company form-->
         <div class="main-area">
             <!--section with button stays visible-->
-            <div class="panel-heading">
-                <h4 class="panel-title">
+            <div class="add-company row">
+                <div class="col-xs-3">
                     <button class="btn btn-lg btn-blue" ng-click="isCollapsed = !isCollapsed">
                         Add New Company
                     </button>
-                </h4>
+                </div>
+                <div class="col-xs-9">
+                    
+                </div>
             </div>
+            
 
             <!--this section can be collapsed and hidden-->
             <div uib-collapse="isCollapsed">
@@ -83,7 +87,7 @@
                             <input type="text" class="form-control" ng-model="company.performance" />
                         </div>
                         <div class="col-md-6">
-                            <button ng-click="addCompany(company); isCollapsed = !isCollapsed" class="btn btn-lg btn-blue pull-right add-button" ng-disabled="!companyForm.$valid">
+                            <button ng-click="addCompany(company)" class="btn btn-lg btn-blue pull-right add-button" ng-disabled="!companyForm.$valid">
                                 Add
                             </button>
                         </div>
@@ -91,6 +95,7 @@
                 </form>
             </div> <!--end of hideable div-->
 
+            <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'success')" close="closeAlert($index)" dismiss-on-timeout="2000">{{alert.msg}}</div>
             <div class="row">
                 <div class="col-sm-6">
                     <div class="btn-group btn-view" uib-dropdown is-open="status.isopen">
@@ -144,6 +149,7 @@
             <div class="main-list-listing text-center no-company" ng-show="displayedCompanyList==0 && ui=='List'">
                 No results found.
             </div>
+
 
             <!--list of all companies-->
             <div ng-repeat="company in displayedCompanyList" class="main-card-listing text-center" ng-show="ui=='Card'">
