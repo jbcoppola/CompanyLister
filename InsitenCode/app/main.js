@@ -2,55 +2,64 @@
 var app = angular.module("Company", ['ui.bootstrap','ngAnimate']);
 
 //make controller
-app.controller("Company", function ($scope, $filter, $window) {
+app.controller("Company", function ($scope, $filter, $window, $http) {
     //populate with company data. the 'database'
-    var data = 
-        [
+    //$scope.data = [];
+    //$http.get("/data/companyList.json").then(function (response) {
+    //    return response.data;
+    //});
+    data = [
         {
             "id": "12",
-            "company": "Lyft",
+            "name": "Lyft",
             "status": "Approved",
             "information": "Praesent molestie scelerisque nunc, sed tempus diam rhoncus quis. Praesent nec quam pulvinar, feugiat nulla at, imperdiet eros. Praesent faucibus arcu lorem, at fringilla metus ullamcorper ut. Praesent ultricies, ipsum ultrices pretium elementum, massa quam congue ante, a pellentesque lectus lectus quis sapien. ",
             "contacts": ["Emma Saunders"],
             "performance": "30100"
-        }, {
+        },
+        {
             "id": "11",
-            "company": "AskJeeves",
+            "name": "AskJeeves",
             "status": "Declined",
             "information": "Nunc elementum sapien ac commodo euismod. Proin vel eleifend est. Phasellus blandit fringilla purus sit amet dignissim. Curabitur dictum massa sed urna laoreet accumsan. Suspendisse potenti. Quisque tempus, nunc nec scelerisque consequat, magna eros tincidunt turpis, et porta eros orci auctor erat. ",
             "contacts": ["Roger Sanchez"],
             "performance": "50"
-        }, {
+        },
+        {
             "id": "10",
-            "company": "GoPro",
+            "name": "GoPro",
             "status": "Pending Approval",
             "information": "Nam ac pharetra nisi. Pellentesque ullamcorper tincidunt urna et blandit. Nulla quis lectus sed risus consequat blandit cursus sit amet lorem. Proin iaculis aliquam lectus. Ut eget consequat purus. Nulla mollis lorem ut placerat pulvinar. Nullam ornare, dui vitae cursus elementum, turpis tellus tempor lacus, a sollicitudin metus nulla id lorem. ",
             "contacts": ["Lance Wright", "Celine Gofer"],
             "performance": "1950"
-        }, {
+        },
+        {
             "id": "9",
-            "company": "LinkedIn",
+            "name": "LinkedIn",
             "status": "Approved",
             "information": "Etiam neque tortor, iaculis sed lorem eget, imperdiet dapibus nisi. Quisque ut elit justo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla tempor imperdiet lectus eget lobortis. Nunc molestie nec mi in congue. Vivamus pulvinar felis sit amet sapien ornare laoreet. ",
             "contacts": ["Aaron Ekels"],
             "performance": "1000"
-        }, {
+        },
+        {
             "id": "8",
-            "company": "Uber",
+            "name": "Uber",
             "status": "Researching",
             "information": "Vestibulum ultricies scelerisque venenatis. Suspendisse potenti. Nullam sollicitudin lectus quis justo pulvinar maximus. Maecenas a ex sem. In vestibulum elementum odio sit amet iaculis. Ut varius finibus tristique. Pellentesque gravida, nisl ac fringilla ullamcorper, magna sem cursus sapien, ac aliquet quam lorem in odio. ",
             "contacts": ["Anthony Vivint", "Paul Bush"],
             "performance": "41000"
-        }, {
+        },
+        {
             "id": "7",
-            "company": "Twitter",
+            "name": "Twitter",
             "status": "Researching",
             "information": "Aliquam purus nisi, varius id massa vitae, dapibus vehicula ex. Cras efficitur laoreet ultrices. Sed ornare arcu mollis odio pharetra, et luctus est tincidunt. Ut iaculis sed eros non tempor. Cras vitae consequat lorem. Fusce ante massa, tempus eu bibendum at, placerat non massa. Proin faucibus pharetra urna, vel bibendum justo placerat a. Suspendisse vitae libero gravida, mattis nunc at, pellentesque nulla. ",
             "contacts": [],
             "performance": "11000"
-        }, {
+        },
+        {
             "id": "6",
-            "company": "Tumblr",
+            "name": "Tumblr",
             "status": "Declined",
             "information": "Praesent vel dignissim enim. Integer ornare nisl vel malesuada semper. Morbi quis risus dictum, eleifend velit a, posuere metus. Aenean suscipit aliquam dui. Vestibulum augue mauris, suscipit et fermentum eget, pulvinar ut ligula. Ut hendrerit cursus tortor id pretium. ",
             "contacts": ["Debby Sanders", "Will Bart", "Jared Numbers"],
@@ -58,7 +67,7 @@ app.controller("Company", function ($scope, $filter, $window) {
         },
         {
             "id": "5",
-            "company": "Reddit",
+            "name": "Reddit",
             "status": "Pending Approval",
             "information": "Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce quis dapibus tortor. Nam finibus aliquam mollis. Mauris aliquet tincidunt elit varius placerat. ",
             "contacts": ["Bill Markets"],
@@ -66,7 +75,7 @@ app.controller("Company", function ($scope, $filter, $window) {
         },
         {
             "id": "4",
-            "company": "Apple",
+            "name": "Apple",
             "status": "Declined",
             "information": "Vivamus quis pellentesque mauris, vitae condimentum lacus. Nullam a urna condimentum, auctor quam non, eleifend diam. Nullam porta, dui id viverra molestie, augue lacus laoreet est, eu congue urna sem et justo. Suspendisse auctor tortor eu volutpat laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. ",
             "contacts": ["Jacob Booth", "Steve Jobs"],
@@ -74,7 +83,7 @@ app.controller("Company", function ($scope, $filter, $window) {
         },
         {
             "id": "3",
-            "company": "Tesla",
+            "name": "Tesla",
             "status": "Approved",
             "information": "Integer vehicula, sapien sed luctus feugiat, augue mauris ullamcorper urna, nec condimentum justo eros condimentum sapien. Nam elementum est ipsum, sed laoreet felis pulvinar vel. Aenean ac neque urna. Cras est lectus, maximus at rhoncus a, suscipit vitae eros. Integer auctor vel justo sed tincidunt. ",
             "contacts": ["Elon Musk"],
@@ -82,7 +91,7 @@ app.controller("Company", function ($scope, $filter, $window) {
         },
         {
             "id": "2",
-            "company": "Google",
+            "name": "Google",
             "status": "Researching",
             "information": "Pellentesque placerat, sapien et varius imperdiet, ante sapien fermentum quam, in vehicula turpis urna sit amet ante. Donec a diam vestibulum, consequat est vitae, congue diam. Donec consectetur erat vel tincidunt suscipit. Curabitur iaculis lobortis nunc. Nulla sagittis volutpat ornare. Nulla facilisi. ",
             "contacts": ["Alan Smithee"],
@@ -90,13 +99,14 @@ app.controller("Company", function ($scope, $filter, $window) {
         },
         {
             "id": "1",
-            "company": "Microsoft",
+            "name": "Microsoft",
             "status": "Pending Approval",
             "information": "Morbi tristique quis quam sit amet maximus. Sed sollicitudin nisi eget diam volutpat sollicitudin. Sed non arcu ultricies, euismod risus at, rutrum enim. Vivamus sed enim nec ante interdum malesuada. Nullam interdum risus vel rhoncus vehicula. Cras maximus, erat at scelerisque mollis, mi ipsum porta velit, at tempor ligula lorem eu nibh.",
             "contacts": ["Bill Gates"],
             "performance": "40000"
         }
-        ];
+    ]
+
     //combined for convenience, call after altering data
     function updateView() {
         updateCompanyList();
@@ -109,8 +119,8 @@ app.controller("Company", function ($scope, $filter, $window) {
             case "id":
                 $scope.companyList = $filter('filter')(data, { "id": query });
                 break;
-            case "company":
-                $scope.companyList = $filter('filter')(data, { "company": query });
+            case "name":
+                $scope.companyList = $filter('filter')(data, { "name": query });
                 break;
             case "status":
                 $scope.companyList = $filter('filter')(data, { "status": query });
@@ -155,7 +165,7 @@ app.controller("Company", function ($scope, $filter, $window) {
     //min size list works at
     var listEnabledSize = 640;
 
-    //forces to card view below certain window size, resumes when screen gets bigger
+    //forces to card view below certain window size, allows both views when screen gets bigger
     $window.onresize = function () {
         $scope.$apply(function () {
             var screenWidth = $window.innerWidth;
@@ -168,11 +178,11 @@ app.controller("Company", function ($scope, $filter, $window) {
         });
     }
 
-    //inital list view check depending on window size
-    $scope.listEnabled = ($window.innerWidth >= listEnabledSize);
-
     //companyList is used for the main view, which can be populated and depopulated in searches without affecting the data
     $scope.companyList = data;
+
+    //inital list view check depending on window size
+    $scope.listEnabled = ($window.innerWidth >= listEnabledSize);
 
     //start new company form collapsed
     $scope.isCollapsed = true;
@@ -190,8 +200,7 @@ app.controller("Company", function ($scope, $filter, $window) {
     }
 
     //initial field for search
-    $scope.setField('company', 'Name');
-    console.log($scope.field);
+    $scope.setField('name', 'Name');
 
     //default viewing data for pagination
     $scope.totalItems = $scope.companyList.length;
@@ -207,6 +216,7 @@ app.controller("Company", function ($scope, $filter, $window) {
     $scope.$watch("currentPage", function () {
         setPagingData($scope.companyList, $scope.currentPage);
     });
+    //auto updates page when search changes
     $scope.$watch("query", function () {
         updateView();
     });
@@ -253,9 +263,6 @@ app.controller("Company", function ($scope, $filter, $window) {
     $scope.removeCompany = function (index) {
         data.splice(selectCompany(index), 1);
         updateView();
-    },
-    //update company information
-    $scope.editCompany = function (index) {
-        $scope.editing = $scope.companyList.indexOf(selectCompany(index));
     }
+    
 });
