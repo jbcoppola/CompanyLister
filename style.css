@@ -68,7 +68,7 @@ h1 {
 /*VIEW AND SEARCH*/
 
 .main-area {
-    padding: 0px 170px;
+    padding: 0px 200px;
     margin-bottom: 130px;
 }
 .search-bar {
@@ -288,7 +288,7 @@ footer {
 }
 
 /*removes side padding under certain window/screen size*/
-@media (max-width: 960px)
+@media (max-width: 1020px)
 {
     .main-area {
         padding: 0px;
