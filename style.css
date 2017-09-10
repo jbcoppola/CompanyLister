@@ -188,9 +188,6 @@ h1 {
     word-wrap: break-word;
     text-overflow: ellipsis;
 }
-.btn-text {
-
-}
 .main-list-listing.no-company {
     padding: 20px;
     background-color: lightgray;
@@ -230,6 +227,11 @@ h1 {
 }
 .main-list-listing .company-name {
     font-weight: bold;
+}
+.main-list-listing .company-name .list-name-button {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 75%;
 }
 .main-list-listing .first-item {
     
