@@ -173,10 +173,10 @@ h1 {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.main-card-listing.no-company {
+.main-card-listing .no-company {
     padding: 50px;
 }
-.main-card-listing {
+.main-card-listing > div {
     border: 20px solid lightgray;
     border-radius: 40px;
     margin-bottom: 50px;
@@ -217,14 +217,11 @@ h1 {
     padding: 5px;
     font-weight: bold;
 }
-
-.main-list-listing {
-}
 .main-list-listing div {
     word-wrap: break-word;
     text-overflow: ellipsis;
 }
-.main-list-listing.no-company {
+.main-list-listing .no-company {
     padding: 20px;
     background-color: lightgray;
 }

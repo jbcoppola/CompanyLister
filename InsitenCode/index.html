@@ -143,107 +143,104 @@
                     </div>
                 </div>
             </div>
-            <div class="main-card-listing text-center no-company" ng-show="displayedCompanyList==0 && ui=='Card'">
-                No results found.
-            </div>
-            <div class="main-list-listing text-center no-company" ng-show="displayedCompanyList==0 && ui=='List'">
-                No results found.
-            </div>
-
 
             <!--list of all companies-->
-            <div ng-repeat="company in displayedCompanyList" class="main-card-listing text-center" ng-show="ui=='Card'">
-
-                <!--top has company name and edit buttons-->
-                <div class="row top-row">
-                    <div class="col-md-8 col-md-offset-2 company-name">
-                        <span ng-hide="editMode">{{company.name}}</span>
-                        <input type="text" class="form-control" ng-show="editMode" ng-model="company.name" />
-                    </div>
-                    <div class="col-md-2">
-                        <span ng-hide="editMode" ng-click="editMode = true" class="btn btn-default glyphicon glyphicon-edit center-block"></span>
-                        <button class="btn btn-edit btn-default glyphicon glyphicon-saved center-block" ng-show="editMode" ng-click="editMode = false" ng-disabled="company.name==''"></button>
-                        <i ng-click="removeCompany($index)" class="btn btn-default glyphicon glyphicon-trash center-block"></i>
-                    </div>
+            <div class="main-card-listing text-center" ng-show="ui=='Card'">
+                <div class="no-company" ng-show="displayedCompanyList==0">
+                    No results found
                 </div>
-
-                <!--description of company in center-->
-                <div class="row info-row">
-                    <div class="col-md-12">
-                        <span ng-hide="editMode">{{company.information}}</span>
-                        <textarea class="form-control information" ng-show="editMode" ng-model="company.information"></textarea>
-                    </div>
-                </div>
-
-                <!--bottom row has details-->
-                <div class="row detail-row">
-                    <div class="col-md-3">
-                        <div class="row">
-                            <div class="col-xs-12 title-block">
-                                ID
-                            </div>
-                            <div class="col-xs-12">
-                                <span>{{company.id}}</span>
-                            </div>
+                <div ng-repeat="company in displayedCompanyList" >
+                    <!--top has company name and edit buttons-->
+                    <div class="row top-row">
+                        <div class="col-md-8 col-md-offset-2 company-name">
+                            <span ng-hide="editMode">{{company.name}}</span>
+                            <input type="text" class="form-control" ng-show="editMode" ng-model="company.name" />
+                        </div>
+                        <div class="col-md-2">
+                            <span ng-hide="editMode" ng-click="editMode = true" class="btn btn-default glyphicon glyphicon-edit center-block"></span>
+                            <button class="btn btn-edit btn-default glyphicon glyphicon-saved center-block" ng-show="editMode" ng-click="editMode = false" ng-disabled="company.name==''"></button>
+                            <i ng-click="removeCompany($index)" class="btn btn-default glyphicon glyphicon-trash center-block"></i>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="row">
-                            <div class="col-xs-12 title-block ">
-                                Contacts
-                            </div>
-                            <div class="col-xs-12" ng-repeat="contact in companyList[$index].contacts track by $index">
-                                <span ng-hide="editMode">{{company.contacts[$index]}}</span>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" ng-show="editMode" ng-model="company.contacts[$index]">
-                                    <span class="input-group-btn">
-                                        <button ng-show="editMode" ng-click="remove(company.contacts, $index)" class="btn btn-default glyphicon glyphicon-remove-circle"></button>
-                                    </span>
+
+                    <!--description of company in center-->
+                    <div class="row info-row">
+                        <div class="col-md-12">
+                            <span ng-hide="editMode">{{company.information}}</span>
+                            <textarea class="form-control information" ng-show="editMode" ng-model="company.information"></textarea>
+                        </div>
+                    </div>
+
+                    <!--bottom row has details-->
+                    <div class="row detail-row">
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-xs-12 title-block">
+                                    ID
+                                </div>
+                                <div class="col-xs-12">
+                                    <span>{{company.id}}</span>
                                 </div>
                             </div>
-                            <div class="col-xs-12">
-                                <form name="contactForm" class="input-group">
-                                    <input type="text" class="form-control" ng-show="editMode" ng-model="contactForm.contact" required>
-                                    <span class="input-group-btn">
-                                        <button ng-click="addEditContact(company.contacts, contactForm.contact); contactForm.contact=''" ng-show="editMode" class="btn btn-default glyphicon glyphicon-plus" ng-disabled="!contactForm.$valid"></button>
-                                    </span>
-                                </form>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-xs-12 title-block ">
+                                    Contacts
+                                </div>
+                                <div class="col-xs-12" ng-repeat="contact in companyList[$index].contacts track by $index">
+                                    <span ng-hide="editMode">{{company.contacts[$index]}}</span>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" ng-show="editMode" ng-model="company.contacts[$index]">
+                                        <span class="input-group-btn">
+                                            <button ng-show="editMode" ng-click="remove(company.contacts, $index)" class="btn btn-default glyphicon glyphicon-remove-circle"></button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <form name="contactForm" class="input-group">
+                                        <input type="text" class="form-control" ng-show="editMode" ng-model="contactForm.contact" required>
+                                        <span class="input-group-btn">
+                                            <button ng-click="addEditContact(company.contacts, contactForm.contact); contactForm.contact=''" ng-show="editMode" class="btn btn-default glyphicon glyphicon-plus" ng-disabled="!contactForm.$valid"></button>
+                                        </span>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="row">
-                            <div class="col-xs-12 title-block">
-                                Performance
-                            </div>
-                            <div class="col-xs-12">
-                                <span ng-hide="editMode">{{company.performance}}</span>
-                                <input type="text" class="form-control" ng-show="editMode" ng-model="company.performance" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="row">
-                            <div class="col-xs-12 title-block">
-                                Status
-                            </div>
-                            <div class="col-xs-12">
-                                <span ng-hide="editMode">{{company.status}}</span>
-                                <select name="status" id="status" class="form-control" ng-show="editMode" ng-model="company.status">
-                                    <option value="Researching">Researching</option>
-                                    <option value="Pending Approval">Pending Approval</option>
-                                    <option value="Approved">Approved</option>
-                                    <option value="Declined">Declined</option>
-                                </select>
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-xs-12 title-block">
+                                    Performance
+                                </div>
+                                <div class="col-xs-12">
+                                    <span ng-hide="editMode">{{company.performance}}</span>
+                                    <input type="text" class="form-control" ng-show="editMode" ng-model="company.performance" />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div> <!--end of detail row-->
-                <div class="row graph-row">
-
-                </div>
-            </div> <!--end of individual company listing-->
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-xs-12 title-block">
+                                    Status
+                                </div>
+                                <div class="col-xs-12">
+                                    <span ng-hide="editMode">{{company.status}}</span>
+                                    <select name="status" id="status" class="form-control" ng-show="editMode" ng-model="company.status">
+                                        <option value="Researching">Researching</option>
+                                        <option value="Pending Approval">Pending Approval</option>
+                                        <option value="Approved">Approved</option>
+                                        <option value="Declined">Declined</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!--end of detail row-->
+                </div> <!--end of individual company listing-->
+            </div>
             <div class="main-list-listing" ng-show="ui=='List'">
+                <div class="text-center no-company" ng-show="displayedCompanyList==0">
+                    No results found.
+                </div>
                 <!--title row-->
                 <div class="row title-row" ng-show="displayedCompanyList!=0">
                     <div class="col-xs-1">
