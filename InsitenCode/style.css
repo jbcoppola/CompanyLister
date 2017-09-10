@@ -79,15 +79,17 @@ h1 {
 .dropdown-menu li {
     cursor: pointer;
 }
-.btn-view-selected {
+.btn-view-selected,
+.btn-view-selected:focus {
     background-color: #0DA9FF;
     color: white;
+    border: 1px solid lightgray;
 }
 .btn-view-selected:hover,
-.btn-view-selected:focus,
 .btn-view-selected:active:focus {
     background-color:#66c9ff;
     color: white;
+    border: 1px solid lightgray;
 }
 
 /*PAGINATION*/
