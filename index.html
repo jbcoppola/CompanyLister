@@ -116,7 +116,7 @@
                 <div class="col-sm-6">
                     <div class="search-bar input-group input-group-lg" >
                         <div class="input-group-btn" uib-dropdown>
-                            <button id="field-button" type="button" class="btn btn-default" uib-dropdown-toggle>
+                            <button id="field-button" type="button" class="btn btn-default field-button" uib-dropdown-toggle>
                                 {{fieldButtonName}} <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="field-button">
@@ -128,7 +128,7 @@
                                 <li role="menuitem"><a ng-click="setField('performance', 'Performance')">Performance</a></li>
                             </ul>
                         </div>
-                        <input type="text" placeholder="search by field" class="form-control" ng-hide="field=='status'" ng-model="query" />
+                        <input type="text" placeholder="search by field" class="form-control text-search" ng-hide="field=='status'" ng-model="query" />
                         <select class="form-control status-dropdown" ng-model="query" ng-show="field=='status'">
                             <option></option>
                             <option>Approved</option>
