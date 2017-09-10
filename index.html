@@ -114,7 +114,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-6">
-                    <div class="search-bar input-group input-group-lg" >
+                    <form ng-submit="search()" class="search-bar input-group input-group-lg" >
                         <div class="input-group-btn" uib-dropdown>
                             <button id="field-button" type="button" class="btn btn-default" uib-dropdown-toggle>
                                 {{searchFieldButtonName}} <span class="caret"></span>
@@ -136,9 +136,9 @@
                             <option>Pending Approval</option>
                             <option>Rejected</option>
                         </select>
-                        <span class="btn btn-default glyphicon glyphicon-search input-group-addon" ng-click="search()">
+                        <span type="submit" class="btn btn-default glyphicon glyphicon-search input-group-addon" ng-click="search()">
                         </span>
-                    </div>
+                    </form>
                 </div>
             </div>
             <div class="main-card-listing text-center no-company" ng-show="displayedCompanyList==0 && ui=='Card'">
