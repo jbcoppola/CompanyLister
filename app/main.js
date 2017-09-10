@@ -3,7 +3,6 @@ var app = angular.module("Company", ['ui.bootstrap','ngAnimate']);
 
 //make controller
 app.controller("Company", function ($scope, $filter, $window) {
-    console.log($scope.xAxis);
     //populate with company data. the 'database'
     var data = 
         [
@@ -105,9 +104,8 @@ app.controller("Company", function ($scope, $filter, $window) {
     }
     //refreshes CompanyList with current relevant entries from data
     function updateCompanyList() {
-        var field = $scope.field;
-        var query = $scope.query;
-        switch (field) {
+        var query = $scope.query
+        switch ($scope.field) {
             case "id":
                 $scope.companyList = $filter('filter')(data, { "id": query });
                 break;
@@ -185,15 +183,15 @@ app.controller("Company", function ($scope, $filter, $window) {
     //start on a particular type of UI, "List" or "Card"
     $scope.ui = "Card";
 
-
     //choose which field to search for
     $scope.setField = function (field, buttonName) {
-        $scope.searchField = field;
-        $scope.searchFieldButtonName = buttonName;
+        $scope.field = field;
+        $scope.fieldButtonName = buttonName;
     }
 
     //initial field for search
     $scope.setField('company', 'Name');
+    console.log($scope.field);
 
     //default viewing data for pagination
     $scope.totalItems = $scope.companyList.length;
@@ -216,6 +214,9 @@ app.controller("Company", function ($scope, $filter, $window) {
     //keeps page populated with correct elements
     $scope.$watch("currentPage", function () {
         setPagingData($scope.companyList, $scope.currentPage);
+    });
+    $scope.$watch("query", function () {
+        updateView();
     });
 
     //controls how many entries are visible at once

@@ -114,10 +114,10 @@
             </div>
             <div class="row">
                 <div class="col-sm-6">
-                    <form ng-submit="search()" class="search-bar input-group input-group-lg" >
+                    <div class="search-bar input-group input-group-lg" >
                         <div class="input-group-btn" uib-dropdown>
                             <button id="field-button" type="button" class="btn btn-default" uib-dropdown-toggle>
-                                {{searchFieldButtonName}} <span class="caret"></span>
+                                {{fieldButtonName}} <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="field-button">
                                 <li role="menuitem"><a ng-click="setField('id', 'ID')">ID</a></li>
@@ -128,17 +128,17 @@
                                 <li role="menuitem"><a ng-click="setField('performance', 'Performance')">Performance</a></li>
                             </ul>
                         </div>
-                        <input type="text" placeholder="search by field" class="form-control" ng-hide="searchField=='status'" ng-model="searchQuery" />
-                        <select class="form-control" ng-model="searchQuery" ng-show="searchField=='status'">
+                        <input type="text" placeholder="search by field" class="form-control" ng-hide="field=='status'" ng-model="query" />
+                        <select class="form-control" ng-model="query" ng-show="field=='status'">
                             <option></option>
                             <option>Approved</option>
                             <option>Researching</option>
                             <option>Pending Approval</option>
-                            <option>Rejected</option>
+                            <option>Declined</option>
                         </select>
-                        <span type="submit" class="btn btn-default glyphicon glyphicon-search input-group-addon" ng-click="search()">
+                        <span class="btn btn-default glyphicon glyphicon-search input-group-addon" ng-click="search()">
                         </span>
-                    </form>
+                    </div>
                 </div>
             </div>
             <div class="main-card-listing text-center no-company" ng-show="displayedCompanyList==0 && ui=='Card'">
