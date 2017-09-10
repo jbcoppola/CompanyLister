@@ -15,12 +15,10 @@
     <script src="scripts/angular-animate.min.js"></script>
     <script src="scripts/d3/d3.min.js"></script>
     <script src="app/main.js"></script>
-    <script src="app/graph.js"></script>
     <meta charset="utf-8" />
 </head>
 
 <body>
-    <script type="text/javascript" src="app/graph.js"></script>
     <!--main container-->
     <div ng-app="Company" class="container-fluid" ng-controller="Company">
 
@@ -96,8 +94,8 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="btn-group btn-view" uib-dropdown is-open="status.isopen">
-                        <button class="glyphicon glyphicon-th-large btn btn-lg btn-default" ng-click="setUI('Card')" ng-show="listEnabled"></button>
-                        <button class="glyphicon glyphicon-list btn btn-lg btn-default" ng-click="setUI('List')" ng-show="listEnabled"></button>
+                        <button class="glyphicon glyphicon-th-large btn btn-lg btn-default" ng-class="{'btn-view-selected': ui=='Card'}" ng-click="setUI('Card')" ng-show="listEnabled"></button>
+                        <button class="glyphicon glyphicon-list btn btn-lg btn-default" ng-class="{'btn-view-selected': ui=='List'}" ng-click="setUI('List')" ng-show="listEnabled"></button>
                         <button id="single-button" type="button" class="btn btn-default btn-lg" uib-dropdown-toggle>
                             Display ( {{itemsPerPage}} ) <span class="caret"></span>
                         </button>
@@ -110,13 +108,13 @@
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <ul uib-pagination class="pull-right" total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage" boundary-link-numbers="true" rotate="false"></ul>
+                    <ul uib-pagination class="pagination-lg pull-right" total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage" boundary-link-numbers="true" rotate="false"></ul>
                 </div>
 
             </div>
             <div class="row">
-                <div class="col-md-4">
-                    <div class="search-bar input-group" >
+                <div class="col-sm-6">
+                    <div class="search-bar input-group input-group-lg" >
                         <div class="input-group-btn" uib-dropdown>
                             <button id="field-button" type="button" class="btn btn-default" uib-dropdown-toggle>
                                 {{searchFieldButtonName}} <span class="caret"></span>
@@ -130,7 +128,14 @@
                                 <li role="menuitem"><a ng-click="setField('performance', 'Performance')">Performance</a></li>
                             </ul>
                         </div>
-                        <input type="text" placeholder="search by field" class="form-control" ng-model="searchQuery" />
+                        <input type="text" placeholder="search by field" class="form-control" ng-hide="searchField=='status'" ng-model="searchQuery" />
+                        <select class="form-control" ng-model="searchQuery" ng-show="searchField=='status'">
+                            <option></option>
+                            <option>Approved</option>
+                            <option>Researching</option>
+                            <option>Pending Approval</option>
+                            <option>Rejected</option>
+                        </select>
                         <span class="btn btn-default glyphicon glyphicon-search input-group-addon" ng-click="search()">
                         </span>
                     </div>
@@ -320,7 +325,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <ul uib-pagination class="pull-right" total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage" boundary-link-numbers="true" rotate="false"></ul>
+                    <ul uib-pagination class="pagination-lg pull-right" total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage" boundary-link-numbers="true" rotate="false"></ul>
                 </div>
             </div>
         </div> <!--end of company list-->
