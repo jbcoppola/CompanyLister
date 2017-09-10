@@ -191,7 +191,7 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
     $scope.contactsForm = [{}];
 
     //start on a particular type of UI, "List" or "Card"
-    $scope.ui = "List";
+    $scope.ui = "Card";
 
     //choose which field to search for
     $scope.setField = function (field, buttonName) {
