@@ -246,7 +246,6 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
         data.unshift(company);
         $scope.addAlert("Company added!");
         $scope.isCollapsed = !$scope.isCollapsed;
-        console.log($scope.company.netIncome);
         $scope.company = {};
         //update views
         updateView();
