@@ -84,7 +84,9 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label for="netIncome">Net Income ($)</label>
-                            <input type="number" class="form-control" ng-model="company.netIncome" />
+                            <div ng-repeat="income in netIncomeForm">
+                                <input type="number" class="form-control" ng-model="company.netIncome[$index]" />
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <button ng-click="addCompany(company)" class="btn btn-lg btn-blue pull-right add-button" ng-disabled="!companyForm.$valid">

@@ -195,6 +195,7 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
 
     //empty array used for making contact divs in add company form
     $scope.contactsForm = [{}];
+    $scope.netIncomeForm = [{}];
 
     //start on a particular type of UI, "List" or "Card"
     $scope.ui = "List";
