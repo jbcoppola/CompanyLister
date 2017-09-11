@@ -241,14 +241,14 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
         //id is one greater than newest company, or 1 if it's the first entry
         if (data[0] == null) { company.id = 1 }
         else { company.id = Number(data[0].id) + 1 };
+        console.log(company.contacts);
+        console.log(company.netIncome);
         if (company.contacts == undefined) { company.contacts = [] };
         if (company.netIncome == undefined) { company.netIncome = [] };
         //goes at top so user can see it
         data.unshift(company);
         $scope.addAlert("Company added!");
         $scope.isCollapsed = !$scope.isCollapsed;
-        $scope.company.netIncome = [];
-        $scope.company.contacts = [];
         $scope.company = {};
         //update views
         updateView();
@@ -289,14 +289,15 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
     },
     //allows adding element in array within double ngrepeat
     $scope.addEditContact = function (array, contact) {
-        (array).push(contact);
+        array.push(contact);
         $scope.contactForm = {};
+        updateView();
     },
 
     $scope.addEditNetIncome = function (array, netIncome) {
-        
         array.push(netIncome);
         $scope.netIncomeForm = {};
+        updateView();
     },
 
     //delete company
