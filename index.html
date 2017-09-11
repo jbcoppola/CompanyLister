@@ -314,7 +314,7 @@
                             <span ng-hide="company.contacts[1]==undefined || detailMode || editMode"></span>
                         </div>
                         <div class="col-xs-2">
-                            <span ng-hide="editMode">{{company.netIncome[0]}}</span>
+                            <span ng-hide="editMode">${{company.netIncome[0]}} M</span>
                             <input type="text" class="form-control" ng-show="editMode" ng-model="company.netIncome[0]" />
                         </div>
                         <div class="col-xs-2">
