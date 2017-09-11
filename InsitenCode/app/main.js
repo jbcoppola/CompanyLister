@@ -240,10 +240,13 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
         //id is one greater than newest company, or 1 if it's the first entry
         if (data[0] == null) { company.id = 1 }
         else { company.id = Number(data[0].id) + 1 };
+        if (company.contacts == undefined) { company.contacts = [] };
+        if (company.netIncome == undefined) { company.netIncome = [] };
         //goes at top so user can see it
         data.unshift(company);
         $scope.addAlert("Company added!");
         $scope.isCollapsed = !$scope.isCollapsed;
+        console.log($scope.company.netIncome);
         $scope.company = {};
         //update views
         updateView();
@@ -257,7 +260,7 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
         $scope.alerts.splice(index, 1);
     };
 
-    //add new contact to company form
+    //add new contact to new company form
     $scope.addNewContact = function () {
         $scope.contactsForm.push({});
     },
@@ -282,13 +285,13 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
     $scope.addEditNetIncome = function (array, netIncome) {
         array.push(netIncome);
         $scope.netIncomeForm = {};
-    }
+    },
 
     //delete company
     $scope.removeCompany = function (index) {
         data.splice(selectCompany(index), 1);
         updateView();
-    }
+    },
     
     $scope.edit = function (index, editMode) {
         if (!editMode) {
