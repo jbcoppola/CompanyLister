@@ -202,6 +202,8 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
 
     //choose which field to search for
     $scope.setField = function (field, buttonName) {
+        if (field == 'contacts') { $scope.detailMode = true; }
+        else { $scope.detailMode = false; };
         $scope.field = field;
         $scope.fieldButtonName = buttonName;
     }
