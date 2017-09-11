@@ -290,4 +290,7 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
         updateView();
     }
     
+    $scope.updateView = function () {
+        updateView();
+    }
 });

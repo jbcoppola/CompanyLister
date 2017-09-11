@@ -163,7 +163,7 @@
                         </div>
                         <div class="col-md-2">
                             <span ng-hide="editMode" ng-click="editMode = true" class="btn btn-default glyphicon glyphicon-edit center-block"></span>
-                            <button class="btn btn-edit btn-default glyphicon glyphicon-saved center-block" ng-show="editMode" ng-click="editMode = false" ng-disabled="company.name==''"></button>
+                            <button class="btn btn-edit btn-default glyphicon glyphicon-saved center-block" ng-show="editMode" ng-click="editMode = false; updateView()" ng-disabled="company.name==''"></button>
                             <i ng-click="removeCompany($index)" class="btn btn-default glyphicon glyphicon-trash center-block"></i>
                         </div>
                     </div>
@@ -329,7 +329,7 @@
                         <div class="col-xs-2 text-center">
                             <div class="btn-group edit-delete">
                                 <button ng-hide="editMode" ng-click="editMode = true" class="btn btn-default btn-group-sm glyphicon glyphicon-edit"></button>
-                                <button class="btn btn-default btn-group-sm glyphicon glyphicon-saved" ng-show="editMode" ng-click="editMode = false" ng-disabled="company.name==''"></button>
+                                <button class="btn btn-default btn-group-sm glyphicon glyphicon-saved" ng-show="editMode" ng-click="editMode = false; updateView()" ng-disabled="company.name==''"></button>
                                 <button ng-click="removeCompany($index)" class="btn btn-default btn-group-sm glyphicon glyphicon-trash"></button>
                             </div>
                         </div>
