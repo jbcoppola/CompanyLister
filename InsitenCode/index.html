@@ -163,7 +163,7 @@
                         </div>
                         <div class="col-md-2">
                             <span ng-hide="company.editMode" ng-click="currentlyEditing || edit($index, company.editMode)" class="btn btn-default glyphicon glyphicon-edit center-block"></span>
-                            <button class="btn btn-edit btn-default glyphicon glyphicon-saved center-block" ng-show="company.editMode" ng-click="edit($index, company.editMode)" ng-disabled="company.name==''"></button>
+                            <button class="btn btn-edit btn-default glyphicon glyphicon-saved center-block" ng-show="company.editMode" ng-click="edit($index, company.editMode)" ng-disabled="company.name=='' || !netIncomeForm.$valid"></button>
                             <i ng-click="removeCompany($index)" class="btn btn-default glyphicon glyphicon-trash center-block"></i>
                         </div>
                     </div>
@@ -216,24 +216,27 @@
                             <div class="row">
                                 <div class="col-xs-12 title-block">
                                     Net Income
+                                    <span ng-show="company.editMode"> (must be numbers)</span>
                                 </div>
-                                <div class="col-xs-12" ng-repeat="income in company.netIncome">
-                                    <span ng-hide="company.editMode || income==undefined">${{income}}</span>
-                                    <div class="input-group">
-                                        <input type="number" class="form-control" ng-show="company.editMode" ng-model="editForm.netIncome[$index]">
-                                        <span class="input-group-btn">
-                                            <button ng-show="company.editMode" ng-click="remove(company.netIncome, $index)" class="btn btn-default glyphicon glyphicon-remove-circle"></button>
-                                        </span>
+                                <form name="netIncomeForm">
+                                    <div class="col-xs-12" ng-repeat="income in company.netIncome track by $index">
+                                        <span ng-hide="company.editMode || income==undefined">${{income}}</span>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" ng-show="company.editMode" ng-model="editForm.netIncome[$index]" required>
+                                            <span class="input-group-btn">
+                                                <button ng-show="company.editMode" ng-click="remove(editForm.netIncome, $index)" class="btn btn-default glyphicon glyphicon-remove-circle"></button>
+                                            </span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xs-12">
-                                    <form name="netIncomeForm" class="input-group">
-                                        <input type="number" class="form-control" ng-show="company.editMode" ng-model="netIncomeForm.netIncome" required>
-                                        <span class="input-group-btn">
-                                            <button ng-click="addEditNetIncome(company.netIncome, netIncomeForm.netIncome); netIncomeForm.netIncome=''" ng-show="company.editMode" class="btn btn-default glyphicon glyphicon-plus" ng-disabled="!netIncomeForm.$valid"></button>
-                                        </span>
-                                    </form>
-                                </div>
+                                </form>
+                                    <div class="col-xs-12">
+                                        <form name="addNetIncome" class="input-group">
+                                            <input type="number" class="form-control" ng-show="company.editMode" ng-model="editForm.netIncomeForm.netIncome">
+                                            <span class="input-group-btn">
+                                                <button ng-click="addEditNetIncome(editForm.netIncome, editForm.netIncomeForm.netIncome); editForm.netIncomeForm.netIncome=''" ng-show="company.editMode" class="btn btn-default glyphicon glyphicon-plus" ng-disabled="!addNetIncome.$valid"></button>
+                                            </span>
+                                        </form>
+                                    </div>
                             </div>
                         </div>
                         <div class="col-md-3">
