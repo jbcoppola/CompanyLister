@@ -236,7 +236,7 @@
                                     <form name="addNetIncome" class="input-group">
                                         <input type="number" class="form-control" ng-show="company.editMode" ng-model="editForm.netIncomeForm.netIncome">
                                         <span class="input-group-btn">
-                                            <button ng-click="addEditNetIncome(editForm.netIncome, editForm.netIncomeForm.netIncome); editForm.netIncomeForm.netIncome=''" ng-show="company.editMode" class="btn btn-default glyphicon glyphicon-plus" ng-disabled="!addNetIncome.$valid"></button>
+                                            <button ng-click="addEditNetIncome(editForm.netIncome, editForm.netIncomeForm.netIncome); editForm.netIncomeForm.netIncome=''" ng-show="company.editMode" class="btn btn-default glyphicon glyphicon-plus" ng-disabled="!addNetIncome.$valid || editForm.netIncomeForm.netIncome==undefined"></button>
                                         </span>
                                     </form>
                                 </div>
@@ -335,7 +335,7 @@
                                 <form name="addNetIncome" class="input-group">
                                     <input type="number" class="form-control" ng-show="company.editMode" ng-model="editForm.netIncomeForm.netIncome">
                                     <span class="input-group-btn">
-                                        <button ng-click="addEditNetIncome(editForm.netIncome, editForm.netIncomeForm.netIncome); editForm.netIncomeForm.netIncome=''" ng-show="company.editMode" class="btn btn-default glyphicon glyphicon-plus" ng-disabled="!addNetIncome.$valid"></button>
+                                        <button ng-click="addEditNetIncome(editForm.netIncome, editForm.netIncomeForm.netIncome); editForm.netIncomeForm.netIncome=''" ng-show="company.editMode" class="btn btn-default glyphicon glyphicon-plus" ng-disabled="!addNetIncome.$valid || editForm.netIncomeForm.netIncome==undefined"></button>
                                     </span>
                                 </form>
                             </div>
