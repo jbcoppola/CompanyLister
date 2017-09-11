@@ -195,7 +195,7 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
 
     //empty array used for making contact divs in add company form
     $scope.contactsForm = [{}];
-    $scope.netIncomeForm = [{}];
+    $scope.addNetIncomeForm = [{}];
 
     //start on a particular type of UI, "List" or "Card"
     $scope.ui = "List";
@@ -247,6 +247,8 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
         data.unshift(company);
         $scope.addAlert("Company added!");
         $scope.isCollapsed = !$scope.isCollapsed;
+        $scope.company.netIncome = [];
+        $scope.company.contacts = [];
         $scope.company = {};
         //update views
         updateView();
@@ -287,11 +289,12 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
     },
     //allows adding element in array within double ngrepeat
     $scope.addEditContact = function (array, contact) {
-        array.push(contact);
+        (array).push(contact);
         $scope.contactForm = {};
     },
 
     $scope.addEditNetIncome = function (array, netIncome) {
+        
         array.push(netIncome);
         $scope.netIncomeForm = {};
     },
