@@ -2,7 +2,7 @@
 var app = angular.module("Company", ['ui.bootstrap','ngAnimate']);
 
 //make controller
-app.controller("Company", function ($scope, $filter, $window, $http) {
+app.controller("Company", function ($scope, $filter, $window) {
 
     data = [
         {
@@ -257,10 +257,10 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
         updateView();
     },
 
+    //add and remove alert popups to its array
     $scope.addAlert = function (message) {
         $scope.alerts.push({ msg: message });
     };
-
     $scope.closeAlert = function (index) {
         $scope.alerts.splice(index, 1);
     };

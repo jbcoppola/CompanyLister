@@ -11,12 +11,6 @@ body {
     top: 0px;
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
-}
-
 /*HEADER*/
 
 .header {
@@ -33,6 +27,7 @@ h1 {
     margin: 0px;
     font-weight: bolder;
 }
+
 /*COLLAPSIBLE FORM*/
 
 .main-area .add-company {
@@ -275,9 +270,6 @@ h1 {
     overflow: hidden;
     width: 75%;
 }
-.main-list-listing .first-item {
-    
-}
 .main-list-listing .last-item {
     margin-bottom: 50px;
 }
@@ -297,23 +289,6 @@ footer {
     padding: 27px;
     font-size: 50px;
     margin: 0px;
-}
-.green-banner .btn {
-    padding: 15px;
-    border: 7px solid white;
-    border-radius: 20px;
-    color: white;
-    background-color: none;
-    margin: 20px 0px;
-}
-.green-banner .btn:hover {
-    color: white;
-    text-decoration: none;
-    background-color: rgba(255,255,255,0.3);
-}
-.green-banner .btn:active,
-.green-banner .btn:focus {
-    background-color: rgba(255,255,255,0.6);
 }
 
 /*removes side padding under certain window/screen size*/
