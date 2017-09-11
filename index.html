@@ -83,8 +83,8 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="Performance">Performance</label>
-                            <input type="text" class="form-control" ng-model="company.performance" />
+                            <label for="netIncome">Net Income</label>
+                            <input type="text" class="form-control" ng-model="company.netIncome" />
                         </div>
                         <div class="col-md-6">
                             <button ng-click="addCompany(company)" class="btn btn-lg btn-blue pull-right add-button" ng-disabled="!companyForm.$valid">
@@ -129,16 +129,21 @@
                                 <li role="menuitem"><a ng-click="setField('name', 'Name')">Name</a></li>
                                 <li role="menuitem"><a ng-click="setField('status', 'Status')">Status</a></li>
                                 <li role="menuitem"><a ng-click="setField('contacts', 'Contacts')">Contacts</a></li>
-                                <li role="menuitem"><a ng-click="setField('performance', 'Performance')">Performance</a></li>
+                                <li role="menuitem"><a ng-click="setField('netIncome', 'Net Income')">Net Income</a></li>
                             </ul>
                         </div>
-                        <input type="text" placeholder="search by field" class="form-control text-search" ng-hide="field=='status'" ng-model="query" />
+                        <input type="text" placeholder="search by field" class="form-control text-search" ng-hide="field=='status' || field=='netIncome'" ng-model="query" />
                         <select class="form-control status-dropdown" ng-model="query" ng-show="field=='status'">
                             <option></option>
                             <option>Approved</option>
                             <option>Researching</option>
                             <option>Pending Approval</option>
                             <option>Declined</option>
+                        </select>
+                        <select class="form-control status-dropdown" ng-model="query" ng-show="field=='netIncome'">
+                            <option></option>
+                            <option>Positive</option>
+                            <option>Negative</option>
                         </select>
                     </div>
                 </div>
@@ -188,7 +193,7 @@
                                 <div class="col-xs-12 title-block ">
                                     Contacts
                                 </div>
-                                <div class="col-xs-12" ng-repeat="contact in companyList[$index].contacts track by $index">
+                                <div class="col-xs-12" ng-repeat="contact in company.contacts track by $index">
                                     <span ng-hide="editMode">{{company.contacts[$index]}}</span>
                                     <div class="input-group">
                                         <input type="text" class="form-control" ng-show="editMode" ng-model="company.contacts[$index]">
@@ -210,11 +215,24 @@
                         <div class="col-md-3">
                             <div class="row">
                                 <div class="col-xs-12 title-block">
-                                    Performance
+                                    Net Income
+                                </div>
+                                <div class="col-xs-12" ng-repeat="income in company.netIncome">
+                                    <span ng-hide="editMode">${{income}} M</span>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" ng-show="editMode" ng-model="company.netIncome[$index]">
+                                        <span class="input-group-btn">
+                                            <button ng-show="editMode" ng-click="remove(company.netIncome, $index)" class="btn btn-default glyphicon glyphicon-remove-circle"></button>
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="col-xs-12">
-                                    <span ng-hide="editMode">{{company.performance}}</span>
-                                    <input type="text" class="form-control" ng-show="editMode" ng-model="company.performance" />
+                                    <form name="netIncomeForm" class="input-group">
+                                        <input type="number" class="form-control" ng-show="editMode" ng-model="netIncomeForm.netIncome" required>
+                                        <span class="input-group-btn">
+                                            <button ng-click="addEditNetIncome(company.netIncome, netIncomeForm.netIncome); netIncomeForm.netIncome=''" ng-show="editMode" class="btn btn-default glyphicon glyphicon-plus" ng-disabled="!netIncomeForm.$valid"></button>
+                                        </span>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -253,7 +271,7 @@
                         Contacts
                     </div>
                     <div class="col-xs-2">
-                        Performance
+                        Net Income
                     </div>
                     <div class="col-xs-2">
                         Status
@@ -296,8 +314,8 @@
                             <span ng-hide="company.contacts[1]==undefined || detailMode || editMode"></span>
                         </div>
                         <div class="col-xs-2">
-                            <span ng-hide="editMode">{{company.performance}}</span>
-                            <input type="text" class="form-control" ng-show="editMode" ng-model="company.performance" />
+                            <span ng-hide="editMode">{{company.netIncome}}</span>
+                            <input type="text" class="form-control" ng-show="editMode" ng-model="company.netIncome" />
                         </div>
                         <div class="col-xs-2">
                             <span ng-hide="editMode">{{company.status}}</span>
