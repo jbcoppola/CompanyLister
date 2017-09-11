@@ -74,17 +74,17 @@
                         </div>
                         <div class="col-md-6">
                             <label>Contacts</label>
-                            <div ng-repeat="contact in contactsForm">
+                            <div ng-repeat="contact in company.contacts track by $index">
                                 <input type="text" class="form-control contact-form" ng-model="company.contacts[$index]" />
                             </div>
                             <span ng-click="addNewContact()" class="btn btn-default">Add Contact</span>
-                            <span ng-click="deleteContact()" class="btn btn-default" ng-show="contactsForm[1]!=null">Remove Contact</span>
+                            <span ng-click="deleteContact()" class="btn btn-default" ng-show="company.contacts[1]!=null">Remove Contact</span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <label for="netIncome">Net Income ($)</label>
-                            <div ng-repeat="income in addNetIncomeForm">
+                            <div ng-repeat="income in company.netIncome track by $index">
                                 <input type="number" class="form-control" ng-model="company.netIncome[$index]" />
                             </div>
                         </div>
