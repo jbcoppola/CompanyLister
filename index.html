@@ -84,7 +84,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label for="netIncome">Net Income ($)</label>
-                            <div ng-repeat="income in netIncomeForm">
+                            <div ng-repeat="income in addNetIncomeForm">
                                 <input type="number" class="form-control" ng-model="company.netIncome[$index]" />
                             </div>
                         </div>
@@ -204,7 +204,7 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control" ng-show="company.editMode" ng-model="editForm.contacts[$index]">
                                         <span class="input-group-btn">
-                                            <button ng-show="company.editMode" ng-click="remove(company.contacts, $index)" class="btn btn-default glyphicon glyphicon-remove-circle"></button>
+                                            <button ng-show="company.editMode" ng-click="remove(editForm.contacts, $index)" class="btn btn-default glyphicon glyphicon-remove-circle"></button>
                                         </span>
                                     </div>
                                 </div>
@@ -305,7 +305,7 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control" ng-show="company.editMode" ng-model="editForm.contacts[$index]">
                                         <span class="input-group-btn">
-                                            <button ng-show="company.editMode" ng-click="remove(company.contacts, $index)" class="btn btn-default glyphicon glyphicon-remove-circle"></button>
+                                            <button ng-show="company.editMode" ng-click="remove(editForm.contacts, $index)" class="btn btn-default glyphicon glyphicon-remove-circle"></button>
                                         </span>
                                     </div>
                                 </div>
@@ -314,7 +314,7 @@
                                 <form name="contactForm" class="input-group">
                                     <input type="text" class="form-control" ng-show="company.editMode" ng-model="contactForm.contact" required>
                                     <span class="input-group-btn">
-                                        <button ng-click="addEditContact(company.contacts, contactForm.contact); contactForm.contact=''" ng-show="company.editMode" class="btn btn-default glyphicon glyphicon-plus" ng-disabled="!contactForm.$valid"></button>
+                                        <button ng-click="addEditContact(editForm.contacts, contactForm.contact); contactForm.contact=''" ng-show="company.editMode" class="btn btn-default glyphicon glyphicon-plus" ng-disabled="!contactForm.$valid"></button>
                                     </span>
                                 </form>
                             </div>
