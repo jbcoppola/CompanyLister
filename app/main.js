@@ -259,6 +259,15 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
         $scope.alerts.splice(index, 1);
     };
 
+    //cancels in progress edits on page change
+    $scope.changePage = function () {
+        if ($scope.currentlyEditing == true) {
+            $scope.companyList[$scope.editCompany].editMode = false;
+            $scope.editForm = {};
+            $scope.currentlyEditing = false;
+        };
+    }
+
     //add new contact to new company form
     $scope.addNewContact = function () {
         $scope.contactsForm.push({});
@@ -296,11 +305,13 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
         if (!editMode) {
             $scope.currentlyEditing = true;
             $scope.displayedCompanyList[index].editMode = true;
+            $scope.editCompany = index;
             $scope.editForm = data[selectCompany(index)];
         }
         else {
             $scope.currentlyEditing = false;
             $scope.displayedCompanyList[index].editMode = false;
+            $scope.editCompany = selectCompany(index);
             data[selectCompany(index)] = $scope.editForm;
         }
     }
