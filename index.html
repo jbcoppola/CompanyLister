@@ -44,10 +44,10 @@
                     </button>
                 </div>
                 <div class="col-xs-9">
-                    
+
                 </div>
             </div>
-            
+
 
             <!--this section can be collapsed and hidden-->
             <div uib-collapse="isCollapsed">
@@ -83,8 +83,8 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="netIncome">Net Income</label>
-                            <input type="text" class="form-control" ng-model="company.netIncome" />
+                            <label for="netIncome">Net Income ($)</label>
+                            <input type="number" class="form-control" ng-model="company.netIncome" />
                         </div>
                         <div class="col-md-6">
                             <button ng-click="addCompany(company)" class="btn btn-lg btn-blue pull-right add-button" ng-disabled="!companyForm.$valid">
@@ -154,16 +154,16 @@
                 <div class="no-company" ng-show="displayedCompanyList==0">
                     No results found
                 </div>
-                <div ng-repeat="company in displayedCompanyList" >
+                <div ng-repeat="company in displayedCompanyList">
                     <!--top has company name and edit buttons-->
                     <div class="row top-row">
                         <div class="col-md-8 col-md-offset-2 company-name">
-                            <span ng-hide="editMode">{{company.name}}</span>
-                            <input type="text" class="form-control" ng-show="editMode" ng-model="company.name" />
+                            <span ng-hide="company.editMode">{{company.name}}</span>
+                            <input type="text" class="form-control" ng-show="company.editMode" ng-model="editForm.name" />
                         </div>
                         <div class="col-md-2">
-                            <span ng-hide="editMode" ng-click="editMode = true" class="btn btn-default glyphicon glyphicon-edit center-block"></span>
-                            <button class="btn btn-edit btn-default glyphicon glyphicon-saved center-block" ng-show="editMode" ng-click="editMode = false; updateView()" ng-disabled="company.name==''"></button>
+                            <span ng-hide="company.editMode" ng-click="currentlyEditing || edit($index, company.editMode)" class="btn btn-default glyphicon glyphicon-edit center-block"></span>
+                            <button class="btn btn-edit btn-default glyphicon glyphicon-saved center-block" ng-show="company.editMode" ng-click="edit($index, company.editMode)" ng-disabled="company.name==''"></button>
                             <i ng-click="removeCompany($index)" class="btn btn-default glyphicon glyphicon-trash center-block"></i>
                         </div>
                     </div>
@@ -171,8 +171,8 @@
                     <!--description of company in center-->
                     <div class="row info-row">
                         <div class="col-md-12">
-                            <span ng-hide="editMode">{{company.information}}</span>
-                            <textarea class="form-control information" ng-show="editMode" ng-model="company.information"></textarea>
+                            <span ng-hide="company.editMode">{{company.information}}</span>
+                            <textarea class="form-control information" ng-show="company.editMode" ng-model="editForm.information"></textarea>
                         </div>
                     </div>
 
@@ -194,19 +194,19 @@
                                     Contacts
                                 </div>
                                 <div class="col-xs-12" ng-repeat="contact in company.contacts track by $index">
-                                    <span ng-hide="editMode">{{company.contacts[$index]}}</span>
+                                    <span ng-hide="company.editMode">{{company.contacts[$index]}}</span>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" ng-show="editMode" ng-model="company.contacts[$index]">
+                                        <input type="text" class="form-control" ng-show="company.editMode" ng-model="editForm.contacts[$index]">
                                         <span class="input-group-btn">
-                                            <button ng-show="editMode" ng-click="remove(company.contacts, $index)" class="btn btn-default glyphicon glyphicon-remove-circle"></button>
+                                            <button ng-show="company.editMode" ng-click="remove(company.contacts, $index)" class="btn btn-default glyphicon glyphicon-remove-circle"></button>
                                         </span>
                                     </div>
                                 </div>
                                 <div class="col-xs-12">
                                     <form name="contactForm" class="input-group">
-                                        <input type="text" class="form-control" ng-show="editMode" ng-model="contactForm.contact" required>
+                                        <input type="text" class="form-control" ng-show="company.editMode" ng-model="contactForm.contact" required>
                                         <span class="input-group-btn">
-                                            <button ng-click="addEditContact(company.contacts, contactForm.contact); contactForm.contact=''" ng-show="editMode" class="btn btn-default glyphicon glyphicon-plus" ng-disabled="!contactForm.$valid"></button>
+                                            <button ng-click="addEditContact(company.contacts, contactForm.contact); contactForm.contact=''" ng-show="company.editMode" class="btn btn-default glyphicon glyphicon-plus" ng-disabled="!contactForm.$valid"></button>
                                         </span>
                                     </form>
                                 </div>
@@ -218,19 +218,19 @@
                                     Net Income
                                 </div>
                                 <div class="col-xs-12" ng-repeat="income in company.netIncome">
-                                    <span ng-hide="editMode">${{income}} M</span>
+                                    <span ng-hide="company.editMode || income==undefined">${{income}}</span>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" ng-show="editMode" ng-model="company.netIncome[$index]">
+                                        <input type="number" class="form-control" ng-show="company.editMode" ng-model="editForm.netIncome[$index]">
                                         <span class="input-group-btn">
-                                            <button ng-show="editMode" ng-click="remove(company.netIncome, $index)" class="btn btn-default glyphicon glyphicon-remove-circle"></button>
+                                            <button ng-show="company.editMode" ng-click="remove(company.netIncome, $index)" class="btn btn-default glyphicon glyphicon-remove-circle"></button>
                                         </span>
                                     </div>
                                 </div>
                                 <div class="col-xs-12">
                                     <form name="netIncomeForm" class="input-group">
-                                        <input type="number" class="form-control" ng-show="editMode" ng-model="netIncomeForm.netIncome" required>
+                                        <input type="number" class="form-control" ng-show="company.editMode" ng-model="netIncomeForm.netIncome" required>
                                         <span class="input-group-btn">
-                                            <button ng-click="addEditNetIncome(company.netIncome, netIncomeForm.netIncome); netIncomeForm.netIncome=''" ng-show="editMode" class="btn btn-default glyphicon glyphicon-plus" ng-disabled="!netIncomeForm.$valid"></button>
+                                            <button ng-click="addEditNetIncome(company.netIncome, netIncomeForm.netIncome); netIncomeForm.netIncome=''" ng-show="company.editMode" class="btn btn-default glyphicon glyphicon-plus" ng-disabled="!netIncomeForm.$valid"></button>
                                         </span>
                                     </form>
                                 </div>
@@ -242,8 +242,8 @@
                                     Status
                                 </div>
                                 <div class="col-xs-12">
-                                    <span ng-hide="editMode">{{company.status}}</span>
-                                    <select name="status" id="status" class="form-control" ng-show="editMode" ng-model="company.status">
+                                    <span ng-hide="company.editMode">{{company.status}}</span>
+                                    <select name="status" id="status" class="form-control" ng-show="company.editMode" ng-model="editForm.status">
                                         <option value="Researching">Researching</option>
                                         <option value="Pending Approval">Pending Approval</option>
                                         <option value="Approved">Approved</option>
@@ -286,40 +286,40 @@
                             {{company.id}}
                         </div>
                         <div class="col-xs-2 company-name">
-                            <span class="list-name-button btn btn-defult" ng-click="detailMode = !detailMode" ng-hide="editMode">{{company.name}}</span>
-                            <input type="text" class="form-control" ng-show="editMode" ng-model="company.name" />
+                            <span class="list-name-button btn btn-defult" ng-click="detailMode = !detailMode" ng-hide="company.editMode">{{company.name}}</span>
+                            <input type="text" class="form-control" ng-show="company.editMode" ng-model="company.name" />
                         </div>
                         <div class="col-xs-3">
 
-                            <div class="row" ng-show="detailMode || editMode">
+                            <div class="row" ng-show="detailMode || company.editMode">
                                 <div class="col-xs-12" ng-repeat="contact in displayedCompanyList[$index].contacts track by $index">
-                                    <span ng-hide="editMode">{{company.contacts[$index]}}</span>
+                                    <span ng-hide="company.editMode">{{company.contacts[$index]}}</span>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" ng-show="editMode" ng-model="company.contacts[$index]">
+                                        <input type="text" class="form-control" ng-show="company.editMode" ng-model="company.contacts[$index]">
                                         <span class="input-group-btn">
-                                            <button ng-show="editMode" ng-click="remove(company.contacts, $index)" class="btn btn-default glyphicon glyphicon-remove-circle"></button>
+                                            <button ng-show="company.editMode" ng-click="remove(company.contacts, $index)" class="btn btn-default glyphicon glyphicon-remove-circle"></button>
                                         </span>
                                     </div>
                                 </div>
                             </div>
-                            <span ng-hide="editMode || detailMode">{{company.contacts[0]}}</span>
+                            <span ng-hide="company.editMode || detailMode">{{company.contacts[0]}}</span>
                             <div class="col-xs-12">
                                 <form name="contactForm" class="input-group">
-                                    <input type="text" class="form-control" ng-show="editMode" ng-model="contactForm.contact" required>
+                                    <input type="text" class="form-control" ng-show="company.editMode" ng-model="contactForm.contact" required>
                                     <span class="input-group-btn">
-                                        <button ng-click="addEditContact(company.contacts, contactForm.contact); contactForm.contact=''" ng-show="editMode" class="btn btn-default glyphicon glyphicon-plus" ng-disabled="!contactForm.$valid"></button>
+                                        <button ng-click="addEditContact(company.contacts, contactForm.contact); contactForm.contact=''" ng-show="company.editMode" class="btn btn-default glyphicon glyphicon-plus" ng-disabled="!contactForm.$valid"></button>
                                     </span>
                                 </form>
                             </div>
-                            <span ng-hide="company.contacts[1]==undefined || detailMode || editMode"></span>
+                            <span ng-hide="company.contacts[1]==undefined || detailMode || company.editMode"></span>
                         </div>
                         <div class="col-xs-2">
-                            <span ng-hide="editMode">${{company.netIncome[0]}} M</span>
-                            <input type="text" class="form-control" ng-show="editMode" ng-model="company.netIncome[0]" />
+                            <span ng-hide="company.editMode || company.netIncome[0]==''">${{company.netIncome[0]}}</span>
+                            <input type="number" class="form-control" ng-show="company.editMode" ng-model="company.netIncome[0]" />
                         </div>
                         <div class="col-xs-2">
-                            <span ng-hide="editMode">{{company.status}}</span>
-                            <select name="status" id="status" class="form-control" ng-show="editMode" ng-model="company.status">
+                            <span ng-hide="company.editMode">{{company.status}}</span>
+                            <select name="status" id="status" class="form-control" ng-show="company.editMode" ng-model="company.status">
                                 <option value="Researching">Researching</option>
                                 <option value="Pending Approval">Pending Approval</option>
                                 <option value="Approved">Approved</option>
@@ -328,8 +328,8 @@
                         </div>
                         <div class="col-xs-2 text-center">
                             <div class="btn-group edit-delete">
-                                <button ng-hide="editMode" ng-click="editMode = true" class="btn btn-default btn-group-sm glyphicon glyphicon-edit"></button>
-                                <button class="btn btn-default btn-group-sm glyphicon glyphicon-saved" ng-show="editMode" ng-click="editMode = false; updateView()" ng-disabled="company.name==''"></button>
+                                <button ng-hide="company.editMode" ng-click="company.editMode = true" class="btn btn-default btn-group-sm glyphicon glyphicon-edit"></button>
+                                <button class="btn btn-default btn-group-sm glyphicon glyphicon-saved" ng-show="company.editMode" ng-click="company.editMode = false; updateView()" ng-disabled="company.name==''"></button>
                                 <button ng-click="removeCompany($index)" class="btn btn-default btn-group-sm glyphicon glyphicon-trash"></button>
                             </div>
                         </div>
@@ -342,8 +342,7 @@
                     <ul uib-pagination class="pagination-lg pull-right" total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage" boundary-link-numbers="true" rotate="false"></ul>
                 </div>
             </div>
-        </div>
-    </div> <!--end of company list-->
+        </div> <!--end of company list-->
     </div> <!--end of main container-->
     <footer class="navbar-default green-banner">
         <div>
