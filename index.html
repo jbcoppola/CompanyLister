@@ -229,14 +229,14 @@
                                         </div>
                                     </div>
                                 </form>
-                                    <div class="col-xs-12">
-                                        <form name="addNetIncome" class="input-group">
-                                            <input type="number" class="form-control" ng-show="company.editMode" ng-model="editForm.netIncomeForm.netIncome">
-                                            <span class="input-group-btn">
-                                                <button ng-click="addEditNetIncome(editForm.netIncome, editForm.netIncomeForm.netIncome); editForm.netIncomeForm.netIncome=''" ng-show="company.editMode" class="btn btn-default glyphicon glyphicon-plus" ng-disabled="!addNetIncome.$valid"></button>
-                                            </span>
-                                        </form>
-                                    </div>
+                                <div class="col-xs-12">
+                                    <form name="addNetIncome" class="input-group">
+                                        <input type="number" class="form-control" ng-show="company.editMode" ng-model="editForm.netIncomeForm.netIncome">
+                                        <span class="input-group-btn">
+                                            <button ng-click="addEditNetIncome(editForm.netIncome, editForm.netIncomeForm.netIncome); editForm.netIncomeForm.netIncome=''" ng-show="company.editMode" class="btn btn-default glyphicon glyphicon-plus" ng-disabled="!addNetIncome.$valid"></button>
+                                        </span>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -290,22 +290,21 @@
                         </div>
                         <div class="col-xs-2 company-name">
                             <span class="list-name-button btn btn-defult" ng-click="detailMode = !detailMode" ng-hide="company.editMode">{{company.name}}</span>
-                            <input type="text" class="form-control" ng-show="company.editMode" ng-model="company.name" />
+                            <input type="text" class="form-control" ng-show="company.editMode" ng-model="editForm.name" />
                         </div>
                         <div class="col-xs-3">
-
+                            <span ng-hide="company.editMode || detailMode">{{company.contacts[0]}}</span>
                             <div class="row" ng-show="detailMode || company.editMode">
                                 <div class="col-xs-12" ng-repeat="contact in displayedCompanyList[$index].contacts track by $index">
                                     <span ng-hide="company.editMode">{{company.contacts[$index]}}</span>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" ng-show="company.editMode" ng-model="company.contacts[$index]">
+                                        <input type="text" class="form-control" ng-show="company.editMode" ng-model="editForm.contacts[$index]">
                                         <span class="input-group-btn">
                                             <button ng-show="company.editMode" ng-click="remove(company.contacts, $index)" class="btn btn-default glyphicon glyphicon-remove-circle"></button>
                                         </span>
                                     </div>
                                 </div>
                             </div>
-                            <span ng-hide="company.editMode || detailMode">{{company.contacts[0]}}</span>
                             <div class="col-xs-12">
                                 <form name="contactForm" class="input-group">
                                     <input type="text" class="form-control" ng-show="company.editMode" ng-model="contactForm.contact" required>
@@ -317,12 +316,30 @@
                             <span ng-hide="company.contacts[1]==undefined || detailMode || company.editMode"></span>
                         </div>
                         <div class="col-xs-2">
-                            <span ng-hide="company.editMode || company.netIncome[0]==''">${{company.netIncome[0]}}</span>
-                            <input type="number" class="form-control" ng-show="company.editMode" ng-model="company.netIncome[0]" />
+                            <span ng-hide="company.editMode || detailMode || company.netIncome[0]==''">${{company.netIncome[0]}}</span>
+                            <form name="netIncomeForm" ng-show="detailMode || company.editMode">
+                                <div class="col-xs-12" ng-repeat="income in company.netIncome track by $index">
+                                    <span ng-hide="company.editMode || income==undefined">${{income}}</span>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" ng-show="company.editMode" ng-model="editForm.netIncome[$index]" required>
+                                        <span class="input-group-btn">
+                                            <button ng-show="company.editMode" ng-click="remove(editForm.netIncome, $index)" class="btn btn-default glyphicon glyphicon-remove-circle"></button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="col-xs-12">
+                                <form name="addNetIncome" class="input-group">
+                                    <input type="number" class="form-control" ng-show="company.editMode" ng-model="editForm.netIncomeForm.netIncome">
+                                    <span class="input-group-btn">
+                                        <button ng-click="addEditNetIncome(editForm.netIncome, editForm.netIncomeForm.netIncome); editForm.netIncomeForm.netIncome=''" ng-show="company.editMode" class="btn btn-default glyphicon glyphicon-plus" ng-disabled="!addNetIncome.$valid"></button>
+                                    </span>
+                                </form>
+                            </div>
                         </div>
                         <div class="col-xs-2">
                             <span ng-hide="company.editMode">{{company.status}}</span>
-                            <select name="status" id="status" class="form-control" ng-show="company.editMode" ng-model="company.status">
+                            <select name="status" id="status" class="form-control" ng-show="company.editMode" ng-model="editForm.status">
                                 <option value="Researching">Researching</option>
                                 <option value="Pending Approval">Pending Approval</option>
                                 <option value="Approved">Approved</option>
@@ -331,8 +348,8 @@
                         </div>
                         <div class="col-xs-2 text-center">
                             <div class="btn-group edit-delete">
-                                <button ng-hide="company.editMode" ng-click="company.editMode = true" class="btn btn-default btn-group-sm glyphicon glyphicon-edit"></button>
-                                <button class="btn btn-default btn-group-sm glyphicon glyphicon-saved" ng-show="company.editMode" ng-click="company.editMode = false; updateView()" ng-disabled="company.name==''"></button>
+                                <button ng-hide="company.editMode" ng-click="edit($index, company.editMode)" class="btn btn-default btn-group-sm glyphicon glyphicon-edit"></button>
+                                <button class="btn btn-default btn-group-sm glyphicon glyphicon-saved" ng-show="company.editMode" ng-click="edit($index, company.editMode)" ng-disabled="company.name=='' || !netIncomeForm.$valid"></button>
                                 <button ng-click="removeCompany($index)" class="btn btn-default btn-group-sm glyphicon glyphicon-trash"></button>
                             </div>
                         </div>

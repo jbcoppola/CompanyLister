@@ -197,7 +197,7 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
     $scope.contactsForm = [{}];
 
     //start on a particular type of UI, "List" or "Card"
-    $scope.ui = "Card";
+    $scope.ui = "List";
 
     $scope.alerts = [];
 
