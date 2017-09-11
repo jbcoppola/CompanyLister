@@ -73,13 +73,17 @@ h1 {
     resize: none;
 }
 
+/*ALERT*/
+.alert-area {
+    height: 50px;
+}
+
 .alert {
     font-size: 18px;
     padding: 10px;
     border: none;
     border-radius: 6px;
     font-weight: bold;
-    margin: 20px 0px;
 }
 .alert.ng-leave {
   transition:0.5s linear all;

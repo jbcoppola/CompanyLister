@@ -95,7 +95,11 @@
                 </form>
             </div> <!--end of hideable div-->
 
-            <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'success')" close="closeAlert($index)" dismiss-on-timeout="2000">{{alert.msg}}</div>
+
+            <div class="alert-area">
+                <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'success')" close="closeAlert($index)" dismiss-on-timeout="2000">{{alert.msg}}</div>
+            </div>
+            
             <div class="row">
                 <div class="col-sm-6">
                     <div class="btn-group btn-view" uib-dropdown is-open="status.isopen">
