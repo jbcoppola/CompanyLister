@@ -194,8 +194,9 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
     $scope.isCollapsed = true;
 
     //empty array used for making contact divs in add company form
-    $scope.contactsForm = [{}];
-    $scope.addNetIncomeForm = [{}];
+    $scope.company = {};
+    $scope.company.contacts = [''];
+    $scope.company.netIncome = [''];
 
     //start on a particular type of UI, "List" or "Card"
     $scope.ui = "List";
@@ -243,13 +244,15 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
         else { company.id = Number(data[0].id) + 1 };
         console.log(company.contacts);
         console.log(company.netIncome);
-        if (company.contacts == undefined) { company.contacts = [] };
-        if (company.netIncome == undefined) { company.netIncome = [] };
+        if (company.contacts[0] == '') { company.contacts = [] };
+        if (company.netIncome[0] == '') { company.netIncome = [] };
         //goes at top so user can see it
         data.unshift(company);
         $scope.addAlert("Company added!");
         $scope.isCollapsed = !$scope.isCollapsed;
         $scope.company = {};
+        $scope.company.contacts = [''];
+        $scope.company.netIncome = [''];
         //update views
         updateView();
     },
@@ -273,13 +276,13 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
 
     //add new contact to new company form
     $scope.addNewContact = function () {
-        $scope.contactsForm.push({});
+        $scope.company.contacts.push('');
     },
 
     //remove contact from new company form
     $scope.deleteContact = function () {
-        if ($scope.contactsForm.length > 1) {
-            $scope.contactsForm.splice($scope.contactsForm.length - 1, 1);
+        if ($scope.company.contacts.length > 1) {
+            $scope.company.contacts.splice($scope.company.contacts.length - 1, 1);
         }
     },
 
