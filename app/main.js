@@ -290,7 +290,16 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
         updateView();
     }
     
-    $scope.updateView = function () {
-        updateView();
+    $scope.edit = function (index, editMode) {
+        if (!editMode) {
+            $scope.currentlyEditing = true;
+            $scope.displayedCompanyList[index].editMode = true;
+            $scope.editForm = data[selectCompany(index)];
+        }
+        else {
+            $scope.currentlyEditing = false;
+            $scope.displayedCompanyList[index].editMode = false;
+            data[selectCompany(index)] = $scope.editForm;
+        }
     }
 });
