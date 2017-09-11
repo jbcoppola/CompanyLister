@@ -230,6 +230,7 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
 
     //controls how many entries are visible at once
     $scope.changeDisplayedItems = function (number) {
+        $scope.changePage();
         $scope.itemsPerPage = number;
         updatePagingData();
     },
@@ -239,13 +240,14 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
         //id is one greater than newest company, or 1 if it's the first entry
         if (data[0] == null) { company.id = 1 }
         else { company.id = Number(data[0].id) + 1 };
-        
+        //clears arrays if no data is entered in form
         if (company.contacts[0] == '') { company.contacts = [] };
         if (company.netIncome[0] == '') { company.netIncome = [] };
         //goes at top so user can see it
         data.unshift(company);
         $scope.addAlert("Company added!");
         $scope.isCollapsed = !$scope.isCollapsed;
+        //resets form
         $scope.company = {};
         $scope.company.contacts = [''];
         $scope.company.netIncome = [''];
