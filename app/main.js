@@ -297,6 +297,7 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
 
     //delete company
     $scope.removeCompany = function (index) {
+        if ($scope.companyList[selectCompany(index)].editMode == true) { $scope.currentlyEditing = false; };
         data.splice(selectCompany(index), 1);
         updateView();
     },
