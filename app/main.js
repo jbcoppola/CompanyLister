@@ -3,11 +3,7 @@ var app = angular.module("Company", ['ui.bootstrap','ngAnimate']);
 
 //make controller
 app.controller("Company", function ($scope, $filter, $window, $http) {
-    //populate with company data. the 'database'
-    //$scope.data = [];
-    //$http.get("/data/companyList.json").then(function (response) {
-    //    return response.data;
-    //});
+
     data = [
         {
             "id": "12",
@@ -201,6 +197,7 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
     //start on a particular type of UI, "List" or "Card"
     $scope.ui = "List";
 
+    //alerts get pushed to this array
     $scope.alerts = [];
 
     //choose which field to search for
@@ -242,8 +239,7 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
         //id is one greater than newest company, or 1 if it's the first entry
         if (data[0] == null) { company.id = 1 }
         else { company.id = Number(data[0].id) + 1 };
-        console.log(company.contacts);
-        console.log(company.netIncome);
+        
         if (company.contacts[0] == '') { company.contacts = [] };
         if (company.netIncome[0] == '') { company.netIncome = [] };
         //goes at top so user can see it
@@ -297,6 +293,7 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
         updateView();
     },
 
+    //for net income
     $scope.addEditNetIncome = function (array, netIncome) {
         array.push(netIncome);
         $scope.netIncomeForm = {};
@@ -310,6 +307,7 @@ app.controller("Company", function ($scope, $filter, $window, $http) {
         updateView();
     },
     
+    //triggers edit mode on single function and saves info when done
     $scope.edit = function (index, editMode) {
         if (!editMode) {
             $scope.currentlyEditing = true;
