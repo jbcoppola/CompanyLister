@@ -14,7 +14,7 @@ I completed the basic project in a week, and took the next week to greatly impro
 
 ## Resources used
 
-- HTML5
+- HTML5 / CSS
 - Javascript
 - Angular
 - Bootstrap 3.3.7
