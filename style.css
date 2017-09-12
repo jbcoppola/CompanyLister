@@ -133,7 +133,16 @@ h1 {
     color: white;
     border: 1px solid lightgray;
 }
-
+.input-group .form-control.range-search {
+    width: 50%;
+}
+.input-group .form-control.search-lower:not(:first-child):not(:last-child){
+    border-radius: 0px;
+    border-right: 0px;
+}
+.search-upper {
+    border-radius: 0px;
+}
 /*PAGINATION*/
 
 .pagination>li.active>a {
