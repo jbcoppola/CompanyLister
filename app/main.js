@@ -181,8 +181,8 @@ app.controller("Company", function ($scope, $filter, $window) {
         });
     }
 
-    $scope.lowerRange = 0;
-    $scope.upperRange = 100;
+    $scope.lowerRange = undefined;
+    $scope.upperRange = undefined;
 
     //companyList is used for the main view, which can be populated and depopulated in searches without affecting the data
     $scope.companyList = data;
@@ -220,6 +220,8 @@ app.controller("Company", function ($scope, $filter, $window) {
         $scope.field = field;
         $scope.fieldButtonName = buttonName;
         $scope.query = '';
+        $scope.upperRange = undefined;
+        $scope.lowerRange = undefined;
         $scope.changePage();
     }
 
