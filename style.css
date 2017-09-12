@@ -294,6 +294,11 @@ h1 {
 .white-space {
     margin-left: 18px;
 }
+.list-name {
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+}
 
 /*FOOTER*/
 
