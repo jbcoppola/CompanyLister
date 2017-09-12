@@ -262,6 +262,9 @@ h1 {
 .main-list-listing .odd {
     background-color: lightgray;
 }
+.main-list-listing .title-row .company-name {
+    font-weight: bold;
+}
 .main-list-listing .company-name {
     font-weight: bold;
 }
@@ -272,6 +275,15 @@ h1 {
 }
 .main-list-listing .last-item {
     margin-bottom: 50px;
+}
+.contacts p {
+    margin: 0px 0px 0px 19px;
+}
+.caret {
+    margin-right: 4px;
+}
+.white-space {
+    margin-left: 18px;
 }
 
 /*FOOTER*/
