@@ -200,12 +200,22 @@ app.controller("Company", function ($scope, $filter, $window) {
     //alerts get pushed to this array
     $scope.alerts = [];
 
+    //cancels in progress edits on page change
+    $scope.changePage = function () {
+        if ($scope.currentlyEditing == true) {
+            $scope.companyList[$scope.editCompany].editMode = false;
+            $scope.editForm = {};
+            $scope.currentlyEditing = false;
+        };
+    }
+
     //choose which field to search for
     $scope.setField = function (field, buttonName) {
         if (field == 'contacts') { $scope.detailMode = true; }
         else { $scope.detailMode = false; };
         $scope.field = field;
         $scope.fieldButtonName = buttonName;
+        $scope.changePage();
     }
 
     //initial field for search
@@ -265,14 +275,7 @@ app.controller("Company", function ($scope, $filter, $window) {
         $scope.alerts.splice(index, 1);
     };
 
-    //cancels in progress edits on page change
-    $scope.changePage = function () {
-        if ($scope.currentlyEditing == true) {
-            $scope.companyList[$scope.editCompany].editMode = false;
-            $scope.editForm = {};
-            $scope.currentlyEditing = false;
-        };
-    }
+
 
     //add new contact to new company form
     $scope.addNewContact = function () {
