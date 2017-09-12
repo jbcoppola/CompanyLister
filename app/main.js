@@ -275,8 +275,6 @@ app.controller("Company", function ($scope, $filter, $window) {
         $scope.alerts.splice(index, 1);
     };
 
-
-
     //add new contact to new company form
     $scope.addNewContact = function () {
         $scope.company.contacts.push('');
