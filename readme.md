@@ -14,11 +14,11 @@ I completed the basic project in a week, and took the next week to greatly impro
 
 ## Resources used
 
--HTML5
--Javascript
--Angular
--Bootstrap 3.3.7
--UI-bootstrap
+- HTML5
+- Javascript
+- Angular
+- Bootstrap 3.3.7
+- UI-bootstrap
 
 ## Challenges
 
