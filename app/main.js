@@ -119,8 +119,8 @@ app.controller("Company", function ($scope, $filter, $window) {
         updatePagingData();
     }
     
-    $scope.searchRange = function(item) {
-        return item.netIncome[0] < $scope.upperRange && item.netIncome[0] > $scope.lowerRange;
+    $scope.searchRange = function(company) {
+        return company.netIncome[0] < $scope.maximum && company.netIncome[0] > $scope.minimum;
     }
 
     //refreshes CompanyList with current relevant entries from data
@@ -144,10 +144,6 @@ app.controller("Company", function ($scope, $filter, $window) {
                 break;
         }
     }
-
-    $scope.customFilter = (item) => {
-        return item.someProperty == $scope.filterValue;
-    };
 
     //keeps paginator current when companies are deleted or added
     function updatePagingData() {
@@ -227,8 +223,8 @@ app.controller("Company", function ($scope, $filter, $window) {
         $scope.field = field;
         $scope.fieldButtonName = buttonName;
         $scope.query = '';
-        $scope.upperRange = undefined;
-        $scope.lowerRange = undefined;
+        $scope.maximum = undefined;
+        $scope.minimum = undefined;
         $scope.changePage();
     }
 
@@ -254,10 +250,10 @@ app.controller("Company", function ($scope, $filter, $window) {
         updateView();
     });
 
-    $scope.$watch("upperRange", function () {
+    $scope.$watch("maximum", function () {
         updateView();
     });
-    $scope.$watch("lowerRange", function () {
+    $scope.$watch("minimum", function () {
         updateView();
     });
 
