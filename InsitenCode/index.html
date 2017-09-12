@@ -277,7 +277,7 @@
                         ID
                     </div>
                     <div class="col-xs-2 company-name text-center">
-                        Name
+                        Company Name
                     </div>
                     <div class="col-xs-3 contacts">
                         <p>Contacts</p>
@@ -298,7 +298,8 @@
                             {{company.id}}
                         </div>
                         <div class="col-xs-2 company-name text-center">
-                            <span class="list-name-button btn btn-defult" ng-click="detailMode = !detailMode" ng-hide="company.editMode">{{company.name}}</span>
+                            <span class="list-name-button btn btn-default" ng-click="detailMode = !detailMode" ng-hide="company.editMode || company.contacts[1]==null">{{company.name}}</span>
+                            <span class="list-name" ng-hide="company.editMode || company.contacts[1]!=null">{{company.name}}</span>
                             <input type="text" class="form-control" ng-show="company.editMode" ng-model="editForm.name" />
                         </div>
                         <div class="col-xs-3">
