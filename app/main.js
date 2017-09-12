@@ -337,7 +337,7 @@ app.controller("Company", function ($scope, $filter, $window) {
         updateView();
     },
     
-    //triggers edit mode on single function and saves info when done
+    //triggers edit mode on single company and saves info when done
     $scope.edit = function (index, editMode) {
         if (!editMode) {
             $scope.currentlyEditing = true;
