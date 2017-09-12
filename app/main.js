@@ -273,7 +273,12 @@ app.controller("Company", function ($scope, $filter, $window) {
         if (data[0] == null) { company.id = 1 }
         else { company.id = Number(data[0].id) + 1 };
         //clears arrays if no data is entered in form
-        if (company.contacts[0] == '') { company.contacts = [] };
+        for (i = 0; i < company.contacts.length; i++) {
+            if (company.contacts[i] == '') {
+                company.contacts.splice(i, 1);
+                i -= 1;
+            }
+        };
         if (company.netIncome[0] == '') { company.netIncome = [''] };
         //goes at top so user can see it
         data.unshift(company);
