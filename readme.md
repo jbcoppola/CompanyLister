@@ -1,8 +1,8 @@
 # Insiten Code
 
-###### Live project demo: [https://jbcoppola.github.io/InsitenCode/]
+######Live project demo: [https://jbcoppola.github.io/InsitenCode/]
 
-### Overview
+###Overview
 
 InsitenCode is an Angular application to allow the user to create a list of companies in their web browser. The user can add companies via form, delete a company with a button, or edit a company's information.
 
@@ -12,7 +12,7 @@ Users can search for a particular company by selecting a field and searching for
 
 I completed the basic project in a week, and took the next week to greatly improve it by adding features and fixing bugs.
 
-### Resources used
+###Resources used
 
 -HTML5
 -Javascript
@@ -20,7 +20,7 @@ I completed the basic project in a week, and took the next week to greatly impro
 -Bootstrap 3.3.7
 -UI-bootstrap
 
-### Challenges
+###Challenges
 
 1. **Challenge:** Learning Angular for the first time in less than a week
 **Solution:** It actually was less challenging than I had initially assumed. Once I got a basic MVP working from tutorials online, I was able to build basic features and then expand on them later. Since I already know Javascript, MVC structuring, and HTML/CSS, the basics of Angular were fairly intuitive. As the project went on and I got a better understanding of the features I was able to simplify and continually reconfigure my code to work better more efficiently.
