@@ -139,17 +139,14 @@
                             </ul>
                         </div>
                         <input type="text" placeholder="search by field" class="form-control text-search" ng-hide="field=='status' || field=='netIncome'" ng-model="query" />
+                        <input type="number" ng-show="field=='netIncome'" class="form-control range-search search-lower" placeholder="lower range" ng-model="lowerRange"/>
+                        <input type="number" ng-show="field=='netIncome'" class="form-control range-search search-upper" placeholder="upper range" ng-model="upperRange" />
                         <select class="form-control status-dropdown" ng-model="query" ng-show="field=='status'">
                             <option></option>
                             <option>Approved</option>
                             <option>Researching</option>
                             <option>Pending Approval</option>
                             <option>Declined</option>
-                        </select>
-                        <select class="form-control status-dropdown" ng-model="query" ng-show="field=='netIncome'">
-                            <option></option>
-                            <option>Positive</option>
-                            <option>Negative</option>
                         </select>
                     </div>
                 </div>
