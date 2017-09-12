@@ -139,8 +139,28 @@
                             </ul>
                         </div>
                         <input type="text" placeholder="search by field" class="form-control text-search" ng-hide="field=='status' || field=='netIncome'" ng-model="query" />
-                        <input type="number" ng-show="field=='netIncome'" class="form-control range-search search-lower" placeholder="minimum amount" ng-model="minimum"/>
-                        <input type="number" ng-show="field=='netIncome'" class="form-control range-search search-upper" placeholder="maximum amount" ng-model="maximum" />
+                        <!--<input type="number" ng-show="field=='netIncome'" class="form-control range-search search-lower" placeholder="minimum amount" ng-model="minimum"/>
+                        <input type="number" ng-show="field=='netIncome'" class="form-control range-search search-upper" placeholder="maximum amount" ng-model="maximum" />-->
+                        <select class="form-control range-search search-lower" ng-model="minimum" ng-show="field=='netIncome'">
+                            <option value="" disabled hidden selected>Minimum Amount</option>
+                            <option value="-10000000000">-10,000M</option>
+                            <option value="-10000000">-100M</option>
+                            <option value="-100000">-1M</option>
+                            <option value="0">0</option>
+                            <option value="1000000">1M</option>
+                            <option value="10000000">10M</option>
+                            <option value="100000000">100M</option>
+                            <option value="1000000000">1000M</option>
+                        </select>
+                        <select class="form-control range-search search-upper" ng-model="maximum" ng-show="field=='netIncome'">
+                            <option value="" disabled hidden selected>Maximum Amount</option>
+                            <option value="0">0</option>
+                            <option value="1000000">1M</option>
+                            <option value="10000000">10M</option>
+                            <option value="100000000">100M</option>
+                            <option value="1000000000">1000M</option>
+                            <option value="10000000000">10000M</option>
+                        </select>
                         <select class="form-control status-dropdown" ng-model="query" ng-show="field=='status'">
                             <option></option>
                             <option>Approved</option>
