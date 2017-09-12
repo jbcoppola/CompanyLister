@@ -1,8 +1,8 @@
 # Insiten Code
 
-######Live project demo: [https://jbcoppola.github.io/InsitenCode/]
+###### Live project demo: [https://jbcoppola.github.io/InsitenCode/]
 
-###Overview
+### Overview
 
 InsitenCode is an Angular application to allow the user to create a list of companies in their web browser. The user can add companies via form, delete a company with a button, or edit a company's information.
 
@@ -12,7 +12,7 @@ Users can search for a particular company by selecting a field and searching for
 
 I completed the basic project in a week, and took the next week to greatly improve it by adding features and fixing bugs.
 
-###Resources used
+### Resources used
 
 -HTML5
 -Javascript
@@ -20,12 +20,12 @@ I completed the basic project in a week, and took the next week to greatly impro
 -Bootstrap 3.3.7
 -UI-bootstrap
 
-###Challenges
+### Challenges
 
 1. **Challenge:** Learning Angular for the first time in less than a week
 **Solution:** It actually was less challenging than I had initially assumed. Once I got a basic MVP working from tutorials online, I was able to build basic features and then expand on them later. Since I already know Javascript, MVC structuring, and HTML/CSS, the basics of Angular were fairly intuitive. As the project went on and I got a better understanding of the features I was able to simplify and continually reconfigure my code to work better more efficiently.
 
-2: **Challenge:** Implement dynamic sorting for each seperate field
+2. **Challenge:** Implement dynamic sorting for each seperate field
 **Solution:** There were two main hurdles here. First I had to get the $filter element working, then figure out how to structure the data so that what was searched would appear on the screen after every keystroke. The eventual solution I worked out was to parallel the MVC concept: have the list of every company loaded into a "data" variable at the start of the application process, then have CompanyList that would load every company that matched the search terms with the filter. DisplayedCompanyList would display the correct number of companies to fit the page with the options the user had selected and based on what page they were on. Once I figured out this three-tier system  I was able to standarize the rest of the application around it and greatly speed my workflow.
 
 3. **Challenge:** Allow the user to add or remove contacts
