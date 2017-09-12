@@ -316,7 +316,7 @@
                             <span ng-hide="company.editMode || detailMode || company.netIncome[0]==undefined">${{company.netIncome[0] | number : fractionSize | millionSuffix}}</span>
                             <form name="netIncomeForm" ng-show="detailMode || company.editMode">
                                 <div class="col-xs-12" ng-repeat="income in company.netIncome track by $index">
-                                    <span ng-hide="company.editMode || income==undefined">${{income | number : fractionSize}}</span>
+                                    <span ng-hide="company.editMode || income==undefined">${{income | number : fractionSize| millionSuffix}}</span>
                                     <input type="number" class="form-control" ng-show="company.editMode" ng-model="editForm.netIncome[$index]" required>
                                 </div>
                             </form>
