@@ -274,7 +274,7 @@ app.controller("Company", function ($scope, $filter, $window) {
         else { company.id = Number(data[0].id) + 1 };
         //clears arrays if no data is entered in form
         if (company.contacts[0] == '') { company.contacts = [] };
-        if (company.netIncome[0] == '') { company.netIncome = [] };
+        if (company.netIncome[0] == '') { company.netIncome = [''] };
         //goes at top so user can see it
         data.unshift(company);
         $scope.addAlert("Company added!");
