@@ -119,8 +119,11 @@ app.controller("Company", function ($scope, $filter, $window) {
         updatePagingData();
     }
     
-    $scope.searchRange = function(company) {
-        return company.netIncome[0] < $scope.maximum && company.netIncome[0] > $scope.minimum;
+    $scope.searchRange = function (company) {
+        if ($scope.maximum != undefined && $scope.minimum != undefined) {
+            return company.netIncome[0] < $scope.maximum && company.netIncome[0] > $scope.minimum;
+        }
+        return true;
     }
 
     //refreshes CompanyList with current relevant entries from data

@@ -139,8 +139,8 @@
                             </ul>
                         </div>
                         <input type="text" placeholder="search by field" class="form-control text-search" ng-hide="field=='status' || field=='netIncome'" ng-model="query" />
-                        <input type="number" ng-show="field=='netIncome'" class="form-control range-search search-lower" placeholder="minimum" ng-model="minimum"/>
-                        <input type="number" ng-show="field=='netIncome'" class="form-control range-search search-upper" placeholder="maximum" ng-model="maximum" />
+                        <input type="number" ng-show="field=='netIncome'" class="form-control range-search search-lower" placeholder="minimum amount" ng-model="minimum"/>
+                        <input type="number" ng-show="field=='netIncome'" class="form-control range-search search-upper" placeholder="maximum amount" ng-model="maximum" />
                         <select class="form-control status-dropdown" ng-model="query" ng-show="field=='status'">
                             <option></option>
                             <option>Approved</option>
