@@ -67,7 +67,7 @@ app.controller("Company", function ($scope, $filter, $window) {
             "status": "Pending Approval",
             "information": "Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce quis dapibus tortor. Nam finibus aliquam mollis. Mauris aliquet tincidunt elit varius placerat. ",
             "contacts": ["Bill Markets"],
-            "netIncome": [73.19]
+            "netIncome": [73]
         },
         {
             "id": "4",
@@ -109,9 +109,13 @@ app.controller("Company", function ($scope, $filter, $window) {
         updatePagingData();
     }
     
+    $scope.searchRange = function(item) {
+        return item.netIncome[0] < $scope.upperRange && item.netIncome[0] > $scope.lowerRange;
+    }
+
     //refreshes CompanyList with current relevant entries from data
     function updateCompanyList() {
-        var query = $scope.query
+        var query = $scope.query;
         switch ($scope.field) {
             case "id":
                 $scope.companyList = $filter('filter')(data, { "id": query });
@@ -126,18 +130,15 @@ app.controller("Company", function ($scope, $filter, $window) {
                 $scope.companyList = $filter('filter')(data, { "contacts": query });
                 break;
             case "netIncome":
-                if (query == "Positive") {
-                    $scope.companyList = $filter('filter')(data, { "netIncome": '!-' });
-                    break;
-                }
-                else if (query == "Negative") {
-                    $scope.companyList = $filter('filter')(data, {"netIncome": '-'});
-                    break;
-                }
-                $scope.companyList = $filter('filter')(data, { "netIncome": query });
+                $scope.companyList = $filter('filter')(data, $scope.searchRange);
                 break;
         }
     }
+
+    $scope.customFilter = (item) => {
+        return item.someProperty == $scope.filterValue;
+    };
+
     //keeps paginator current when companies are deleted or added
     function updatePagingData() {
         setPagingData($scope.companyList, $scope.currentPage);
@@ -179,6 +180,9 @@ app.controller("Company", function ($scope, $filter, $window) {
             }
         });
     }
+
+    $scope.lowerRange = 0;
+    $scope.upperRange = 100;
 
     //companyList is used for the main view, which can be populated and depopulated in searches without affecting the data
     $scope.companyList = data;
@@ -241,6 +245,13 @@ app.controller("Company", function ($scope, $filter, $window) {
         updateView();
     });
 
+    $scope.$watch("upperRange", function () {
+        updateView();
+    });
+    $scope.$watch("lowerRange", function () {
+        updateView();
+    });
+
     //controls how many entries are visible at once
     $scope.changeDisplayedItems = function (number) {
         $scope.changePage();
@@ -260,7 +271,7 @@ app.controller("Company", function ($scope, $filter, $window) {
         data.unshift(company);
         $scope.addAlert("Company added!");
         $scope.isCollapsed = !$scope.isCollapsed;
-        //resets form
+        //resets forms
         $scope.company = {};
         $scope.company.contacts = [''];
         $scope.company.netIncome = [''];
