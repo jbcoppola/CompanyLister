@@ -206,7 +206,6 @@ app.controller("Company", function ($scope, $filter, $window) {
         else { $scope.detailMode = false; };
         $scope.field = field;
         $scope.fieldButtonName = buttonName;
-        $scope.changePage();
     }
 
     //initial field for search
