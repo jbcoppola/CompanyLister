@@ -290,9 +290,11 @@
                             <span ng-hide="company.editMode || detailMode">{{company.contacts[0]}}</span>
                             <div class="row" ng-show="detailMode || company.editMode">
                                 <div class="col-xs-12" ng-repeat="contact in displayedCompanyList[$index].contacts track by $index">
-                                    <span class="dropup"><span ng-show="$index == 0" class="caret"></span></span>
-                                    <span class="white-space" ng-show="$index > 0"></span>
-                                    {{company.contacts[$index]}}
+                                    <div ng-hide="company.editMode">
+                                        <span class="dropup"><span ng-show="$index == 0" class="caret"></span></span>
+                                        <span class="white-space" ng-show="$index > 0"></span>
+                                        {{company.contacts[$index]}}
+                                    </div>
                                     <div class="input-group">
                                         <input type="text" class="form-control" ng-show="company.editMode" ng-model="editForm.contacts[$index]">
                                         <span class="input-group-btn">
