@@ -140,7 +140,7 @@ h1 {
     border-radius: 0px;
     border-right: 0px;
 }
-.search-upper {
+.input-group .form-control.search-upper:not(:first-child):not(:last-child) {
     border-radius: 0px;
 }
 /*PAGINATION*/
