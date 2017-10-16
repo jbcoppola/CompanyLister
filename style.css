@@ -16,6 +16,9 @@ body {
 .header {
     padding: 10px 30px;
 }
+.header img {
+    max-height: 55px;
+}
 .banner {
     padding: 30px;
     background-color: #3A3B3C;
